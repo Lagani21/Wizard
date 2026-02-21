@@ -73,6 +73,37 @@ class SpeakerAlignedSegment:
 
 
 @dataclass
+class VisualEmbedding:
+    """Represents visual embeddings from VideoMAE for a time segment."""
+    start_time: float
+    end_time: float
+    embedding: np.ndarray
+    shot_id: Optional[str] = None
+
+
+@dataclass
+class ToneEvent:
+    """Represents an emotional tone detection event."""
+    scene_id: str
+    start_time: float
+    end_time: float
+    tone_label: str
+    confidence: float
+
+
+@dataclass
+class SceneSummary:
+    """Represents an AI-generated scene summary."""
+    scene_id: str
+    start_time: float
+    end_time: float
+    summary_text: str
+    tone_label: str
+    key_speakers: List[str] = field(default_factory=list)
+    confidence: float = 0.0
+
+
+@dataclass
 class PipelineContext:
     """
     Shared context for pipeline execution.
@@ -93,6 +124,15 @@ class PipelineContext:
     transcript_segments: List[TranscriptSegment] = field(default_factory=list)
     speaker_segments: List[SpeakerSegment] = field(default_factory=list)
     aligned_segments: List[SpeakerAlignedSegment] = field(default_factory=list)
+    
+    # Visual processing results
+    visual_embeddings: List[VisualEmbedding] = field(default_factory=list)
+    
+    # Tone detection results
+    tone_events: List[ToneEvent] = field(default_factory=list)
+    
+    # Scene summary results
+    scene_summaries: List[SceneSummary] = field(default_factory=list)
     
     # Additional metadata
     processing_metadata: Dict[str, Any] = field(default_factory=dict)
@@ -121,6 +161,18 @@ class PipelineContext:
         """Add an aligned segment to the context."""
         self.aligned_segments.append(segment)
     
+    def add_visual_embedding(self, embedding: VisualEmbedding) -> None:
+        """Add a visual embedding to the context."""
+        self.visual_embeddings.append(embedding)
+    
+    def add_tone_event(self, event: ToneEvent) -> None:
+        """Add a tone event to the context."""
+        self.tone_events.append(event)
+    
+    def add_scene_summary(self, summary: SceneSummary) -> None:
+        """Add a scene summary to the context."""
+        self.scene_summaries.append(summary)
+    
     def get_blink_count(self) -> int:
         """Get the total number of detected blinks."""
         return len(self.blink_events)
@@ -137,6 +189,18 @@ class PipelineContext:
         """Get the number of unique speakers."""
         return len(set(segment.speaker_id for segment in self.speaker_segments))
     
+    def get_tone_event_count(self) -> int:
+        """Get the total number of tone events."""
+        return len(self.tone_events)
+    
+    def get_visual_embedding_count(self) -> int:
+        """Get the total number of visual embeddings."""
+        return len(self.visual_embeddings)
+    
+    def get_scene_summary_count(self) -> int:
+        """Get the total number of scene summaries."""
+        return len(self.scene_summaries)
+    
     def clear_results(self) -> None:
         """Clear all detection results."""
         self.blink_events.clear()
@@ -145,4 +209,7 @@ class PipelineContext:
         self.transcript_segments.clear()
         self.speaker_segments.clear()
         self.aligned_segments.clear()
+        self.visual_embeddings.clear()
+        self.tone_events.clear()
+        self.scene_summaries.clear()
         self.processing_metadata.clear()

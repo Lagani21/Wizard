@@ -14,6 +14,8 @@ from ..tasks.breath_task import BreathTask
 from ..tasks.transcription_task import TranscriptionTask
 from ..tasks.diarization_task import DiarizationTask
 from ..tasks.alignment_task import AlignmentTask
+from ..tasks.tone_detection_task import ToneDetectionTask
+from ..tasks.context_summary_task import ContextSummaryTask
 from ..audio.audio_extractor import AudioExtractor
 
 
@@ -31,7 +33,11 @@ class Pipeline:
                  transcription_task: Optional[TranscriptionTask] = None,
                  diarization_task: Optional[DiarizationTask] = None,
                  alignment_task: Optional[AlignmentTask] = None,
-                 enable_speech_processing: bool = False) -> None:
+                 tone_detection_task: Optional[ToneDetectionTask] = None,
+                 context_summary_task: Optional[ContextSummaryTask] = None,
+                 enable_speech_processing: bool = False,
+                 enable_tone_detection: bool = False,
+                 enable_context_summary: bool = False) -> None:
         """
         Initialize the pipeline with optional task instances.
         
@@ -41,10 +47,16 @@ class Pipeline:
             transcription_task: Configured TranscriptionTask instance (creates default if None)
             diarization_task: Configured DiarizationTask instance (creates default if None)
             alignment_task: Configured AlignmentTask instance (creates default if None)
+            tone_detection_task: Configured ToneDetectionTask instance (creates default if None)
+            context_summary_task: Configured ContextSummaryTask instance (creates default if None)
             enable_speech_processing: Enable speech processing tasks
+            enable_tone_detection: Enable emotional tone detection
+            enable_context_summary: Enable AI-powered scene summaries
         """
         self.logger = logging.getLogger("wiz.pipeline")
         self.enable_speech_processing = enable_speech_processing
+        self.enable_tone_detection = enable_tone_detection
+        self.enable_context_summary = enable_context_summary
         
         # Initialize core tasks with defaults if not provided
         self.blink_task = blink_task if blink_task is not None else BlinkTask.create_default()
@@ -69,6 +81,24 @@ class Pipeline:
                 else AlignmentTask.create_default()
             )
         
+        # Initialize tone detection task if enabled
+        self.tone_detection_task = None
+        
+        if enable_tone_detection:
+            self.tone_detection_task = (
+                tone_detection_task if tone_detection_task is not None 
+                else ToneDetectionTask.create_default()
+            )
+        
+        # Initialize context summary task if enabled
+        self.context_summary_task = None
+        
+        if enable_context_summary:
+            self.context_summary_task = (
+                context_summary_task if context_summary_task is not None 
+                else ContextSummaryTask.create_default()
+            )
+        
         # Initialize audio extractor
         self.audio_extractor = AudioExtractor()
         
@@ -85,9 +115,21 @@ class Pipeline:
                 self.alignment_task
             ])
         
+        # Tone detection must run after speech processing (if both enabled)
+        if enable_tone_detection:
+            self.tasks.append(self.tone_detection_task)
+        
+        # Context summary must run last (depends on all other processing)
+        if enable_context_summary:
+            self.tasks.append(self.context_summary_task)
+        
         processing_types = ["blink detection", "breath detection"]
         if enable_speech_processing:
             processing_types.extend(["transcription", "speaker diarization", "alignment"])
+        if enable_tone_detection:
+            processing_types.append("tone detection")
+        if enable_context_summary:
+            processing_types.append("context summary")
         
         self.logger.info(f"WIZ Intelligence Pipeline initialized with: {', '.join(processing_types)}")
     
@@ -343,6 +385,40 @@ class Pipeline:
                         for segment in context.aligned_segments
                     ]
                 }
+            }
+        
+        # Add tone detection results if available
+        if self.enable_tone_detection:
+            summary['tone_detection'] = {
+                'total_events': len(context.tone_events),
+                'events': [
+                    {
+                        'scene_id': event.scene_id,
+                        'start_time': event.start_time,
+                        'end_time': event.end_time,
+                        'tone_label': event.tone_label,
+                        'confidence': event.confidence
+                    }
+                    for event in context.tone_events
+                ]
+            }
+        
+        # Add context summary results if available
+        if self.enable_context_summary:
+            summary['context_summary'] = {
+                'total_summaries': len(context.scene_summaries),
+                'summaries': [
+                    {
+                        'scene_id': summary_obj.scene_id,
+                        'start_time': summary_obj.start_time,
+                        'end_time': summary_obj.end_time,
+                        'summary_text': summary_obj.summary_text,
+                        'tone_label': summary_obj.tone_label,
+                        'key_speakers': summary_obj.key_speakers,
+                        'confidence': summary_obj.confidence
+                    }
+                    for summary_obj in context.scene_summaries
+                ]
             }
         
         return summary

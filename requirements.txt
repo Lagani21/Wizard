@@ -14,6 +14,12 @@ mediapipe>=0.8.9
 # pyannote.audio>=3.1.0
 # torch>=1.13.0
 
+# Local LLM dependencies (optional, for context summary)
+# Choose one based on your preferred backend:
+# llama-cpp-python>=0.2.0  # For llama.cpp backend
+# mlx>=0.12.0              # For Apple MLX backend  
+# mlx-lm>=0.8.0            # For Apple MLX language models
+
 # Optional: CoreML Tools for future model deployment (macOS only)
 # coremltools>=5.0.0
 
