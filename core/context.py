@@ -1,0 +1,148 @@
+"""
+Pipeline context for sharing state between tasks.
+"""
+
+from dataclasses import dataclass, field
+from typing import List, Optional, Dict, Any
+import numpy as np
+
+
+@dataclass
+class VideoMetadata:
+    """Metadata about the input video."""
+    path: str
+    width: int
+    height: int
+    fps: float
+    total_frames: int
+    duration_seconds: float
+
+
+@dataclass
+class BlinkEvent:
+    """Represents a detected blink event."""
+    start_frame: int
+    end_frame: int
+    duration_ms: float
+    confidence: float
+
+
+@dataclass
+class BreathEvent:
+    """Represents a detected breath event."""
+    start_time: float
+    end_time: float
+    duration_ms: float
+    confidence: float
+
+
+@dataclass
+class TranscriptWord:
+    """Represents a single transcribed word with timing."""
+    text: str
+    start_time: float
+    end_time: float
+    confidence: float
+
+
+@dataclass
+class TranscriptSegment:
+    """Represents a transcribed segment with words."""
+    text: str
+    start_time: float
+    end_time: float
+    words: List[TranscriptWord] = field(default_factory=list)
+
+
+@dataclass
+class SpeakerSegment:
+    """Represents a speaker diarization segment."""
+    speaker_id: str
+    start_time: float
+    end_time: float
+
+
+@dataclass
+class SpeakerAlignedSegment:
+    """Represents a transcript segment aligned with speaker information."""
+    speaker_id: str
+    text: str
+    start_time: float
+    end_time: float
+    words: List[TranscriptWord] = field(default_factory=list)
+
+
+@dataclass
+class PipelineContext:
+    """
+    Shared context for pipeline execution.
+    
+    Contains all data that needs to be passed between tasks,
+    including inputs, intermediate results, and final outputs.
+    """
+    # Input data
+    video_metadata: Optional[VideoMetadata] = None
+    audio_waveform: Optional[np.ndarray] = None
+    
+    # Detection results
+    blink_events: List[BlinkEvent] = field(default_factory=list)
+    breath_events: List[BreathEvent] = field(default_factory=list)
+    
+    # Speech processing results
+    transcript_words: List[TranscriptWord] = field(default_factory=list)
+    transcript_segments: List[TranscriptSegment] = field(default_factory=list)
+    speaker_segments: List[SpeakerSegment] = field(default_factory=list)
+    aligned_segments: List[SpeakerAlignedSegment] = field(default_factory=list)
+    
+    # Additional metadata
+    processing_metadata: Dict[str, Any] = field(default_factory=dict)
+    
+    def add_blink_event(self, event: BlinkEvent) -> None:
+        """Add a blink event to the context."""
+        self.blink_events.append(event)
+    
+    def add_breath_event(self, event: BreathEvent) -> None:
+        """Add a breath event to the context."""
+        self.breath_events.append(event)
+    
+    def add_transcript_word(self, word: TranscriptWord) -> None:
+        """Add a transcript word to the context."""
+        self.transcript_words.append(word)
+    
+    def add_transcript_segment(self, segment: TranscriptSegment) -> None:
+        """Add a transcript segment to the context."""
+        self.transcript_segments.append(segment)
+    
+    def add_speaker_segment(self, segment: SpeakerSegment) -> None:
+        """Add a speaker segment to the context."""
+        self.speaker_segments.append(segment)
+    
+    def add_aligned_segment(self, segment: SpeakerAlignedSegment) -> None:
+        """Add an aligned segment to the context."""
+        self.aligned_segments.append(segment)
+    
+    def get_blink_count(self) -> int:
+        """Get the total number of detected blinks."""
+        return len(self.blink_events)
+    
+    def get_breath_count(self) -> int:
+        """Get the total number of detected breaths."""
+        return len(self.breath_events)
+    
+    def get_transcript_word_count(self) -> int:
+        """Get the total number of transcript words."""
+        return len(self.transcript_words)
+    
+    def get_speaker_count(self) -> int:
+        """Get the number of unique speakers."""
+        return len(set(segment.speaker_id for segment in self.speaker_segments))
+    
+    def clear_results(self) -> None:
+        """Clear all detection results."""
+        self.blink_events.clear()
+        self.breath_events.clear()
+        self.transcript_words.clear()
+        self.transcript_segments.clear()
+        self.speaker_segments.clear()
+        self.aligned_segments.clear()
+        self.processing_metadata.clear()

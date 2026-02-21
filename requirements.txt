@@ -1,0 +1,26 @@
+# WIZ Intelligence Pipeline Dependencies
+
+# Core dependencies
+numpy>=1.21.0
+scipy>=1.7.0
+opencv-python>=4.5.0
+
+# MediaPipe for blink detection (face landmark detection)
+mediapipe>=0.8.9
+
+# Speech processing dependencies (optional, for speech pipeline)
+# Install these for transcription and speaker diarization:
+# openai-whisper>=20231117
+# pyannote.audio>=3.1.0
+# torch>=1.13.0
+
+# Optional: CoreML Tools for future model deployment (macOS only)
+# coremltools>=5.0.0
+
+# Development and testing (optional)
+pytest>=6.0.0
+pytest-cov>=3.0.0
+
+# Note: This pipeline is designed for Apple Silicon (macOS)
+# Local inference only - no CUDA, cloud APIs, or external dependencies
+# Speech processing requires additional models to be downloaded locally
