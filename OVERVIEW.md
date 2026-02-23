@@ -28,8 +28,7 @@ Wizard/
 │   ├── speaker_identity.py    # Cross-clip PERSON_XXX identity registry
 │   ├── tone_classifier.py     # Rule-based + MLP emotional tone
 │   ├── video_mae.py           # VideoMAE visual captioning
-│   ├── local_llm.py           # Local LLM (llama.cpp / MLX / mock)
-│   └── coreml_model.py        # CoreML model wrapper
+│   └── local_llm.py           # Local LLM (llama.cpp / MLX / mock)
 │
 ├── tasks/              # One task per detection stage
 │   ├── blink_task.py
