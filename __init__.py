@@ -13,6 +13,7 @@ from .core.context import (
 )
 from .models.blink_detector import BlinkDetector
 from .models.breath_detector import BreathDetector
+from .models.speaker_identity import SpeakerIdentityRegistry
 from .models.whisper_model import WhisperModel
 from .models.diarization_model import DiarizationModel
 from .tasks.blink_task import BlinkTask
@@ -48,6 +49,7 @@ __all__ = [
     "SceneSummary",
     "BlinkDetector",
     "BreathDetector",
+    "SpeakerIdentityRegistry",
     "WhisperModel",
     "DiarizationModel",
     "ToneClassifier",

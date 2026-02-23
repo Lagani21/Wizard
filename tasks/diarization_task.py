@@ -3,35 +3,44 @@ Speaker diarization task for the WIZ Intelligence Pipeline.
 """
 
 import numpy as np
+from typing import Optional
+
 try:
     # Try relative imports first
     from ..core.base_task import BaseTask
     from ..core.context import PipelineContext
     from ..models.diarization_model import DiarizationModel
+    from ..models.speaker_identity import SpeakerIdentityRegistry
 except ImportError:
     # Fall back to absolute imports
     from core.base_task import BaseTask
     from core.context import PipelineContext
     from models.diarization_model import DiarizationModel
+    from models.speaker_identity import SpeakerIdentityRegistry
 
 
 class DiarizationTask(BaseTask):
     """
     Task for speaker diarization using Pyannote.
-    
-    Processes audio waveform using DiarizationModel and stores
-    speaker segments in the pipeline context.
+
+    After diarizing, resolves per-clip SPEAKER_XX labels to stable
+    cross-clip PERSON_XXX identities via SpeakerIdentityRegistry.
     """
-    
-    def __init__(self, diarization_model: DiarizationModel) -> None:
+
+    def __init__(
+        self,
+        diarization_model: DiarizationModel,
+        identity_registry: Optional[SpeakerIdentityRegistry] = None,
+    ) -> None:
         """
-        Initialize the diarization task with a diarization model.
-        
         Args:
             diarization_model: Configured DiarizationModel instance
+            identity_registry: Optional shared registry for cross-clip IDs.
+                               Defaults to the project-level registry file.
         """
         super().__init__("SpeakerDiarization")
         self.diarization_model = diarization_model
+        self.identity_registry = identity_registry or SpeakerIdentityRegistry()
     
     def _run(self, context: PipelineContext) -> None:
         """
@@ -76,8 +85,31 @@ class DiarizationTask(BaseTask):
         
         # Store results in context
         context.speaker_segments.extend(speaker_segments)
-        
-        # Generate statistics
+
+        # ── Cross-clip speaker identity resolution ────────────────────────
+        id_map: dict = {}
+        try:
+            embeddings = self.diarization_model.extract_speaker_embeddings(
+                context.audio_waveform, 16000, speaker_segments
+            )
+            if embeddings:
+                id_map = self.identity_registry.resolve(embeddings)
+                # Remap every segment in context to its stable PERSON_XXX ID
+                for seg in context.speaker_segments:
+                    if seg.speaker_id in id_map:
+                        seg.speaker_id = id_map[seg.speaker_id]
+                logger.log_info(
+                    f"Speaker identity resolved: "
+                    + ", ".join(f"{k}→{v}" for k, v in id_map.items())
+                )
+            else:
+                logger.log_info(
+                    "Speaker embeddings unavailable — keeping per-clip SPEAKER_XX IDs"
+                )
+        except Exception as exc:
+            logger.log_warning(f"Cross-clip identity resolution skipped: {exc}")
+
+        # Generate statistics (uses remapped IDs if resolution succeeded)
         speaker_stats = self.diarization_model.get_speaker_statistics(speaker_segments)
         
         # Store processing statistics
@@ -85,9 +117,11 @@ class DiarizationTask(BaseTask):
             'diarization_model_info': self.diarization_model.get_model_info(),
             'speaker_statistics': speaker_stats,
             'total_segments': len(speaker_segments),
-            'audio_duration_s': duration_s
+            'audio_duration_s': duration_s,
+            'identity_mapping': id_map,
+            'known_persons': self.identity_registry.known_persons(),
         }
-        
+
         context.processing_metadata['diarization'] = stats
         
         # Log results
@@ -105,18 +139,22 @@ class DiarizationTask(BaseTask):
                 logger.log_info(f"  {speaker_id}: {duration:.1f}s ({percentage:.1f}%)")
     
     @classmethod
-    def create_default(cls, 
-                      min_speakers: int = None, 
-                      max_speakers: int = None,
-                      auth_token: str = None) -> 'DiarizationTask':
+    def create_default(
+        cls,
+        min_speakers: int = None,
+        max_speakers: int = None,
+        auth_token: str = None,
+        identity_registry: Optional[SpeakerIdentityRegistry] = None,
+    ) -> 'DiarizationTask':
         """
         Create a DiarizationTask with default Pyannote configuration.
-        
+
         Args:
-            min_speakers: Minimum number of speakers to expect
-            max_speakers: Maximum number of speakers to expect
-            auth_token: HuggingFace auth token if required
-            
+            min_speakers:      Minimum number of speakers to expect
+            max_speakers:      Maximum number of speakers to expect
+            auth_token:        HuggingFace auth token if required
+            identity_registry: Shared SpeakerIdentityRegistry for cross-clip IDs
+
         Returns:
             Configured DiarizationTask instance
         """
@@ -124,6 +162,6 @@ class DiarizationTask(BaseTask):
             model_name="pyannote/speaker-diarization-3.1",
             auth_token=auth_token,
             min_speakers=min_speakers,
-            max_speakers=max_speakers
+            max_speakers=max_speakers,
         )
-        return cls(diarization_model)
+        return cls(diarization_model, identity_registry=identity_registry)

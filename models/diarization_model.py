@@ -306,6 +306,132 @@ class DiarizationModel:
         self.is_loaded = False
         self.logger.info("Pyannote diarization model unloaded")
     
+    def extract_speaker_embeddings(
+        self,
+        audio: np.ndarray,
+        sample_rate: int,
+        segments: List[SpeakerSegment],
+    ) -> Dict[str, np.ndarray]:
+        """
+        Extract a mean embedding vector for each unique speaker.
+
+        Tries pyannote's internal WeSpeaker/ECAPA embedding model first.
+        Falls back to a numpy-only log-mel spectral fingerprint if pyannote
+        internals are inaccessible or torch is unavailable.
+
+        Args:
+            audio:       Mono float32 waveform
+            sample_rate: Audio sample rate (Hz)
+            segments:    Speaker segments returned by diarize()
+
+        Returns:
+            {speaker_id → embedding_vector (float32 ndarray)}
+        """
+        # Collect audio chunks per speaker (≥ 0.5 s only)
+        speaker_chunks: Dict[str, List[np.ndarray]] = {}
+        for seg in segments:
+            s = int(seg.start_time * sample_rate)
+            e = int(seg.end_time * sample_rate)
+            chunk = audio[s:e]
+            if len(chunk) > sample_rate * 0.5:
+                speaker_chunks.setdefault(seg.speaker_id, []).append(chunk)
+
+        if not speaker_chunks:
+            return {}
+
+        # Attempt 1: pyannote internal embedding model
+        result = self._embed_with_pyannote(speaker_chunks, sample_rate)
+        if result:
+            return result
+
+        # Attempt 2: lightweight spectral fingerprint (numpy only)
+        return self._embed_spectral(speaker_chunks, sample_rate)
+
+    def _embed_with_pyannote(
+        self,
+        speaker_chunks: Dict[str, List[np.ndarray]],
+        sample_rate: int,
+    ) -> Dict[str, np.ndarray]:
+        """Use pyannote's internal embedding model if accessible."""
+        if not self.is_loaded or self.pipeline is None:
+            return {}
+        try:
+            import torch
+            from pyannote.audio import Inference
+
+            emb_model = getattr(self.pipeline, "_embedding", None)
+            if emb_model is None:
+                return {}
+
+            inference = Inference(emb_model, window="whole")
+            result: Dict[str, np.ndarray] = {}
+            for sid, chunks in speaker_chunks.items():
+                chunk = max(chunks, key=len)
+                waveform = torch.tensor(chunk, dtype=torch.float32).unsqueeze(0)
+                emb = inference({"waveform": waveform, "sample_rate": sample_rate})
+                result[sid] = np.array(emb, dtype=np.float32).flatten()
+
+            self.logger.info(
+                f"Extracted pyannote embeddings for {len(result)} speakers"
+            )
+            return result
+        except Exception as e:
+            self.logger.debug(f"pyannote embedding extraction unavailable: {e}")
+            return {}
+
+    def _embed_spectral(
+        self,
+        speaker_chunks: Dict[str, List[np.ndarray]],
+        sample_rate: int,
+    ) -> Dict[str, np.ndarray]:
+        """
+        Fallback: 80-dim log-mel spectral fingerprint (mean + std of 40 bands).
+        Uses only numpy — no extra dependencies.
+        """
+        n_bands = 40
+        fft_size = 512
+
+        def _mel_filterbank(n_fft: int, n_mel: int, sr: int) -> np.ndarray:
+            low = 2595 * np.log10(1 + 80 / 700)
+            high = 2595 * np.log10(1 + (sr / 2) / 700)
+            mel_pts = np.linspace(low, high, n_mel + 2)
+            hz_pts = 700 * (10 ** (mel_pts / 2595) - 1)
+            bins = np.floor((n_fft + 1) * hz_pts / sr).astype(int)
+            fb = np.zeros((n_mel, n_fft // 2 + 1))
+            for m in range(1, n_mel + 1):
+                for k in range(bins[m - 1], bins[m]):
+                    fb[m - 1, k] = (k - bins[m - 1]) / max(bins[m] - bins[m - 1], 1)
+                for k in range(bins[m], bins[m + 1]):
+                    fb[m - 1, k] = (bins[m + 1] - k) / max(bins[m + 1] - bins[m], 1)
+            return fb
+
+        fb = _mel_filterbank(fft_size, n_bands, sample_rate)
+        window = np.hanning(fft_size)
+        hop = fft_size // 2
+        result: Dict[str, np.ndarray] = {}
+
+        for sid, chunks in speaker_chunks.items():
+            frames_list = []
+            for chunk in chunks:
+                for i in range(0, len(chunk) - fft_size, hop):
+                    frames_list.append(chunk[i: i + fft_size] * window)
+
+            if not frames_list:
+                result[sid] = np.zeros(n_bands * 2, dtype=np.float32)
+                continue
+
+            frames_np = np.stack(frames_list)
+            spectrum = np.abs(np.fft.rfft(frames_np, n=fft_size)) ** 2
+            log_mel = np.log(fb @ spectrum.T + 1e-8)   # (n_bands, T)
+            result[sid] = np.concatenate(
+                [log_mel.mean(axis=1), log_mel.std(axis=1)]
+            ).astype(np.float32)
+
+        self.logger.info(
+            f"Extracted spectral fingerprints for {len(result)} speakers"
+        )
+        return result
+
     def merge_adjacent_segments(self, segments: List[SpeakerSegment], gap_threshold: float = 0.5) -> List[SpeakerSegment]:
         """
         Merge adjacent segments from the same speaker.
