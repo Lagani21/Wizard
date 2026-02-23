@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WIZ Pipeline Monitoring</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: #2d2d2d;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            border-left: 4px solid #4CAF50;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            color: #4CAF50;
+            margin-bottom: 8px;
+        }
+        
+        .header p {
+            color: #b0b0b0;
+            font-size: 1.1rem;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        
+        .card {
+            background: #2d2d2d;
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid #3d3d3d;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(76, 175, 80, 0.1);
+        }
+        
+        .card h3 {
+            color: #4CAF50;
+            font-size: 1.3rem;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .metric {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            padding: 8px 0;
+            border-bottom: 1px solid #3d3d3d;
+        }
+        
+        .metric:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .metric-label {
+            color: #b0b0b0;
+            font-size: 0.95rem;
+        }
+        
+        .metric-value {
+            color: #e0e0e0;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .metric-value.success {
+            color: #4CAF50;
+        }
+        
+        .metric-value.warning {
+            color: #FF9800;
+        }
+        
+        .metric-value.error {
+            color: #f44336;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #3d3d3d;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 8px 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #45a049);
+            transition: width 0.3s ease;
+        }
+        
+        .sessions-table {
+            background: #2d2d2d;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #3d3d3d;
+        }
+        
+        .table-header {
+            background: #3d3d3d;
+            padding: 16px 24px;
+            border-bottom: 1px solid #4d4d4d;
+        }
+        
+        .table-header h3 {
+            color: #4CAF50;
+            font-size: 1.3rem;
+        }
+        
+        .table-content {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .session-row {
+            padding: 16px 24px;
+            border-bottom: 1px solid #3d3d3d;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            gap: 16px;
+            align-items: center;
+            transition: background 0.2s ease;
+        }
+        
+        .session-row:hover {
+            background: #353535;
+        }
+        
+        .session-row:last-child {
+            border-bottom: none;
+        }
+        
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .status-completed {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4CAF50;
+            border: 1px solid #4CAF50;
+        }
+        
+        .status-failed {
+            background: rgba(244, 67, 54, 0.2);
+            color: #f44336;
+            border: 1px solid #f44336;
+        }
+        
+        .status-running {
+            background: rgba(255, 152, 0, 0.2);
+            color: #FF9800;
+            border: 1px solid #FF9800;
+        }
+        
+        .logs-section {
+            background: #2d2d2d;
+            border-radius: 12px;
+            border: 1px solid #3d3d3d;
+            margin-top: 24px;
+        }
+        
+        .logs-header {
+            background: #3d3d3d;
+            padding: 16px 24px;
+            border-bottom: 1px solid #4d4d4d;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logs-header h3 {
+            color: #4CAF50;
+            font-size: 1.3rem;
+        }
+        
+        .logs-content {
+            padding: 24px;
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            max-height: 400px;
+            overflow-y: auto;
+            background: #1a1a1a;
+        }
+        
+        .log-line {
+            margin-bottom: 4px;
+            padding: 2px 0;
+        }
+        
+        .log-line.info {
+            color: #b0b0b0;
+        }
+        
+        .log-line.warning {
+            color: #FF9800;
+        }
+        
+        .log-line.error {
+            color: #f44336;
+        }
+        
+        .refresh-btn {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.2s ease;
+        }
+        
+        .refresh-btn:hover {
+            background: #45a049;
+        }
+        
+        .auto-refresh {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .auto-refresh input[type="checkbox"] {
+            transform: scale(1.2);
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+        
+        .loading {
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        
+        .icon {
+            font-size: 1.2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .session-row {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+            
+            .logs-header {
+                flex-direction: column;
+                gap: 12px;
+                align-items: stretch;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧙‍♂️ WIZ Pipeline Monitoring</h1>
+            <p>Real-time monitoring and analytics for video intelligence processing</p>
+        </div>
+        
+        <div class="grid">
+            <div class="card">
+                <h3><span class="icon">📊</span> System Status</h3>
+                <div class="metric">
+                    <span class="metric-label">Active Sessions</span>
+                    <span class="metric-value" id="activeSessions">-</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Total Sessions</span>
+                    <span class="metric-value" id="totalSessions">-</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Success Rate</span>
+                    <span class="metric-value success" id="successRate">-</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Avg Processing Time</span>
+                    <span class="metric-value" id="avgProcessingTime">-</span>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3><span class="icon">🖥️</span> System Resources</h3>
+                <div class="metric">
+                    <span class="metric-label">CPU Usage</span>
+                    <span class="metric-value" id="cpuUsage">-</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="cpuProgress"></div>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Memory Usage</span>
+                    <span class="metric-value" id="memoryUsage">-</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="memoryProgress"></div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3><span class="icon">⚡</span> Performance</h3>
+                <div class="metric">
+                    <span class="metric-label">Avg Speed Ratio</span>
+                    <span class="metric-value" id="speedRatio">-</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Successful Sessions</span>
+                    <span class="metric-value success" id="successfulSessions">-</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Failed Sessions</span>
+                    <span class="metric-value error" id="failedSessions">-</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Last Update</span>
+                    <span class="metric-value" id="lastUpdate">-</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sessions-table">
+            <div class="table-header">
+                <h3>📹 Recent Processing Sessions</h3>
+            </div>
+            <div class="table-content" id="sessionsTable">
+                <div class="session-row loading">
+                    <div>Loading sessions...</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="logs-section">
+            <div class="logs-header">
+                <h3>📝 System Logs</h3>
+                <div class="auto-refresh">
+                    <label>
+                        <input type="checkbox" id="autoRefresh" checked> Auto Refresh
+                    </label>
+                    <button class="refresh-btn" onclick="refreshLogs()">Refresh</button>
+                </div>
+            </div>
+            <div class="logs-content" id="logsContent">
+                <div class="log-line loading">Loading logs...</div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let autoRefreshEnabled = true;
+        let refreshInterval;
+        
+        // Initialize monitoring dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            refreshData();
+            startAutoRefresh();
+            
+            document.getElementById('autoRefresh').addEventListener('change', function(e) {
+                autoRefreshEnabled = e.target.checked;
+                if (autoRefreshEnabled) {
+                    startAutoRefresh();
+                } else {
+                    stopAutoRefresh();
+                }
+            });
+        });
+        
+        function startAutoRefresh() {
+            if (refreshInterval) clearInterval(refreshInterval);
+            refreshInterval = setInterval(refreshData, 5000); // Refresh every 5 seconds
+        }
+        
+        function stopAutoRefresh() {
+            if (refreshInterval) clearInterval(refreshInterval);
+        }
+        
+        async function refreshData() {
+            await Promise.all([
+                refreshSystemStatus(),
+                refreshSessions(),
+                refreshLogs()
+            ]);
+        }
+        
+        async function refreshSystemStatus() {
+            try {
+                const response = await fetch('/api/monitoring/status');
+                const data = await response.json();
+                
+                document.getElementById('activeSessions').textContent = data.active_sessions || 0;
+                document.getElementById('totalSessions').textContent = data.total_sessions || 0;
+                document.getElementById('successRate').textContent = (data.success_rate || 0).toFixed(1) + '%';
+                document.getElementById('avgProcessingTime').textContent = (data.average_processing_time || 0).toFixed(1) + 's';
+                
+                // System resources
+                const cpuPercent = data.system_resources?.cpu_percent || 0;
+                const memoryPercent = data.system_resources?.memory_percent || 0;
+                
+                document.getElementById('cpuUsage').textContent = cpuPercent.toFixed(1) + '%';
+                document.getElementById('memoryUsage').textContent = memoryPercent.toFixed(1) + '%';
+                
+                document.getElementById('cpuProgress').style.width = cpuPercent + '%';
+                document.getElementById('memoryProgress').style.width = memoryPercent + '%';
+                
+                // Performance metrics
+                document.getElementById('speedRatio').textContent = (data.average_speed_ratio || 0).toFixed(2) + 'x';
+                document.getElementById('successfulSessions').textContent = data.successful_sessions || 0;
+                document.getElementById('failedSessions').textContent = data.failed_sessions || 0;
+                
+                document.getElementById('lastUpdate').textContent = new Date().toLocaleTimeString();
+                
+            } catch (error) {
+                console.error('Error fetching system status:', error);
+            }
+        }
+        
+        async function refreshSessions() {
+            try {
+                const response = await fetch('/api/monitoring/sessions?limit=20');
+                const data = await response.json();
+                
+                const sessionsTable = document.getElementById('sessionsTable');
+                
+                if (data.sessions && data.sessions.length > 0) {
+                    sessionsTable.innerHTML = data.sessions.map(session => {
+                        const startTime = new Date(session.start_time).toLocaleString();
+                        const duration = session.total_processing_time_seconds ? 
+                            session.total_processing_time_seconds.toFixed(1) + 's' : '-';
+                        const videoName = session.video_path.split('/').pop();
+                        const speedRatio = session.processing_speed_ratio ? 
+                            session.processing_speed_ratio.toFixed(2) + 'x' : '-';
+                        
+                        return `
+                            <div class="session-row">
+                                <div><strong>${videoName}</strong></div>
+                                <div><span class="status-badge status-${session.status}">${session.status}</span></div>
+                                <div>${startTime}</div>
+                                <div>${duration}</div>
+                                <div>${speedRatio}</div>
+                            </div>
+                        `;
+                    }).join('');
+                } else {
+                    sessionsTable.innerHTML = '<div class="session-row"><div>No sessions found</div></div>';
+                }
+                
+            } catch (error) {
+                console.error('Error fetching sessions:', error);
+                document.getElementById('sessionsTable').innerHTML = '<div class="session-row"><div>Error loading sessions</div></div>';
+            }
+        }
+        
+        async function refreshLogs() {
+            try {
+                const response = await fetch('/api/monitoring/logs?lines=50');
+                const data = await response.json();
+                
+                const logsContent = document.getElementById('logsContent');
+                
+                if (data.logs && data.logs.length > 0) {
+                    logsContent.innerHTML = data.logs.map(line => {
+                        let className = 'log-line';
+                        if (line.includes('ERROR')) className += ' error';
+                        else if (line.includes('WARNING')) className += ' warning';
+                        else className += ' info';
+                        
+                        return `<div class="${className}">${escapeHtml(line.trim())}</div>`;
+                    }).join('');
+                    
+                    // Auto-scroll to bottom
+                    logsContent.scrollTop = logsContent.scrollHeight;
+                } else {
+                    logsContent.innerHTML = '<div class="log-line">No logs available</div>';
+                }
+                
+            } catch (error) {
+                console.error('Error fetching logs:', error);
+                document.getElementById('logsContent').innerHTML = '<div class="log-line error">Error loading logs</div>';
+            }
+        }
+        
+        function escapeHtml(unsafe) {
+            return unsafe
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+        
+        // Manual refresh function for logs
+        window.refreshLogs = refreshLogs;
+    </script>
+</body>
+</html>

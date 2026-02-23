@@ -5,7 +5,12 @@ Visual feature extraction from VideoMAE embeddings for emotional tone detection.
 import logging
 import numpy as np
 from typing import List, Dict, Optional
-from ..core.context import VisualEmbedding
+try:
+    # Try relative imports first
+    from ..core.context import VisualEmbedding
+except ImportError:
+    # Fall back to absolute imports
+    from core.context import VisualEmbedding
 
 
 class VisualFeatureExtractor:
@@ -291,7 +296,8 @@ class VisualFeatureExtractor:
     def create_placeholder_embeddings(self, 
                                     video_duration: float,
                                     shot_duration: float = 2.0,
-                                    embedding_dim: int = 768) -> List[VisualEmbedding]:
+                                    embedding_dim: int = 768,
+                                    run_mode: str = "full") -> List[VisualEmbedding]:
         """
         Create placeholder visual embeddings for testing.
         
@@ -299,10 +305,18 @@ class VisualFeatureExtractor:
             video_duration: Total video duration in seconds
             shot_duration: Duration of each shot in seconds
             embedding_dim: Dimensionality of embeddings
+            run_mode: Pipeline run mode ('full' or 'lite')
             
         Returns:
             List of placeholder VisualEmbedding objects
         """
+        # Adjust parameters for lightweight mode
+        if run_mode == "lite":
+            # Reduce frame sampling for VideoMAE in lite mode
+            shot_duration = shot_duration * 2  # Longer shots = fewer total shots
+            embedding_dim = min(embedding_dim, 384)  # Smaller embedding dimension
+            self.logger.info("🔋 Using reduced visual sampling for lightweight mode")
+            
         embeddings = []
         
         current_time = 0.0
@@ -312,6 +326,7 @@ class VisualFeatureExtractor:
             end_time = min(current_time + shot_duration, video_duration)
             
             # Generate random embedding (placeholder)
+            # Note: In actual VideoMAE implementation, this would use 4-8 frames per shot in lite mode
             embedding = np.random.normal(0, 1, embedding_dim).astype(np.float32)
             
             visual_embedding = VisualEmbedding(
@@ -326,6 +341,7 @@ class VisualFeatureExtractor:
             current_time = end_time
             shot_id += 1
         
-        self.logger.info(f"Created {len(embeddings)} placeholder visual embeddings for {video_duration:.1f}s video")
+        mode_info = f"({run_mode} mode)" if run_mode == "lite" else ""
+        self.logger.info(f"Created {len(embeddings)} placeholder visual embeddings for {video_duration:.1f}s video {mode_info}")
         
         return embeddings

@@ -3,9 +3,16 @@ Transcription task for the WIZ Intelligence Pipeline.
 """
 
 import numpy as np
-from ..core.base_task import BaseTask
-from ..core.context import PipelineContext
-from ..models.whisper_model import WhisperModel
+try:
+    # Try relative imports first
+    from ..core.base_task import BaseTask
+    from ..core.context import PipelineContext
+    from ..models.whisper_model import WhisperModel
+except ImportError:
+    # Fall back to absolute imports
+    from core.base_task import BaseTask
+    from core.context import PipelineContext
+    from models.whisper_model import WhisperModel
 
 
 class TranscriptionTask(BaseTask):
@@ -33,24 +40,25 @@ class TranscriptionTask(BaseTask):
         Args:
             context: Pipeline context containing audio waveform
         """
+        logger = context.logger
         if context.audio_waveform is None:
             raise ValueError("Audio waveform not available in context")
         
         # Log audio information
         duration_s = len(context.audio_waveform) / 16000  # Assuming 16kHz
-        self.logger.info(
+        logger.log_info(
             f"Processing audio: {len(context.audio_waveform)} samples, "
             f"{duration_s:.2f}s duration"
         )
         
-        # Ensure model is loaded
+        # Ensure model is loaded (failure is non-fatal — transcribe() has a placeholder fallback)
         if not self.whisper_model.is_loaded:
-            self.logger.info("Loading Whisper model...")
+            logger.log_info("Loading Whisper model...")
             if not self.whisper_model.load_model():
-                raise RuntimeError("Failed to load Whisper model")
+                logger.log_warning("Whisper model failed to load — transcription will be unavailable")
         
         # Transcribe audio
-        self.logger.info("Running Whisper transcription...")
+        logger.log_info("Running Whisper transcription...")
         transcript_words, transcript_segments = self.whisper_model.transcribe(
             context.audio_waveform, 
             sample_rate=16000
@@ -78,17 +86,17 @@ class TranscriptionTask(BaseTask):
             if transcript_words else 0.0
         )
         
-        self.logger.info(
+        logger.log_info(
             f"Transcription completed: {len(transcript_words)} words, "
             f"{len(transcript_segments)} segments, "
             f"{total_text_length} characters"
         )
-        self.logger.info(f"Average word confidence: {avg_confidence:.3f}")
+        logger.log_info(f"Average word confidence: {avg_confidence:.3f}")
         
         # Log sample transcript
         if transcript_segments:
             sample_text = transcript_segments[0].text[:100] + "..." if len(transcript_segments[0].text) > 100 else transcript_segments[0].text
-            self.logger.info(f"Sample transcript: \"{sample_text}\"")
+            logger.log_info(f"Sample transcript: \"{sample_text}\"")
     
     def _calculate_transcription_stats(self, words, segments) -> dict:
         """

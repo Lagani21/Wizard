@@ -2,9 +2,16 @@
 Speaker-transcript alignment task for the WIZ Intelligence Pipeline.
 """
 
-from ..core.base_task import BaseTask
-from ..core.context import PipelineContext
-from ..audio.speaker_alignment import SpeakerAligner
+try:
+    # Try relative imports first
+    from ..core.base_task import BaseTask
+    from ..core.context import PipelineContext
+    from ..audio.speaker_alignment import SpeakerAligner
+except ImportError:
+    # Fall back to absolute imports
+    from core.base_task import BaseTask
+    from core.context import PipelineContext
+    from audio.speaker_alignment import SpeakerAligner
 
 
 class AlignmentTask(BaseTask):
@@ -32,10 +39,11 @@ class AlignmentTask(BaseTask):
         Args:
             context: Pipeline context containing transcript words and speaker segments
         """
+        logger = context.logger
         transcript_words = context.transcript_words
         speaker_segments = context.speaker_segments
         
-        self.logger.info(
+        logger.log_info(
             f"Aligning {len(transcript_words)} words with {len(speaker_segments)} speaker segments"
         )
         
@@ -60,10 +68,10 @@ class AlignmentTask(BaseTask):
         context.processing_metadata['alignment'] = stats
         
         # Log results
-        self.logger.info(f"Alignment completed: {len(aligned_segments)} aligned segments")
+        logger.log_info(f"Alignment completed: {len(aligned_segments)} aligned segments")
         
         if alignment_stats['num_speakers'] > 0:
-            self.logger.info(f"Speakers identified: {alignment_stats['num_speakers']}")
+            logger.log_info(f"Speakers identified: {alignment_stats['num_speakers']}")
             
             # Log speaker breakdown
             speaker_durations = alignment_stats.get('speaker_durations', {})
@@ -72,19 +80,19 @@ class AlignmentTask(BaseTask):
             for speaker_id, duration in speaker_durations.items():
                 percentage = (duration / total_duration * 100) if total_duration > 0 else 0
                 word_count = alignment_stats.get('speaker_word_counts', {}).get(speaker_id, 0)
-                self.logger.info(
+                logger.log_info(
                     f"  {speaker_id}: {duration:.1f}s ({percentage:.1f}%), {word_count} words"
                 )
         
         # Log validation results
         if validation_errors:
-            self.logger.warning(f"Alignment validation found {len(validation_errors)} issues:")
+            logger.log_warning(f"Alignment validation found {len(validation_errors)} issues:")
             for error in validation_errors[:3]:  # Show first 3 errors
-                self.logger.warning(f"  - {error}")
+                logger.log_warning(f"  - {error}")
             if len(validation_errors) > 3:
-                self.logger.warning(f"  ... and {len(validation_errors) - 3} more issues")
+                logger.log_warning(f"  ... and {len(validation_errors) - 3} more issues")
         else:
-            self.logger.info("Alignment validation passed")
+            logger.log_info("Alignment validation passed")
     
     @classmethod
     def create_default(cls, overlap_threshold: float = 0.5) -> 'AlignmentTask':

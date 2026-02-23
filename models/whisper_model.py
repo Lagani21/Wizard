@@ -2,10 +2,16 @@
 Local Whisper transcription model for the WIZ Intelligence Pipeline.
 """
 
+import gc
 import logging
 import numpy as np
 from typing import List, Optional, Union
-from ..core.context import TranscriptWord, TranscriptSegment
+try:
+    # Try relative imports first
+    from ..core.context import TranscriptWord, TranscriptSegment
+except ImportError:
+    # Fall back to absolute imports
+    from core.context import TranscriptWord, TranscriptSegment
 
 
 class WhisperModel:
@@ -112,6 +118,14 @@ class WhisperModel:
                 return self._create_fallback_transcription(audio, sample_rate)
         
         try:
+            # Import torch for no_grad context
+            try:
+                import torch
+                torch_available = True
+            except ImportError:
+                torch_available = False
+                self.logger.warning("PyTorch not available, skipping gradient disabling")
+            
             # Ensure audio is the right format
             if sample_rate != 16000:
                 self.logger.warning(f"Expected 16kHz audio, got {sample_rate}Hz")
@@ -119,19 +133,69 @@ class WhisperModel:
             # Whisper expects float32 audio normalized to [-1, 1]
             audio_normalized = self._normalize_audio(audio)
             
-            # Transcribe with word timestamps
+            # Transcribe with word timestamps and disabled gradients
             self.logger.info(f"Transcribing {len(audio_normalized)/sample_rate:.1f}s of audio")
+
+            device_used = self._determine_device()
+
+            def _run_transcription(model):
+                return model.transcribe(
+                    audio_normalized,
+                    language=self.language,
+                    word_timestamps=True,
+                    verbose=False
+                )
+
+            result = None
+            try:
+                if torch_available:
+                    with torch.no_grad():
+                        result = _run_transcription(self.model)
+                else:
+                    result = _run_transcription(self.model)
+            except Exception as mps_err:
+                if device_used != "cpu":
+                    self.logger.warning(
+                        f"MPS transcription raised error ({mps_err}) — will retry on CPU"
+                    )
+                else:
+                    raise  # already on CPU, propagate
+
+            # MPS sanity-check: if we got no segments (silent failure or exception),
+            # retry once on CPU.  openai-whisper on MPS can silently produce nothing.
+            if (result is None or not result.get("segments")) and device_used != "cpu":
+                self.logger.warning(
+                    "MPS transcription returned no segments — retrying on CPU"
+                )
+                import whisper as _whisper_lib
+                cpu_model = _whisper_lib.load_model(self.model_size, device="cpu")
+                try:
+                    if torch_available:
+                        with torch.no_grad():
+                            result = _run_transcription(cpu_model)
+                    else:
+                        result = _run_transcription(cpu_model)
+                finally:
+                    del cpu_model
+                    gc.collect()
+                self.logger.info("CPU retry completed")
             
-            result = self.model.transcribe(
-                audio_normalized,
-                language=self.language,
-                word_timestamps=True,
-                verbose=False
-            )
-            
+            # If result is still None after all retries, return fallback
+            if result is None:
+                self.logger.warning("Whisper produced no result — returning fallback transcription")
+                del audio_normalized
+                gc.collect()
+                return self._create_fallback_transcription(audio, sample_rate)
+
             # Extract words and segments
             words = self._extract_words(result)
             segments = self._extract_segments(result)
+            
+            # Clean up intermediate results
+            del audio_normalized
+            if 'result' in locals():
+                del result
+            gc.collect()
             
             self.logger.info(f"Transcription complete: {len(words)} words, {len(segments)} segments")
             
@@ -139,6 +203,10 @@ class WhisperModel:
             
         except Exception as e:
             self.logger.error(f"Whisper transcription failed: {e}")
+            # Clean up on error
+            if 'audio_normalized' in locals():
+                del audio_normalized
+            gc.collect()
             return self._create_fallback_transcription(audio, sample_rate)
     
     def _normalize_audio(self, audio: np.ndarray) -> np.ndarray:
@@ -166,29 +234,38 @@ class WhisperModel:
     def _extract_words(self, whisper_result: dict) -> List[TranscriptWord]:
         """
         Extract words from Whisper result.
-        
-        Args:
-            whisper_result: Whisper transcription result
-            
-        Returns:
-            List of TranscriptWord objects
+
+        Falls back to segment-level timestamps when word-level data is absent
+        (e.g. MPS backend sometimes omits per-word timestamps).
         """
         words = []
-        
+
         for segment in whisper_result.get("segments", []):
             segment_words = segment.get("words", [])
-            
-            for word_info in segment_words:
-                word = TranscriptWord(
-                    text=word_info.get("word", "").strip(),
-                    start_time=word_info.get("start", 0.0),
-                    end_time=word_info.get("end", 0.0),
-                    confidence=word_info.get("probability", 0.0)
-                )
-                
-                if word.text:  # Only add non-empty words
-                    words.append(word)
-        
+
+            if segment_words:
+                # Happy path: word-level timestamps available
+                for word_info in segment_words:
+                    text = word_info.get("word", "").strip()
+                    if text:
+                        words.append(TranscriptWord(
+                            text=text,
+                            start_time=word_info.get("start", 0.0),
+                            end_time=word_info.get("end", 0.0),
+                            confidence=word_info.get("probability", 0.0),
+                        ))
+            else:
+                # Fallback: use the segment as a single synthetic word so that
+                # alignment still produces output even when word timestamps are missing.
+                seg_text = segment.get("text", "").strip()
+                if seg_text:
+                    words.append(TranscriptWord(
+                        text=seg_text,
+                        start_time=segment.get("start", 0.0),
+                        end_time=segment.get("end", 0.0),
+                        confidence=max(0.0, float(segment.get("avg_logprob", -1.0)) + 1.0),
+                    ))
+
         return words
     
     def _extract_segments(self, whisper_result: dict) -> List[TranscriptSegment]:

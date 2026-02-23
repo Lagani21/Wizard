@@ -6,7 +6,12 @@ import logging
 import numpy as np
 from typing import Dict, List, Tuple
 from scipy import signal
-from ..core.context import SpeakerSegment
+try:
+    # Try relative imports first
+    from ..core.context import SpeakerSegment
+except ImportError:
+    # Fall back to absolute imports
+    from core.context import SpeakerSegment
 
 
 class AudioFeatureExtractor:

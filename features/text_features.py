@@ -6,7 +6,12 @@ import re
 import logging
 import numpy as np
 from typing import List, Dict, Any, Optional
-from ..core.context import TranscriptWord, TranscriptSegment, SpeakerAlignedSegment
+try:
+    # Try relative imports first
+    from ..core.context import TranscriptWord, TranscriptSegment, SpeakerAlignedSegment
+except ImportError:
+    # Fall back to absolute imports
+    from core.context import TranscriptWord, TranscriptSegment, SpeakerAlignedSegment
 
 
 class TextFeatureExtractor:
@@ -54,20 +59,25 @@ class TextFeatureExtractor:
             "absolutely", "incredibly", "amazingly", "terribly", "horribly"
         }
     
-    def extract_features(self, 
-                        transcript_segments: List[TranscriptSegment],
-                        aligned_segments: List[SpeakerAlignedSegment],
-                        time_window_start: float,
-                        time_window_end: float) -> Dict[str, float]:
+    def extract_features(
+        self,
+        transcript_segments: List[TranscriptSegment],
+        aligned_segments: List[SpeakerAlignedSegment],
+        time_window_start: float,
+        time_window_end: float,
+        extra_text: Optional[str] = None,
+    ) -> Dict[str, float]:
         """
         Extract text features for a given time window.
-        
+
         Args:
             transcript_segments: List of transcript segments
-            aligned_segments: List of speaker-aligned segments
-            time_window_start: Start time of analysis window
-            time_window_end: End time of analysis window
-            
+            aligned_segments:    List of speaker-aligned segments
+            time_window_start:   Start time of analysis window
+            time_window_end:     End time of analysis window
+            extra_text:          Optional additional text (e.g. video captions)
+                                 whose sentiment is blended into the features
+
         Returns:
             Dictionary of extracted text features
         """
@@ -75,31 +85,60 @@ class TextFeatureExtractor:
         window_segments = self._get_segments_in_window(
             aligned_segments, time_window_start, time_window_end
         )
-        
-        if not window_segments:
+
+        if not window_segments and not extra_text:
             return self._get_empty_features()
-        
+
         # Extract various text features
         features = {}
-        
-        # Speech rate features
-        features.update(self._extract_speech_rate_features(window_segments))
-        
-        # Sentiment features
-        features.update(self._extract_sentiment_features(window_segments))
-        
-        # Linguistic pattern features
-        features.update(self._extract_linguistic_features(window_segments))
-        
-        # Speaker interaction features
-        features.update(self._extract_speaker_features(window_segments))
-        
-        # Completion and fluency features
-        features.update(self._extract_fluency_features(window_segments))
-        
-        self.logger.debug(f"Extracted {len(features)} text features for window {time_window_start:.1f}-{time_window_end:.1f}s")
-        
+
+        if window_segments:
+            features.update(self._extract_speech_rate_features(window_segments))
+            features.update(self._extract_sentiment_features(window_segments))
+            features.update(self._extract_linguistic_features(window_segments))
+            features.update(self._extract_speaker_features(window_segments))
+            features.update(self._extract_fluency_features(window_segments))
+        else:
+            features.update(self._get_empty_features())
+
+        # Blend in sentiment signal from extra_text (e.g. video captions)
+        if extra_text:
+            caption_sentiment = self._extract_sentiment_from_text(extra_text)
+            for key, val in caption_sentiment.items():
+                if key in features:
+                    # Average existing feature with caption-derived value
+                    features[key] = (features[key] + val) / 2.0
+                else:
+                    features[key] = val
+
+        self.logger.debug(
+            f"Extracted {len(features)} text features for window "
+            f"{time_window_start:.1f}-{time_window_end:.1f}s"
+            + (f" (+caption)" if extra_text else "")
+        )
+
         return features
+
+    def _extract_sentiment_from_text(self, text: str) -> Dict[str, float]:
+        """Compute sentiment ratios directly from a plain text string."""
+        words = self._extract_words_from_text(text)
+        if not words:
+            return {
+                "sentiment_positive_ratio": 0.0,
+                "sentiment_negative_ratio": 0.0,
+                "sentiment_polarity": 0.0,
+                "intensity_word_ratio": 0.0,
+            }
+        total = len(words)
+        pos = sum(1 for w in words if w.lower() in self.positive_words_set)
+        neg = sum(1 for w in words if w.lower() in self.negative_words_set)
+        intensity = sum(1 for w in words if w.lower() in self.intensity_words)
+        return {
+            "sentiment_positive_ratio": pos / total,
+            "sentiment_negative_ratio": neg / total,
+            "sentiment_polarity": (pos - neg) / total,
+            "intensity_word_ratio": intensity / total,
+        }
     
     def _get_segments_in_window(self, 
                                segments: List[SpeakerAlignedSegment],

@@ -3,9 +3,16 @@ Breath detection task for the WIZ Intelligence Pipeline.
 """
 
 import numpy as np
-from ..core.base_task import BaseTask
-from ..core.context import PipelineContext
-from ..models.breath_detector import BreathDetector
+try:
+    # Try relative imports first
+    from ..core.base_task import BaseTask
+    from ..core.context import PipelineContext
+    from ..models.breath_detector import BreathDetector
+except ImportError:
+    # Fall back to absolute imports
+    from core.base_task import BaseTask
+    from core.context import PipelineContext
+    from models.breath_detector import BreathDetector
 
 
 class BreathTask(BaseTask):
@@ -26,12 +33,13 @@ class BreathTask(BaseTask):
         super().__init__("BreathDetection")
         self.breath_detector = breath_detector
     
-    def _validate_audio_format(self, audio: np.ndarray) -> None:
+    def _validate_audio_format(self, audio: np.ndarray, logger) -> None:
         """
         Validate that audio is in the expected format.
         
         Args:
             audio: Audio waveform to validate
+            logger: Logger instance for warnings
             
         Raises:
             ValueError: If audio format is invalid
@@ -45,16 +53,17 @@ class BreathTask(BaseTask):
         # Check for reasonable sample values (assuming normalized [-1, 1] or int16 range)
         max_val = np.max(np.abs(audio))
         if max_val == 0:
-            self.logger.warning("Audio appears to be silent (all zeros)")
+            logger.log_warning("Audio appears to be silent (all zeros)")
         elif max_val > 32768:  # Likely float values outside [-1, 1]
-            self.logger.warning(f"Audio values seem unnormalized (max={max_val})")
+            logger.log_warning(f"Audio values seem unnormalized (max={max_val})")
     
-    def _preprocess_audio(self, audio: np.ndarray) -> np.ndarray:
+    def _preprocess_audio(self, audio: np.ndarray, logger) -> np.ndarray:
         """
         Preprocess audio for breath detection.
         
         Args:
             audio: Raw audio waveform
+            logger: Logger instance
             
         Returns:
             Preprocessed audio waveform
@@ -71,7 +80,7 @@ class BreathTask(BaseTask):
         max_val = np.max(np.abs(audio))
         if max_val > 1.0:
             audio = audio / max_val
-            self.logger.info(f"Normalized audio by factor of {max_val}")
+            logger.log_info(f"Normalized audio by factor of {max_val}")
         
         return audio
     
@@ -82,16 +91,17 @@ class BreathTask(BaseTask):
         Args:
             context: Pipeline context containing audio waveform
         """
+        logger = context.logger
         if context.audio_waveform is None:
             raise ValueError("Audio waveform not available in context")
         
         # Validate and preprocess audio
-        self._validate_audio_format(context.audio_waveform)
-        processed_audio = self._preprocess_audio(context.audio_waveform.copy())
+        self._validate_audio_format(context.audio_waveform, logger)
+        processed_audio = self._preprocess_audio(context.audio_waveform.copy(), logger)
         
         # Log audio information
         duration_s = len(processed_audio) / self.breath_detector.sample_rate
-        self.logger.info(
+        logger.log_info(
             f"Processing audio: {len(processed_audio)} samples, "
             f"{duration_s:.2f}s duration at {self.breath_detector.sample_rate}Hz"
         )
@@ -118,11 +128,11 @@ class BreathTask(BaseTask):
         }
         
         # Log results
-        self.logger.info(f"Breath detection completed: {len(breath_events)} events detected")
+        logger.log_info(f"Breath detection completed: {len(breath_events)} events detected")
         if breath_events:
             avg_confidence = np.mean([event.confidence for event in breath_events])
             avg_duration = np.mean([event.duration_ms for event in breath_events])
-            self.logger.info(
+            logger.log_info(
                 f"Average confidence: {avg_confidence:.3f}, "
                 f"Average duration: {avg_duration:.1f}ms"
             )

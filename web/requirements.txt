@@ -1,0 +1,33 @@
+# Core web interface
+flask>=2.0.0
+numpy>=1.21.0
+
+# Video and audio processing  
+opencv-python>=4.5.0
+librosa>=0.8.0
+pillow>=8.0.0
+
+# ML models for offline use
+torch>=1.9.0
+torchvision>=0.10.0
+torchaudio>=0.9.0
+
+# Speech processing (offline capable)
+openai-whisper>=20230314
+transformers>=4.20.0
+
+# Face detection
+mediapipe>=0.8.9
+
+# Audio processing
+pyannote.audio>=2.1.0
+soundfile>=0.10.0
+resampy>=0.2.2
+
+# GUI option (desktop app)
+# tkinter - Built into Python, no installation needed
+
+# Utilities
+pathlib
+requests  # Only for initial model downloads
+tqdm  # Progress bars

@@ -1,0 +1,21 @@
+2026-02-21 19:54:53,427 - wiz.monitor - INFO - __init__:93 - Pipeline monitor initialized
+2026-02-21 19:54:53,788 - wiz.monitor - INFO - start_session:168 - Started session test-session-1 for test_video.mp4 (0.33MB, 3.0s)
+2026-02-21 19:54:53,893 - wiz.monitor - INFO - log_task_completion:210 - Task blink_detection completed in 1.20s for session test-session-1
+2026-02-21 19:54:53,998 - wiz.monitor - INFO - log_task_completion:210 - Task breath_detection completed in 0.80s for session test-session-1
+2026-02-21 19:54:54,103 - wiz.monitor - INFO - log_task_completion:210 - Task speech_processing completed in 2.50s for session test-session-1
+2026-02-21 19:54:54,107 - wiz.monitor - INFO - end_session:249 - Session test-session-1 completed: Total time: 0.32s, Speed ratio: 0.11x, Blinks: 5, Breaths: 3, Speakers: 2, Errors: 0
+2026-02-21 19:58:15,008 - wiz.monitor - INFO - __init__:93 - Pipeline monitor initialized
+2026-02-21 19:58:15,009 - wiz.monitor - ERROR - start_session:174 - Error starting session demo-session-1: [Errno 2] No such file or directory: 'test_video_1.mp4'
+2026-02-21 19:58:24,127 - wiz.monitor - INFO - __init__:93 - Pipeline monitor initialized
+2026-02-21 19:58:24,285 - wiz.monitor - INFO - start_session:168 - Started session demo-session-1 for test_video.mp4 (0.33MB, 3.0s)
+2026-02-21 19:58:24,387 - wiz.monitor - INFO - log_task_completion:210 - Task blink_detection completed in 1.20s for session demo-session-1
+2026-02-21 19:58:24,388 - wiz.monitor - INFO - log_task_completion:210 - Task breath_detection completed in 0.80s for session demo-session-1
+2026-02-21 19:58:24,389 - wiz.monitor - INFO - end_session:249 - Session demo-session-1 completed: Total time: 0.10s, Speed ratio: 0.03x, Blinks: 3, Breaths: 2, Speakers: 0, Errors: 0
+2026-02-21 19:58:24,392 - wiz.monitor - INFO - start_session:168 - Started session demo-session-2 for test_video.mp4 (0.33MB, 3.0s)
+2026-02-21 19:58:24,493 - wiz.monitor - INFO - log_task_completion:210 - Task blink_detection completed in 1.50s for session demo-session-2
+2026-02-21 19:58:24,496 - wiz.monitor - INFO - log_task_completion:210 - Task breath_detection completed in 1.00s for session demo-session-2
+2026-02-21 19:58:24,498 - wiz.monitor - INFO - log_task_completion:210 - Task speech_processing completed in 2.10s for session demo-session-2
+2026-02-21 19:58:24,500 - wiz.monitor - INFO - end_session:249 - Session demo-session-2 completed: Total time: 0.11s, Speed ratio: 0.04x, Blinks: 4, Breaths: 3, Speakers: 1, Errors: 0
+2026-02-21 19:58:24,503 - wiz.monitor - INFO - start_session:168 - Started session demo-session-3 for test_video.mp4 (0.33MB, 3.0s)
+2026-02-21 19:58:24,609 - wiz.monitor - ERROR - log_error:218 - Session demo-session-3: [blink_detection] Simulated processing error
+2026-02-21 19:58:24,611 - wiz.monitor - INFO - end_session:249 - Session demo-session-3 failed: Total time: 0.11s, Speed ratio: 0.04x, Blinks: 0, Breaths: 0, Speakers: 0, Errors: 1

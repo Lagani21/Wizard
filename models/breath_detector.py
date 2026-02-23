@@ -2,10 +2,16 @@
 Breath detection implementation using simple heuristic analysis.
 """
 
+import gc
 import numpy as np
 from typing import List
 from scipy import signal
-from ..core.context import BreathEvent
+try:
+    # Try relative import first
+    from ..core.context import BreathEvent
+except ImportError:
+    # Fall back to absolute import
+    from core.context import BreathEvent
 
 
 class BreathDetector:
@@ -135,49 +141,52 @@ class BreathDetector:
         """
         breath_events = []
         
-        # Use sliding window approach
+        # Fixed-size sliding window: one evaluation per position (O(N)).
+        # The previous inner loop tried every sample duration from
+        # min_duration_samples to max_duration_samples, calling signal.welch
+        # ~9600 times per outer step — catastrophically slow on real audio.
+        # Using the midpoint of the allowed range gives representative windows
+        # while keeping CPU usage stable and predictable.
+        target_duration_samples = (self.min_duration_samples + self.max_duration_samples) // 2
         step_size = self.window_length // 4  # 75% overlap
-        
-        for start_sample in range(0, len(audio) - self.min_duration_samples, step_size):
-            # Try different window sizes within the duration range
-            for duration in range(self.min_duration_samples, 
-                                min(self.max_duration_samples + 1, len(audio) - start_sample)):
-                
-                end_sample = start_sample + duration
-                audio_segment = audio[start_sample:end_sample]
-                
-                # Check if segment is breath-like
-                is_breath, confidence = self.is_breath_like(audio_segment)
-                
-                if is_breath:
-                    # Convert to time-based event
-                    start_time = start_sample / self.sample_rate
-                    end_time = end_sample / self.sample_rate
-                    duration_ms = (end_time - start_time) * 1000
-                    
-                    # Check for overlap with existing events to avoid duplicates
-                    overlap = False
-                    for existing_event in breath_events:
-                        if (start_time < existing_event.end_time and 
+
+        for start_sample in range(0, len(audio) - target_duration_samples, step_size):
+            end_sample = start_sample + target_duration_samples
+            audio_segment = audio[start_sample:end_sample]
+
+            is_breath, confidence = self.is_breath_like(audio_segment)
+
+            if is_breath:
+                start_time = start_sample / self.sample_rate
+                end_time = end_sample / self.sample_rate
+                duration_ms = (end_time - start_time) * 1000
+
+                # Deduplicate: keep highest-confidence detection per overlapping region
+                overlap = False
+                for existing_event in breath_events:
+                    if (start_time < existing_event.end_time and
                             end_time > existing_event.start_time):
-                            # Keep the one with higher confidence
-                            if confidence > existing_event.confidence:
-                                breath_events.remove(existing_event)
-                            else:
-                                overlap = True
-                                break
-                    
-                    if not overlap:
-                        breath_event = BreathEvent(
-                            start_time=start_time,
-                            end_time=end_time,
-                            duration_ms=duration_ms,
-                            confidence=confidence
-                        )
-                        breath_events.append(breath_event)
+                        if confidence > existing_event.confidence:
+                            breath_events.remove(existing_event)
+                        else:
+                            overlap = True
+                        break
+
+                if not overlap:
+                    breath_events.append(BreathEvent(
+                        start_time=start_time,
+                        end_time=end_time,
+                        duration_ms=duration_ms,
+                        confidence=confidence
+                    ))
         
         # Sort events by start time
         breath_events.sort(key=lambda x: x.start_time)
+        
+        # Clean up temporary variables
+        if 'audio_segment' in locals():
+            del audio_segment
+        gc.collect()
         
         return breath_events
     

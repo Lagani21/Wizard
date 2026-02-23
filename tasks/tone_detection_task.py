@@ -4,12 +4,22 @@ Tone detection task for the WIZ Intelligence Pipeline.
 
 import numpy as np
 from typing import List, Dict, Any
-from ..core.base_task import BaseTask
-from ..core.context import PipelineContext, ToneEvent, VisualEmbedding
-from ..models.tone_classifier import ToneClassifier
-from ..features.text_features import TextFeatureExtractor
-from ..features.audio_features import AudioFeatureExtractor
-from ..features.visual_features import VisualFeatureExtractor
+try:
+    # Try relative imports first
+    from ..core.base_task import BaseTask
+    from ..core.context import PipelineContext, ToneEvent, VisualEmbedding
+    from ..models.tone_classifier import ToneClassifier
+    from ..features.text_features import TextFeatureExtractor
+    from ..features.audio_features import AudioFeatureExtractor
+    from ..features.visual_features import VisualFeatureExtractor
+except ImportError:
+    # Fall back to absolute imports
+    from core.base_task import BaseTask
+    from core.context import PipelineContext, ToneEvent, VisualEmbedding
+    from models.tone_classifier import ToneClassifier
+    from features.text_features import TextFeatureExtractor
+    from features.audio_features import AudioFeatureExtractor
+    from features.visual_features import VisualFeatureExtractor
 
 
 class ToneDetectionTask(BaseTask):
@@ -55,12 +65,13 @@ class ToneDetectionTask(BaseTask):
         Args:
             context: Pipeline context containing multimodal data
         """
+        logger = context.logger
         # Validate required data is available
         self._validate_context_data(context)
         
         # Create placeholder visual embeddings if not available
         if not context.visual_embeddings and context.video_metadata:
-            self.logger.info("Creating placeholder visual embeddings...")
+            logger.log_info("Creating placeholder visual embeddings...")
             context.visual_embeddings = self.visual_extractor.create_placeholder_embeddings(
                 context.video_metadata.duration_seconds
             )
@@ -68,13 +79,13 @@ class ToneDetectionTask(BaseTask):
         # Determine analysis windows
         windows = self._create_analysis_windows(context)
         
-        self.logger.info(f"Analyzing {len(windows)} time windows for tone detection")
+        logger.log_info(f"Analyzing {len(windows)} time windows for tone detection")
         
         # Process each window
         tone_events = []
         
         for i, (start_time, end_time) in enumerate(windows):
-            self.logger.debug(f"Processing window {i+1}/{len(windows)}: {start_time:.1f}-{end_time:.1f}s")
+            logger.log_info(f"Processing window {i+1}/{len(windows)}: {start_time:.1f}-{end_time:.1f}s")
             
             # Extract features for this window
             features = self._extract_multimodal_features(context, start_time, end_time)
@@ -93,7 +104,7 @@ class ToneDetectionTask(BaseTask):
             
             tone_events.append(tone_event)
             
-            self.logger.debug(f"Window {i+1}: {tone_label} (confidence: {confidence:.3f})")
+            logger.log_info(f"Window {i+1}: {tone_label} (confidence: {confidence:.3f})")
         
         # Store results in context
         context.tone_events.extend(tone_events)
@@ -113,15 +124,15 @@ class ToneDetectionTask(BaseTask):
         }
         
         # Log results
-        self.logger.info(f"Tone detection completed: {len(tone_events)} events")
+        logger.log_info(f"Tone detection completed: {len(tone_events)} events")
         
         # Log tone distribution
         if stats['tone_distribution']:
-            self.logger.info("Tone distribution:")
+            logger.log_info("Tone distribution:")
             for tone, count in stats['tone_distribution'].items():
                 percentage = (count / len(tone_events)) * 100 if tone_events else 0
                 avg_conf = stats['avg_confidence_by_tone'].get(tone, 0)
-                self.logger.info(f"  {tone}: {count} events ({percentage:.1f}%, avg conf: {avg_conf:.3f})")
+                logger.log_info(f"  {tone}: {count} events ({percentage:.1f}%, avg conf: {avg_conf:.3f})")
     
     def _validate_context_data(self, context: PipelineContext) -> None:
         """Validate that required data is available in the context."""
@@ -129,10 +140,10 @@ class ToneDetectionTask(BaseTask):
             raise ValueError("Audio waveform not available in context")
         
         if not context.transcript_segments and not context.aligned_segments:
-            self.logger.warning("No transcript data available - text features will be limited")
-        
+            context.logger.log_warning("No transcript data available - text features will be limited")
+
         if not context.speaker_segments:
-            self.logger.warning("No speaker segments available - speaker features will be limited")
+            context.logger.log_warning("No speaker segments available - speaker features will be limited")
         
         if context.video_metadata is None:
             raise ValueError("Video metadata not available in context")
@@ -166,18 +177,26 @@ class ToneDetectionTask(BaseTask):
         """Extract multimodal features for a time window."""
         all_features = {}
         
-        # Extract text features
+        # Augment transcript text with video captions for this window
+        window_captions = [
+            cap.caption
+            for cap in getattr(context, "video_captions", [])
+            if cap.start_time < end_time and cap.end_time > start_time
+        ]
+
+        # Extract text features (transcript + video captions combined)
         try:
             text_features = self.text_extractor.extract_features(
                 context.transcript_segments,
                 context.aligned_segments,
                 start_time,
-                end_time
+                end_time,
+                extra_text=" ".join(window_captions) if window_captions else None,
             )
             all_features.update(text_features)
-            self.logger.debug(f"Extracted {len(text_features)} text features")
+            context.logger.log_info(f"Extracted {len(text_features)} text features")
         except Exception as e:
-            self.logger.warning(f"Failed to extract text features: {e}")
+            context.logger.log_warning(f"Failed to extract text features: {e}")
         
         # Extract audio features
         try:
@@ -188,9 +207,9 @@ class ToneDetectionTask(BaseTask):
                 end_time
             )
             all_features.update(audio_features)
-            self.logger.debug(f"Extracted {len(audio_features)} audio features")
+            context.logger.log_info(f"Extracted {len(audio_features)} audio features")
         except Exception as e:
-            self.logger.warning(f"Failed to extract audio features: {e}")
+            context.logger.log_warning(f"Failed to extract audio features: {e}")
         
         # Extract visual features
         try:
@@ -200,9 +219,9 @@ class ToneDetectionTask(BaseTask):
                 end_time
             )
             all_features.update(visual_features)
-            self.logger.debug(f"Extracted {len(visual_features)} visual features")
+            context.logger.log_info(f"Extracted {len(visual_features)} visual features")
         except Exception as e:
-            self.logger.warning(f"Failed to extract visual features: {e}")
+            context.logger.log_warning(f"Failed to extract visual features: {e}")
         
         return all_features
     

@@ -90,49 +90,59 @@ class AudioExtractor:
         Returns:
             Audio waveform as numpy array
         """
-        # Create temporary file for raw audio
-        with tempfile.NamedTemporaryFile(suffix=".raw", delete=False) as temp_file:
-            temp_audio_path = temp_file.name
-        
+        # Get a unique temp path without pre-creating the file.
+        # NamedTemporaryFile leaves the file open on macOS, which causes ffmpeg
+        # to fail with "Invalid argument" when it tries to write to the same path.
+        temp_fd, temp_audio_path = tempfile.mkstemp(suffix=".wav")
+        os.close(temp_fd)   # release FD immediately
+        os.unlink(temp_audio_path)  # let ffmpeg create the file fresh
+
         try:
-            # FFmpeg command to extract mono 16kHz audio as raw PCM
+            # FFmpeg: extract mono 16kHz WAV (WAV avoids raw-PCM path issues on macOS)
             ffmpeg_cmd = [
                 "ffmpeg",
                 "-i", video_path,
-                "-vn",  # No video
-                "-acodec", "pcm_s16le",  # 16-bit PCM
-                "-ac", "1",  # Mono
-                "-ar", str(self.target_sample_rate),  # Sample rate
-                "-f", "s16le",  # Raw 16-bit little-endian format
-                "-y",  # Overwrite output
-                temp_audio_path
+                "-vn",                          # no video stream
+                "-ac", "1",                     # mono
+                "-ar", str(self.target_sample_rate),
+                "-y",                           # overwrite if somehow exists
+                temp_audio_path,
             ]
-            
-            # Run ffmpeg
+
             result = subprocess.run(
                 ffmpeg_cmd,
                 capture_output=True,
                 text=True,
-                timeout=60  # 60 second timeout
+                timeout=120,
             )
-            
+
             if result.returncode != 0:
-                raise RuntimeError(f"ffmpeg failed: {result.stderr}")
-            
-            # Read raw PCM data
-            with open(temp_audio_path, "rb") as f:
-                raw_data = f.read()
-            
-            # Convert to numpy array
-            audio_array = np.frombuffer(raw_data, dtype=np.int16)
-            
-            # Normalize to float32 [-1, 1]
-            audio_normalized = audio_array.astype(np.float32) / 32768.0
-            
+                raise RuntimeError(f"ffmpeg failed: {result.stderr[-500:]}")
+
+            # Read WAV with scipy (preferred) or wave module
+            audio_normalized = None
+            try:
+                import scipy.io.wavfile as wavfile
+                sr, audio_int16 = wavfile.read(temp_audio_path)
+                # scipy may return float already for 32-bit WAVs
+                if audio_int16.dtype == np.int16:
+                    audio_normalized = audio_int16.astype(np.float32) / 32768.0
+                else:
+                    audio_normalized = audio_int16.astype(np.float32)
+            except Exception:
+                pass  # fall through to wave fallback
+
+            if audio_normalized is None:
+                # Fallback: read WAV with stdlib wave module
+                import wave
+                with wave.open(temp_audio_path, "rb") as wf:
+                    raw_data = wf.readframes(wf.getnframes())
+                audio_array = np.frombuffer(raw_data, dtype=np.int16)
+                audio_normalized = audio_array.astype(np.float32) / 32768.0
+
             return audio_normalized
-            
+
         finally:
-            # Clean up temporary file
             if os.path.exists(temp_audio_path):
                 os.unlink(temp_audio_path)
     

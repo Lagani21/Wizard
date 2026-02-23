@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WIZ Video Intelligence</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-shell">
+
+        <!-- ── Sidebar ───────────────────────────────────────────── -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-logo">
+                <span class="logo-mark">W</span>
+                <span class="logo-text">WIZ</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-view="upload">Upload</a>
+                <a href="/monitoring" class="nav-item" target="_blank">Monitoring</a>
+            </nav>
+        </aside>
+
+        <!-- ── Main area ─────────────────────────────────────────── -->
+        <main class="main-area">
+
+            <!-- Upload screen -->
+            <div class="view active" id="viewUpload">
+                <div class="upload-card">
+                    <div class="upload-hero">
+                        <div class="upload-icon">▶</div>
+                        <h2>Drop a video to analyse</h2>
+                        <p class="upload-hint">MP4 · MOV · AVI · MKV — up to 500 MB</p>
+                    </div>
+                    <div class="upload-drop" id="uploadArea">
+                        <input type="file" id="videoInput" accept="video/*" hidden>
+                        <div class="drop-inner">
+                            <span class="drop-label">Drag &amp; drop here</span>
+                            <span class="drop-or">or</span>
+                            <button class="btn-primary" id="browseBtn">Browse file</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results screen (hidden until processing done) -->
+            <div class="view" id="viewResults">
+
+                <!-- Top bar -->
+                <header class="results-bar">
+                    <div class="results-title" id="videoFileName">video.mp4</div>
+                    <div class="stat-chips" id="statChips">
+                        <span class="chip chip-blink">
+                            <span id="blinkCount">0</span> Blinks
+                        </span>
+                        <span class="chip chip-breath">
+                            <span id="breathCount">0</span> Breaths
+                        </span>
+                        <span class="chip chip-speaker">
+                            <span id="speakerCount">0</span> Speakers
+                        </span>
+                        <span class="chip chip-scene">
+                            <span id="sceneCount">0</span> Scenes
+                        </span>
+                        <span class="chip chip-caption">
+                            <span id="captionCount">0</span> Captions
+                        </span>
+                    </div>
+                    <button class="btn-ghost" id="newVideoBtn">+ New video</button>
+                </header>
+
+                <!-- Processing overlay -->
+                <div class="processing-overlay" id="processingOverlay">
+                    <div class="processing-card">
+                        <div class="spinner"></div>
+                        <div class="processing-label" id="processingText">Initialising pipeline…</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="processingFill"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Two-column layout: player + sidebar panel -->
+                <div class="results-body" id="resultsBody" style="display:none">
+
+                    <!-- Left: player + timeline -->
+                    <div class="player-col">
+                        <div class="player-wrapper">
+                            <video id="videoPlayer" controls></video>
+                        </div>
+
+                        <!-- Timeline -->
+                        <div class="timeline-box">
+                            <div class="tl-header">
+                                <span class="tl-title">Timeline</span>
+                                <div class="tl-controls">
+                                    <button class="tl-btn" id="zoomIn">+</button>
+                                    <button class="tl-btn" id="zoomOut">−</button>
+                                    <button class="tl-btn" id="resetZoom">↺</button>
+                                </div>
+                            </div>
+                            <div class="tl-tracks" id="tlTracks">
+                                <div class="tl-track">
+                                    <div class="tl-label">Audio</div>
+                                    <div class="tl-content">
+                                        <canvas id="waveformCanvas" class="waveform-canvas"></canvas>
+                                    </div>
+                                </div>
+                                <div class="tl-track">
+                                    <div class="tl-label">Speech</div>
+                                    <div class="tl-content" id="speechTrack"></div>
+                                </div>
+                                <div class="tl-track">
+                                    <div class="tl-label">Tone</div>
+                                    <div class="tl-content" id="toneTrack"></div>
+                                </div>
+                                <div class="tl-track">
+                                    <div class="tl-label">Captions</div>
+                                    <div class="tl-content" id="captionsTrack"></div>
+                                </div>
+                                <div class="tl-track">
+                                    <div class="tl-label">Events</div>
+                                    <div class="tl-content" id="eventsTrack"></div>
+                                </div>
+                                <div class="tl-track tl-ruler">
+                                    <div class="tl-label"></div>
+                                    <div class="tl-content" id="timeRuler"></div>
+                                </div>
+                                <!-- Playhead sits inside tl-tracks so position:absolute uses the same coordinate space as segments -->
+                                <div class="tl-playhead" id="timelinePlayhead"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: detail panel -->
+                    <div class="detail-col">
+                        <div class="detail-tabs">
+                            <button class="dtab active" data-tab="transcript">Transcript</button>
+                            <button class="dtab" data-tab="scenes">Scenes</button>
+                            <button class="dtab" data-tab="captions">Captions</button>
+                            <button class="dtab" data-tab="events">Events</button>
+                        </div>
+
+                        <div class="dtab-content active" id="transcriptTab">
+                            <div id="transcriptContent" class="scroll-pane"></div>
+                        </div>
+                        <div class="dtab-content" id="scenesTab">
+                            <div id="scenesContent" class="scroll-pane"></div>
+                        </div>
+                        <div class="dtab-content" id="captionsTab">
+                            <div id="captionsContent" class="scroll-pane"></div>
+                        </div>
+                        <div class="dtab-content" id="eventsTab">
+                            <div id="eventsContent" class="scroll-pane"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

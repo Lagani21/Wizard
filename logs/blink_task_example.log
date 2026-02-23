@@ -1,0 +1,14 @@
+[2026-02-21 20:05:46] [INFO] [Pipeline] Pipeline monitor initialized
+[2026-02-21 20:05:46] [INFO] [BlinkTask] Started
+[2026-02-21 20:05:46] [INFO] [BlinkTask] Loading MediaPipe Face Mesh model
+[2026-02-21 20:05:46] [INFO] [BlinkTask] Model loaded in 0.11s
+[2026-02-21 20:05:46] [METRIC] [BlinkTask] mediapipe_face_mesh.load_time=0.11s
+[2026-02-21 20:05:46] [INFO] [BlinkTask] Analyzing video frames for blink events
+[2026-02-21 20:05:46] [METRIC] [BlinkTask] mediapipe_face_mesh.inference_time=0.21s
+[2026-02-21 20:05:46] [INFO] [BlinkTask] Processed 900 frames
+[2026-02-21 20:05:46] [INFO] [BlinkTask] Detected 15 blink events
+[2026-02-21 20:05:46] [METRIC] [BlinkTask] detection.blink_events=15.00
+[2026-02-21 20:05:46] [INFO] [BlinkTask] Blink detection completed successfully
+[2026-02-21 20:05:46] [INFO] [BlinkTask] Task completed successfully
+[2026-02-21 20:05:46] [INFO] [BlinkTask] Completed in 0.32s
+[2026-02-21 20:05:46] [METRIC] [Pipeline] BlinkTask.duration=0.32s

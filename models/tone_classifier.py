@@ -348,19 +348,22 @@ class MLPToneClassifier(BaseToneClassifier):
         motion = features[2] if len(features) > 2 else 0
         sentiment = features[3] if len(features) > 3 else 0
         
+        # Map enum members to their integer list positions (matches predict() reverse mapping)
+        _idx = {label: i for i, label in enumerate(ToneLabel)}
+
         # Mock classification logic
         if speech_rate > 3.0 and energy_mean > 0.1:
-            logits[ToneLabel.EXCITED.value] = 2.0
+            logits[_idx[ToneLabel.EXCITED]] = 2.0
         elif speech_rate < 1.0 and energy_mean < 0.05:
-            logits[ToneLabel.SOMBER.value] = 1.5
+            logits[_idx[ToneLabel.SOMBER]] = 1.5
         elif motion > 2.0:
-            logits[ToneLabel.TENSE.value] = 1.8
+            logits[_idx[ToneLabel.TENSE]] = 1.8
         elif sentiment < -0.1:
-            logits[ToneLabel.CONFRONTATIONAL.value] = 1.3
+            logits[_idx[ToneLabel.CONFRONTATIONAL]] = 1.3
         elif 1.0 <= speech_rate <= 3.0:
-            logits[ToneLabel.CALM.value] = 1.0
+            logits[_idx[ToneLabel.CALM]] = 1.0
         else:
-            logits[ToneLabel.NEUTRAL.value] = 0.8
+            logits[_idx[ToneLabel.NEUTRAL]] = 0.8
         
         return logits
     

@@ -4,12 +4,20 @@ Context summary task for generating scene-level summaries using local LLM.
 
 import logging
 from typing import List, Dict, Any, Optional, Tuple
-from ..core.base_task import BaseTask
-from ..core.context import (
-    PipelineContext, SceneSummary, ToneEvent, TranscriptSegment, 
-    SpeakerAlignedSegment, SpeakerSegment, VisualEmbedding
-)
-from ..models.local_llm import LocalLLM
+try:
+    from ..core.base_task import BaseTask
+    from ..core.context import (
+        PipelineContext, SceneSummary, ToneEvent, TranscriptSegment,
+        SpeakerAlignedSegment, SpeakerSegment, VisualEmbedding, VideoCaption,
+    )
+    from ..models.local_llm import LocalLLM
+except ImportError:
+    from core.base_task import BaseTask
+    from core.context import (
+        PipelineContext, SceneSummary, ToneEvent, TranscriptSegment,
+        SpeakerAlignedSegment, SpeakerSegment, VisualEmbedding, VideoCaption,
+    )
+    from models.local_llm import LocalLLM
 
 
 class SceneDataExtractor:
@@ -22,7 +30,7 @@ class SceneDataExtractor:
     
     def __init__(self) -> None:
         """Initialize the scene data extractor."""
-        self.logger = logging.getLogger("wiz.tasks.context_summary.data_extractor")
+        pass
     
     def extract_scene_data(self, 
                           context: PipelineContext,
@@ -70,11 +78,18 @@ class SceneDataExtractor:
         
         # Extract visual features (structured, not raw embeddings)
         visual_data = self._extract_visual_features(
-            context.visual_embeddings, 
+            context.visual_embeddings,
             scene_start, scene_end
         )
         scene_data.update(visual_data)
-        
+
+        # Collect video captions overlapping this scene
+        caption_data = self._extract_video_captions(
+            getattr(context, "video_captions", []),
+            scene_start, scene_end
+        )
+        scene_data.update(caption_data)
+
         return scene_data
     
     def _extract_transcript_data(self, 
@@ -270,18 +285,36 @@ class SceneDataExtractor:
             "shot_count": len(scene_embeddings)
         }
 
+    def _extract_video_captions(
+        self,
+        video_captions: List[VideoCaption],
+        start_time: float,
+        end_time: float,
+    ) -> dict:
+        """Collect video MAE captions overlapping the scene window."""
+        overlapping = [
+            cap.caption
+            for cap in video_captions
+            if cap.start_time < end_time and cap.end_time > start_time
+        ]
+        combined = " | ".join(overlapping) if overlapping else ""
+        return {"video_description": combined}
+
+
+_module_logger = logging.getLogger(__name__)
+
 
 class PromptFormatter:
     """
     Formats structured scene data into LLM prompts.
-    
+
     Creates deterministic, structured prompts for scene summarization
     without including raw data or embeddings.
     """
-    
+
     def __init__(self) -> None:
         """Initialize the prompt formatter."""
-        self.logger = logging.getLogger("wiz.tasks.context_summary.prompt_formatter")
+        pass
     
     def format_scene_prompt(self, scene_data: Dict[str, Any]) -> str:
         """
@@ -319,12 +352,17 @@ class PromptFormatter:
         
         # Get transcript excerpt
         transcript_excerpt = scene_data.get("transcript_excerpt", "No transcript available.")
-        
+
+        # Get video MAE description
+        video_description = scene_data.get("video_description", "")
+
         # Format speaker overlap
         overlap_ratio = scene_data.get("speaker_overlap_ratio", 0.0)
         overlap_desc = self._describe_speaker_overlap(overlap_ratio)
-        
+
         # Construct structured prompt
+        video_desc_line = f"Video Description: {video_description}\n" if video_description else ""
+
         prompt = f"""You are an editorial assistant analyzing a video scene.
 
 Scene Time: {time_str}
@@ -333,7 +371,7 @@ Primary Speakers: {speakers_str}
 Speech Rate: {speech_rate_desc} ({speech_rate:.1f} words/second)
 Motion Intensity: {motion_desc}
 Speaker Interaction: {overlap_desc}
-Transcript Excerpt:
+{video_desc_line}Transcript Excerpt:
 {transcript_excerpt}
 
 Write a concise 2–3 sentence summary describing:
@@ -343,7 +381,7 @@ Write a concise 2–3 sentence summary describing:
 
 Be objective and editorial. Focus on observable patterns."""
         
-        self.logger.debug(f"Formatted prompt for scene {scene_data['scene_id']}")
+        _module_logger.debug("Formatted prompt for scene %s", scene_data['scene_id'])
         return prompt
     
     def _describe_speech_rate(self, rate: float) -> str:
@@ -421,13 +459,14 @@ class ContextSummaryTask(BaseTask):
         Args:
             context: Pipeline context containing multimodal processing results
         """
+        logger = context.logger
         # Validate required data
         self._validate_context_data(context)
         
         # Determine scene boundaries
         scenes = self._create_scene_boundaries(context)
         
-        self.logger.info(f"Generating summaries for {len(scenes)} scenes")
+        logger.log_info(f"Generating summaries for {len(scenes)} scenes")
         
         # Process each scene
         scene_summaries = []
@@ -435,7 +474,7 @@ class ContextSummaryTask(BaseTask):
         for i, (start_time, end_time) in enumerate(scenes):
             scene_id = f"scene_{i:03d}"
             
-            self.logger.debug(f"Processing {scene_id}: {start_time:.1f}-{end_time:.1f}s")
+            logger.log_info(f"Processing {scene_id}: {start_time:.1f}-{end_time:.1f}s")
             
             try:
                 # Extract structured scene data
@@ -462,10 +501,10 @@ class ContextSummaryTask(BaseTask):
                 
                 scene_summaries.append(scene_summary)
                 
-                self.logger.debug(f"Generated summary for {scene_id}: {len(summary_text)} characters")
+                logger.log_info(f"Generated summary for {scene_id}: {len(summary_text)} characters")
                 
             except Exception as e:
-                self.logger.error(f"Failed to process {scene_id}: {e}")
+                logger.log_error(f"Failed to process {scene_id}: {e}")
                 
                 # Create fallback summary
                 fallback_summary = SceneSummary(
@@ -499,19 +538,19 @@ class ContextSummaryTask(BaseTask):
             }
         }
         
-        self.logger.info(f"Context summarization completed: {len(scene_summaries)} summaries generated")
+        logger.log_info(f"Context summarization completed: {len(scene_summaries)} summaries generated")
     
     def _validate_context_data(self, context: PipelineContext) -> None:
         """Validate that required data is available in the context."""
         if context.video_metadata is None:
             raise ValueError("Video metadata not available in context")
-        
+
         # Speech processing is required for meaningful summaries
         if not context.transcript_segments:
-            self.logger.warning("No transcript segments available - summaries will be limited")
-        
+            context.logger.log_warning("No transcript segments available - summaries will be limited")
+
         if not context.aligned_segments:
-            self.logger.warning("No speaker-aligned segments available - speaker analysis will be limited")
+            context.logger.log_warning("No speaker-aligned segments available - speaker analysis will be limited")
     
     def _create_scene_boundaries(self, context: PipelineContext) -> List[Tuple[float, float]]:
         """Create scene time boundaries for summarization."""

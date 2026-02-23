@@ -1,0 +1,7993 @@
+{
+  "video_metadata": {
+    "duration": 165.73166666666668,
+    "fps": 30.030470941984532,
+    "width": 1080,
+    "height": 720
+  },
+  "blink_events": [
+    {
+      "start_frame": 32,
+      "end_frame": 38,
+      "duration_ms": 199.79706650592726,
+      "confidence": 0.7395846551262063
+    },
+    {
+      "start_frame": 63,
+      "end_frame": 69,
+      "duration_ms": 199.79706650592726,
+      "confidence": 0.7224310594354894
+    },
+    {
+      "start_frame": 83,
+      "end_frame": 91,
+      "duration_ms": 266.3960886745697,
+      "confidence": 0.7402321638590446
+    },
+    {
+      "start_frame": 104,
+      "end_frame": 110,
+      "duration_ms": 199.79706650592726,
+      "confidence": 0.7292277774348439
+    },
+    {
+      "start_frame": 120,
+      "end_frame": 128,
+      "duration_ms": 266.3960886745697,
+      "confidence": 0.7445820513927436
+    },
+    {
+      "start_frame": 133,
+      "end_frame": 141,
+      "duration_ms": 266.3960886745697,
+      "confidence": 0.7409939830842722
+    },
+    {
+      "start_frame": 170,
+      "end_frame": 173,
+      "duration_ms": 99.89853325296363,
+      "confidence": 0.736516466507917
+    },
+    {
+      "start_frame": 177,
+      "end_frame": 187,
+      "duration_ms": 332.9951108432121,
+      "confidence": 0.7323572390901092
+    },
+    {
+      "start_frame": 310,
+      "end_frame": 317,
+      "duration_ms": 233.0965775902485,
+      "confidence": 0.7428430208817783
+    },
+    {
+      "start_frame": 335,
+      "end_frame": 341,
+      "duration_ms": 199.79706650592726,
+      "confidence": 0.7476559688044567
+    },
+    {
+      "start_frame": 402,
+      "end_frame": 409,
+      "duration_ms": 233.0965775902485,
+      "confidence": 0.7390541556079724
+    },
+    {
+      "start_frame": 444,
+      "end_frame": 451,
+      "duration_ms": 233.0965775902485,
+      "confidence": 0.7495092631740661
+    },
+    {
+      "start_frame": 619,
+      "end_frame": 625,
+      "duration_ms": 199.79706650592726,
+      "confidence": 0.7150923527489252
+    },
+    {
+      "start_frame": 636,
+      "end_frame": 644,
+      "duration_ms": 266.3960886745697,
+      "confidence": 0.7405536254967897
+    },
+    {
+      "start_frame": 656,
+      "end_frame": 664,
+      "duration_ms": 266.3960886745697,
+      "confidence": 0.7269206601996385
+    },
+    {
+      "start_frame": 749,
+      "end_frame": 757,
+      "duration_ms": 266.3960886745697,
+      "confidence": 0.7170403178494162
+    },
+    {
+      "start_frame": 772,
+      "end_frame": 780,
+      "duration_ms": 266.3960886745697,
+      "confidence": 0.7396078973910801
+    },
+    {
+      "start_frame": 819,
+      "end_frame": 826,
+      "duration_ms": 233.0965775902485,
+      "confidence": 0.7310561823617527
+    },
+    {
+      "start_frame": 862,
+      "end_frame": 872,
+      "duration_ms": 332.9951108432121,
+      "confidence": 0.7499660376588099
+    },
+    {
+      "start_frame": 873,
+      "end_frame": 875,
+      "duration_ms": 66.59902216864242,
+      "confidence": 0.7288221441168561
+    },
+    {
+      "start_frame": 925,
+      "end_frame": 940,
+      "duration_ms": 499.4926662648182,
+      "confidence": 0.744322307207171
+    },
+    {
+      "start_frame": 978,
+      "end_frame": 984,
+      "duration_ms": 199.79706650592726,
+      "confidence": 0.71809072337664
+    },
+    {
+      "start_frame": 1038,
+      "end_frame": 1050,
+      "duration_ms": 399.5941330118545,
+      "confidence": 0.7228042526517977
+    },
+    {
+      "start_frame": 1051,
+      "end_frame": 1053,
+      "duration_ms": 66.59902216864242,
+      "confidence": 0.723463507358169
+    },
+    {
+      "start_frame": 1073,
+      "end_frame": 1085,
+      "duration_ms": 399.5941330118545,
+      "confidence": 0.7497023606427751
+    },
+    {
+      "start_frame": 1086,
+      "end_frame": 1089,
+      "duration_ms": 99.89853325296363,
+      "confidence": 0.7396406909500659
+    },
+    {
+      "start_frame": 1096,
+      "end_frame": 1098,
+      "duration_ms": 66.59902216864242,
+      "confidence": 0.7368565832391194
+    },
+    {
+      "start_frame": 1100,
+      "end_frame": 1109,
+      "duration_ms": 299.6955997588909,
+      "confidence": 0.725116238100032
+    },
+    {
+      "start_frame": 1120,
+      "end_frame": 1131,
+      "duration_ms": 366.29462192753334,
+      "confidence": 0.7280381552594262
+    },
+    {
+      "start_frame": 1202,
+      "end_frame": 1208,
+      "duration_ms": 199.79706650592726,
+      "confidence": 0.736949087660058
+    },
+    {
+      "start_frame": 1269,
+      "end_frame": 1277,
+      "duration_ms": 266.3960886745697,
+      "confidence": 0.7376580064082078
+    },
+    {
+      "start_frame": 1305,
+      "end_frame": 1307,
+      "duration_ms": 66.59902216864242,
+      "confidence": 0.7407743470435103
+    },
+    {
+      "start_frame": 1359,
+      "end_frame": 1367,
+      "duration_ms": 266.3960886745697,
+      "confidence": 0.7379003019904057
+    },
+    {
+      "start_frame": 1378,
+      "end_frame": 1386,
+      "duration_ms": 266.3960886745697,
+      "confidence": 0.7119291246908446
+    },
+    {
+      "start_frame": 1426,
+      "end_frame": 1432,
+      "duration_ms": 199.79706650592726,
+      "confidence": 0.7317387177763199
+    },
+    {
+      "start_frame": 1463,
+      "end_frame": 1472,
+      "duration_ms": 299.6955997588909,
+      "confidence": 0.7234231490877032
+    },
+    {
+      "start_frame": 1473,
+      "end_frame": 1484,
+      "duration_ms": 366.29462192753334,
+      "confidence": 0.7178945927296939
+    },
+    {
+      "start_frame": 1512,
+      "end_frame": 1520,
+      "duration_ms": 266.3960886745697,
+      "confidence": 0.7267909803813629
+    },
+    {
+      "start_frame": 1576,
+      "end_frame": 1581,
+      "duration_ms": 166.49755542160605,
+      "confidence": 0.7370231782308443
+    },
+    {
+      "start_frame": 1592,
+      "end_frame": 1599,
+      "duration_ms": 233.0965775902485,
+      "confidence": 0.7398349076902888
+    },
+    {
+      "start_frame": 1643,
+      "end_frame": 1651,
+      "duration_ms": 266.3960886745697,
+      "confidence": 0.7147806532305429
+    },
+    {
+      "start_frame": 1691,
+      "end_frame": 1699,
+      "duration_ms": 266.3960886745697,
+      "confidence": 0.7095305130469554
+    },
+    {
+      "start_frame": 1724,
+      "end_frame": 1730,
+      "duration_ms": 199.79706650592726,
+      "confidence": 0.7358364321553341
+    },
+    {
+      "start_frame": 1763,
+      "end_frame": 1769,
+      "duration_ms": 199.79706650592726,
+      "confidence": 0.720196769055816
+    },
+    {
+      "start_frame": 1884,
+      "end_frame": 1891,
+      "duration_ms": 233.0965775902485,
+      "confidence": 0.7350034832440046
+    },
+    {
+      "start_frame": 1906,
+      "end_frame": 1911,
+      "duration_ms": 166.49755542160605,
+      "confidence": 0.7426694867054449
+    },
+    {
+      "start_frame": 1945,
+      "end_frame": 1954,
+      "duration_ms": 299.6955997588909,
+      "confidence": 0.7332361024966682
+    },
+    {
+      "start_frame": 2005,
+      "end_frame": 2012,
+      "duration_ms": 233.0965775902485,
+      "confidence": 0.7280561769097328
+    },
+    {
+      "start_frame": 2020,
+      "end_frame": 2023,
+      "duration_ms": 99.89853325296363,
+      "confidence": 0.7468828601756018
+    },
+    {
+      "start_frame": 2025,
+      "end_frame": 2035,
+      "duration_ms": 332.9951108432121,
+      "confidence": 0.7413764234368561
+    },
+    {
+      "start_frame": 2036,
+      "end_frame": 2047,
+      "duration_ms": 366.29462192753334,
+      "confidence": 0.7254266963860083
+    },
+    {
+      "start_frame": 2078,
+      "end_frame": 2087,
+      "duration_ms": 299.6955997588909,
+      "confidence": 0.739996030412061
+    },
+    {
+      "start_frame": 2210,
+      "end_frame": 2212,
+      "duration_ms": 66.59902216864242,
+      "confidence": 0.7350276855929887
+    },
+    {
+      "start_frame": 2213,
+      "end_frame": 2216,
+      "duration_ms": 99.89853325296363,
+      "confidence": 0.7402961367890808
+    },
+    {
+      "start_frame": 2219,
+      "end_frame": 2226,
+      "duration_ms": 233.0965775902485,
+      "confidence": 0.7430564780541302
+    },
+    {
+      "start_frame": 2256,
+      "end_frame": 2262,
+      "duration_ms": 199.79706650592726,
+      "confidence": 0.7440670855421636
+    },
+    {
+      "start_frame": 2304,
+      "end_frame": 2312,
+      "duration_ms": 266.3960886745697,
+      "confidence": 0.7453283170518998
+    },
+    {
+      "start_frame": 2364,
+      "end_frame": 2372,
+      "duration_ms": 266.3960886745697,
+      "confidence": 0.7463504408425453
+    },
+    {
+      "start_frame": 2378,
+      "end_frame": 2388,
+      "duration_ms": 332.9951108432121,
+      "confidence": 0.7338287508437039
+    },
+    {
+      "start_frame": 2433,
+      "end_frame": 2436,
+      "duration_ms": 99.89853325296363,
+      "confidence": 0.7433914055804636
+    },
+    {
+      "start_frame": 2489,
+      "end_frame": 2492,
+      "duration_ms": 99.89853325296363,
+      "confidence": 0.7396920687687972
+    },
+    {
+      "start_frame": 2524,
+      "end_frame": 2526,
+      "duration_ms": 66.59902216864242,
+      "confidence": 0.7415390738503672
+    },
+    {
+      "start_frame": 2527,
+      "end_frame": 2540,
+      "duration_ms": 432.89364409617576,
+      "confidence": 0.7262156339760791
+    },
+    {
+      "start_frame": 2548,
+      "end_frame": 2553,
+      "duration_ms": 166.49755542160605,
+      "confidence": 0.7424368676569983
+    },
+    {
+      "start_frame": 2554,
+      "end_frame": 2562,
+      "duration_ms": 266.3960886745697,
+      "confidence": 0.7280284613435495
+    },
+    {
+      "start_frame": 2585,
+      "end_frame": 2593,
+      "duration_ms": 266.3960886745697,
+      "confidence": 0.7248898526673064
+    },
+    {
+      "start_frame": 2599,
+      "end_frame": 2611,
+      "duration_ms": 399.5941330118545,
+      "confidence": 0.7165867323482339
+    },
+    {
+      "start_frame": 2647,
+      "end_frame": 2662,
+      "duration_ms": 499.4926662648182,
+      "confidence": 0.7099397625597655
+    },
+    {
+      "start_frame": 2670,
+      "end_frame": 2673,
+      "duration_ms": 99.89853325296363,
+      "confidence": 0.7477270852961131
+    },
+    {
+      "start_frame": 2741,
+      "end_frame": 2743,
+      "duration_ms": 66.59902216864242,
+      "confidence": 0.7389955013652103
+    },
+    {
+      "start_frame": 2822,
+      "end_frame": 2827,
+      "duration_ms": 166.49755542160605,
+      "confidence": 0.743718384392549
+    },
+    {
+      "start_frame": 2867,
+      "end_frame": 2869,
+      "duration_ms": 66.59902216864242,
+      "confidence": 0.7274179265176992
+    },
+    {
+      "start_frame": 2874,
+      "end_frame": 2881,
+      "duration_ms": 233.0965775902485,
+      "confidence": 0.7261086673652287
+    },
+    {
+      "start_frame": 2913,
+      "end_frame": 2922,
+      "duration_ms": 299.6955997588909,
+      "confidence": 0.749253925085095
+    },
+    {
+      "start_frame": 2943,
+      "end_frame": 2948,
+      "duration_ms": 166.49755542160605,
+      "confidence": 0.7308611690487394
+    },
+    {
+      "start_frame": 2964,
+      "end_frame": 2971,
+      "duration_ms": 233.0965775902485,
+      "confidence": 0.7366739632732291
+    },
+    {
+      "start_frame": 2977,
+      "end_frame": 2985,
+      "duration_ms": 266.3960886745697,
+      "confidence": 0.7382463476480231
+    },
+    {
+      "start_frame": 2989,
+      "end_frame": 2991,
+      "duration_ms": 66.59902216864242,
+      "confidence": 0.7166961474504011
+    },
+    {
+      "start_frame": 3023,
+      "end_frame": 3037,
+      "duration_ms": 466.193155180497,
+      "confidence": 0.7424848961998042
+    },
+    {
+      "start_frame": 3045,
+      "end_frame": 3057,
+      "duration_ms": 399.5941330118545,
+      "confidence": 0.7210040455211064
+    },
+    {
+      "start_frame": 3087,
+      "end_frame": 3093,
+      "duration_ms": 199.79706650592726,
+      "confidence": 0.747202332203093
+    },
+    {
+      "start_frame": 3107,
+      "end_frame": 3113,
+      "duration_ms": 199.79706650592726,
+      "confidence": 0.745018570828799
+    },
+    {
+      "start_frame": 3118,
+      "end_frame": 3131,
+      "duration_ms": 432.89364409617576,
+      "confidence": 0.69770573332758
+    },
+    {
+      "start_frame": 3201,
+      "end_frame": 3210,
+      "duration_ms": 299.6955997588909,
+      "confidence": 0.741318543326851
+    },
+    {
+      "start_frame": 3289,
+      "end_frame": 3299,
+      "duration_ms": 332.9951108432121,
+      "confidence": 0.7457222704859436
+    },
+    {
+      "start_frame": 3305,
+      "end_frame": 3307,
+      "duration_ms": 66.59902216864242,
+      "confidence": 0.7250520129366438
+    },
+    {
+      "start_frame": 3318,
+      "end_frame": 3324,
+      "duration_ms": 199.79706650592726,
+      "confidence": 0.7486197190224728
+    },
+    {
+      "start_frame": 3329,
+      "end_frame": 3336,
+      "duration_ms": 233.0965775902485,
+      "confidence": 0.743702169063633
+    },
+    {
+      "start_frame": 3371,
+      "end_frame": 3381,
+      "duration_ms": 332.9951108432121,
+      "confidence": 0.7478517451410682
+    },
+    {
+      "start_frame": 3432,
+      "end_frame": 3439,
+      "duration_ms": 233.0965775902485,
+      "confidence": 0.7431528066692621
+    },
+    {
+      "start_frame": 3465,
+      "end_frame": 3474,
+      "duration_ms": 299.6955997588909,
+      "confidence": 0.7185266509727751
+    },
+    {
+      "start_frame": 3477,
+      "end_frame": 3485,
+      "duration_ms": 266.3960886745697,
+      "confidence": 0.7424176043509068
+    },
+    {
+      "start_frame": 3499,
+      "end_frame": 3508,
+      "duration_ms": 299.6955997588909,
+      "confidence": 0.7284850200061987
+    },
+    {
+      "start_frame": 3522,
+      "end_frame": 3525,
+      "duration_ms": 99.89853325296363,
+      "confidence": 0.7461075465051243
+    },
+    {
+      "start_frame": 3532,
+      "end_frame": 3539,
+      "duration_ms": 233.0965775902485,
+      "confidence": 0.7233212997223929
+    },
+    {
+      "start_frame": 3547,
+      "end_frame": 3549,
+      "duration_ms": 66.59902216864242,
+      "confidence": 0.6845755087781681
+    },
+    {
+      "start_frame": 3556,
+      "end_frame": 3559,
+      "duration_ms": 99.89853325296363,
+      "confidence": 0.7231178428123743
+    },
+    {
+      "start_frame": 3575,
+      "end_frame": 3582,
+      "duration_ms": 233.0965775902485,
+      "confidence": 0.7325551647404269
+    },
+    {
+      "start_frame": 3675,
+      "end_frame": 3683,
+      "duration_ms": 266.3960886745697,
+      "confidence": 0.7473246819282089
+    },
+    {
+      "start_frame": 3686,
+      "end_frame": 3688,
+      "duration_ms": 66.59902216864242,
+      "confidence": 0.7327273031937693
+    },
+    {
+      "start_frame": 3690,
+      "end_frame": 3700,
+      "duration_ms": 332.9951108432121,
+      "confidence": 0.7496902245447429
+    },
+    {
+      "start_frame": 3705,
+      "end_frame": 3708,
+      "duration_ms": 99.89853325296363,
+      "confidence": 0.7456340111043891
+    },
+    {
+      "start_frame": 3753,
+      "end_frame": 3758,
+      "duration_ms": 166.49755542160605,
+      "confidence": 0.7059568582115807
+    },
+    {
+      "start_frame": 3810,
+      "end_frame": 3817,
+      "duration_ms": 233.0965775902485,
+      "confidence": 0.7496911709547021
+    },
+    {
+      "start_frame": 3855,
+      "end_frame": 3862,
+      "duration_ms": 233.0965775902485,
+      "confidence": 0.7286278495716575
+    },
+    {
+      "start_frame": 3896,
+      "end_frame": 3901,
+      "duration_ms": 166.49755542160605,
+      "confidence": 0.7278847496955508
+    },
+    {
+      "start_frame": 3928,
+      "end_frame": 3936,
+      "duration_ms": 266.3960886745697,
+      "confidence": 0.7391783509296285
+    },
+    {
+      "start_frame": 3939,
+      "end_frame": 3946,
+      "duration_ms": 233.0965775902485,
+      "confidence": 0.7488737637324105
+    },
+    {
+      "start_frame": 4016,
+      "end_frame": 4018,
+      "duration_ms": 66.59902216864242,
+      "confidence": 0.7427791334731328
+    },
+    {
+      "start_frame": 4023,
+      "end_frame": 4027,
+      "duration_ms": 133.19804433728484,
+      "confidence": 0.7469492854278226
+    },
+    {
+      "start_frame": 4049,
+      "end_frame": 4056,
+      "duration_ms": 233.0965775902485,
+      "confidence": 0.7069012586499969
+    },
+    {
+      "start_frame": 4084,
+      "end_frame": 4090,
+      "duration_ms": 199.79706650592726,
+      "confidence": 0.746335170370199
+    },
+    {
+      "start_frame": 4133,
+      "end_frame": 4135,
+      "duration_ms": 66.59902216864242,
+      "confidence": 0.7414728674580175
+    },
+    {
+      "start_frame": 4147,
+      "end_frame": 4155,
+      "duration_ms": 266.3960886745697,
+      "confidence": 0.7446017624798917
+    },
+    {
+      "start_frame": 4172,
+      "end_frame": 4177,
+      "duration_ms": 166.49755542160605,
+      "confidence": 0.7382567925184569
+    },
+    {
+      "start_frame": 4212,
+      "end_frame": 4222,
+      "duration_ms": 332.9951108432121,
+      "confidence": 0.7167208551253209
+    },
+    {
+      "start_frame": 4331,
+      "end_frame": 4341,
+      "duration_ms": 332.9951108432121,
+      "confidence": 0.7184783891898505
+    },
+    {
+      "start_frame": 4372,
+      "end_frame": 4382,
+      "duration_ms": 332.9951108432121,
+      "confidence": 0.7353669720370658
+    },
+    {
+      "start_frame": 4399,
+      "end_frame": 4408,
+      "duration_ms": 299.6955997588909,
+      "confidence": 0.7356965469827058
+    },
+    {
+      "start_frame": 4428,
+      "end_frame": 4431,
+      "duration_ms": 99.89853325296363,
+      "confidence": 0.7323268428601699
+    },
+    {
+      "start_frame": 4444,
+      "end_frame": 4448,
+      "duration_ms": 133.19804433728484,
+      "confidence": 0.7190694503059001
+    },
+    {
+      "start_frame": 4482,
+      "end_frame": 4484,
+      "duration_ms": 66.59902216864242,
+      "confidence": 0.7242874381744402
+    },
+    {
+      "start_frame": 4489,
+      "end_frame": 4496,
+      "duration_ms": 233.0965775902485,
+      "confidence": 0.7380933747009553
+    },
+    {
+      "start_frame": 4534,
+      "end_frame": 4538,
+      "duration_ms": 133.19804433728484,
+      "confidence": 0.7368985146578783
+    },
+    {
+      "start_frame": 4545,
+      "end_frame": 4559,
+      "duration_ms": 466.193155180497,
+      "confidence": 0.7404105592696455
+    },
+    {
+      "start_frame": 4593,
+      "end_frame": 4597,
+      "duration_ms": 133.19804433728484,
+      "confidence": 0.7163121956599494
+    },
+    {
+      "start_frame": 4603,
+      "end_frame": 4605,
+      "duration_ms": 66.59902216864242,
+      "confidence": 0.7017024370480025
+    },
+    {
+      "start_frame": 4642,
+      "end_frame": 4650,
+      "duration_ms": 266.3960886745697,
+      "confidence": 0.7461319408523215
+    },
+    {
+      "start_frame": 4732,
+      "end_frame": 4734,
+      "duration_ms": 66.59902216864242,
+      "confidence": 0.7381737057340422
+    },
+    {
+      "start_frame": 4753,
+      "end_frame": 4757,
+      "duration_ms": 133.19804433728484,
+      "confidence": 0.7321413684434144
+    },
+    {
+      "start_frame": 4765,
+      "end_frame": 4777,
+      "duration_ms": 399.5941330118545,
+      "confidence": 0.7455299888074203
+    },
+    {
+      "start_frame": 4783,
+      "end_frame": 4785,
+      "duration_ms": 66.59902216864242,
+      "confidence": 0.7411830698742623
+    },
+    {
+      "start_frame": 4787,
+      "end_frame": 4789,
+      "duration_ms": 66.59902216864242,
+      "confidence": 0.7141750919316389
+    },
+    {
+      "start_frame": 4813,
+      "end_frame": 4825,
+      "duration_ms": 399.5941330118545,
+      "confidence": 0.7479905453459554
+    },
+    {
+      "start_frame": 4826,
+      "end_frame": 4829,
+      "duration_ms": 99.89853325296363,
+      "confidence": 0.7339564471206383
+    },
+    {
+      "start_frame": 4831,
+      "end_frame": 4840,
+      "duration_ms": 299.6955997588909,
+      "confidence": 0.7447945359064208
+    },
+    {
+      "start_frame": 4940,
+      "end_frame": 4953,
+      "duration_ms": 432.89364409617576,
+      "confidence": 0.7388348656350008
+    },
+    {
+      "start_frame": 4965,
+      "end_frame": 4968,
+      "duration_ms": 99.89853325296363,
+      "confidence": 0.7302675782009868
+    }
+  ],
+  "breath_events": [
+    {
+      "start_time": 2.1625,
+      "end_time": 2.6625,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 2.6625,
+      "end_time": 3.1625,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 5.075,
+      "end_time": 5.575,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 5.575,
+      "end_time": 6.075,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 8.1375,
+      "end_time": 8.6375,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 12.1125,
+      "end_time": 12.6125,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 13.4375,
+      "end_time": 13.9375,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 13.9375,
+      "end_time": 14.4375,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 14.9125,
+      "end_time": 15.4125,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 16.15,
+      "end_time": 16.65,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 18.65,
+      "end_time": 19.15,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 19.15,
+      "end_time": 19.65,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 20.45,
+      "end_time": 20.95,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 20.95,
+      "end_time": 21.45,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 21.5875,
+      "end_time": 22.0875,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 22.6375,
+      "end_time": 23.1375,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 23.1375,
+      "end_time": 23.6375,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 26.4875,
+      "end_time": 26.9875,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 28.575,
+      "end_time": 29.075,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 30.625,
+      "end_time": 31.125,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 31.475,
+      "end_time": 31.975,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 33.2875,
+      "end_time": 33.7875,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 38.275,
+      "end_time": 38.775,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 39.3125,
+      "end_time": 39.8125,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 39.8125,
+      "end_time": 40.3125,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 41.1125,
+      "end_time": 41.6125,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 42.4875,
+      "end_time": 42.9875,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 42.9875,
+      "end_time": 43.4875,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 43.9,
+      "end_time": 44.4,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 44.5,
+      "end_time": 45.0,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 45.0,
+      "end_time": 45.5,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 45.5,
+      "end_time": 46.0,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 46.4875,
+      "end_time": 46.9875,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 48.15,
+      "end_time": 48.65,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 48.65,
+      "end_time": 49.15,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 49.15,
+      "end_time": 49.65,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 49.825,
+      "end_time": 50.325,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 51.0875,
+      "end_time": 51.5875,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 51.5875,
+      "end_time": 52.0875,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 52.0875,
+      "end_time": 52.5875,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 52.5875,
+      "end_time": 53.0875,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 53.5375,
+      "end_time": 54.0375,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 54.0375,
+      "end_time": 54.5375,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 55.7875,
+      "end_time": 56.2875,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 56.2875,
+      "end_time": 56.7875,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 57.375,
+      "end_time": 57.875,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 58.0375,
+      "end_time": 58.5375,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 58.5375,
+      "end_time": 59.0375,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 59.375,
+      "end_time": 59.875,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 59.875,
+      "end_time": 60.375,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 60.6625,
+      "end_time": 61.1625,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 61.1625,
+      "end_time": 61.6625,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 61.6625,
+      "end_time": 62.1625,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 63.0,
+      "end_time": 63.5,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 63.825,
+      "end_time": 64.325,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 65.3125,
+      "end_time": 65.8125,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 65.8125,
+      "end_time": 66.3125,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 66.7625,
+      "end_time": 67.2625,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 67.6,
+      "end_time": 68.1,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 68.2125,
+      "end_time": 68.7125,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 69.1,
+      "end_time": 69.6,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 69.6,
+      "end_time": 70.1,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 70.875,
+      "end_time": 71.375,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 73.0125,
+      "end_time": 73.5125,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 73.5125,
+      "end_time": 74.0125,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 74.45,
+      "end_time": 74.95,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 74.95,
+      "end_time": 75.45,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 75.5,
+      "end_time": 76.0,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 76.0,
+      "end_time": 76.5,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 76.5,
+      "end_time": 77.0,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 77.1875,
+      "end_time": 77.6875,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 78.1375,
+      "end_time": 78.6375,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 80.2125,
+      "end_time": 80.7125,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 80.8375,
+      "end_time": 81.3375,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 81.3375,
+      "end_time": 81.8375,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 81.8375,
+      "end_time": 82.3375,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 84.4875,
+      "end_time": 84.9875,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 84.9875,
+      "end_time": 85.4875,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 85.4875,
+      "end_time": 85.9875,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 85.9875,
+      "end_time": 86.4875,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 86.9875,
+      "end_time": 87.4875,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 88.3625,
+      "end_time": 88.8625,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 90.175,
+      "end_time": 90.675,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 92.15,
+      "end_time": 92.65,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 92.65,
+      "end_time": 93.15,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 93.15,
+      "end_time": 93.65,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 94.575,
+      "end_time": 95.075,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 97.4875,
+      "end_time": 97.9875,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 97.9875,
+      "end_time": 98.4875,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 98.4875,
+      "end_time": 98.9875,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 99.3875,
+      "end_time": 99.8875,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 99.8875,
+      "end_time": 100.3875,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 100.7375,
+      "end_time": 101.2375,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 101.6375,
+      "end_time": 102.1375,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 103.675,
+      "end_time": 104.175,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 104.6125,
+      "end_time": 105.1125,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 105.9375,
+      "end_time": 106.4375,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 106.4375,
+      "end_time": 106.9375,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 107.275,
+      "end_time": 107.775,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 109.15,
+      "end_time": 109.65,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 109.65,
+      "end_time": 110.15,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 110.15,
+      "end_time": 110.65,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 110.65,
+      "end_time": 111.15,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 112.4875,
+      "end_time": 112.9875,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 112.9875,
+      "end_time": 113.4875,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 113.8125,
+      "end_time": 114.3125,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 114.3125,
+      "end_time": 114.8125,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 115.125,
+      "end_time": 115.625,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 115.6625,
+      "end_time": 116.1625,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 117.2375,
+      "end_time": 117.7375,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 118.1,
+      "end_time": 118.6,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 118.6,
+      "end_time": 119.1,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 119.1,
+      "end_time": 119.6,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 119.7125,
+      "end_time": 120.2125,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 120.4,
+      "end_time": 120.9,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 120.9,
+      "end_time": 121.4,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 122.7875,
+      "end_time": 123.2875,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 123.2875,
+      "end_time": 123.7875,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 123.7875,
+      "end_time": 124.2875,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 124.8625,
+      "end_time": 125.3625,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 125.8625,
+      "end_time": 126.3625,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 127.1125,
+      "end_time": 127.6125,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 129.8625,
+      "end_time": 130.3625,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 130.3625,
+      "end_time": 130.8625,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 130.8625,
+      "end_time": 131.3625,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 131.4875,
+      "end_time": 131.9875,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 132.3,
+      "end_time": 132.8,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 132.8,
+      "end_time": 133.3,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 133.375,
+      "end_time": 133.875,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 133.875,
+      "end_time": 134.375,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 134.375,
+      "end_time": 134.875,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 135.225,
+      "end_time": 135.725,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 136.4125,
+      "end_time": 136.9125,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 136.9125,
+      "end_time": 137.4125,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 139.45,
+      "end_time": 139.95,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 139.95,
+      "end_time": 140.45,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 140.825,
+      "end_time": 141.325,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 144.35,
+      "end_time": 144.85,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 147.1,
+      "end_time": 147.6,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 148.9125,
+      "end_time": 149.4125,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 149.4125,
+      "end_time": 149.9125,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 149.9125,
+      "end_time": 150.4125,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 150.4125,
+      "end_time": 150.9125,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 150.9125,
+      "end_time": 151.4125,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 153.6125,
+      "end_time": 154.1125,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 155.4375,
+      "end_time": 155.9375,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 157.3875,
+      "end_time": 157.8875,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 157.8875,
+      "end_time": 158.3875,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 158.825,
+      "end_time": 159.325,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 159.325,
+      "end_time": 159.825,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 160.7125,
+      "end_time": 161.2125,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    },
+    {
+      "start_time": 162.6875,
+      "end_time": 163.1875,
+      "duration_ms": 500.0,
+      "confidence": 0.6
+    }
+  ],
+  "transcript_words": [
+    {
+      "text": "Hello,",
+      "start_time": 0.0,
+      "end_time": 0.86,
+      "confidence": 0.5705907940864563
+    },
+    {
+      "text": "I",
+      "start_time": 1.16,
+      "end_time": 1.38,
+      "confidence": 0.9765682220458984
+    },
+    {
+      "text": "am",
+      "start_time": 1.38,
+      "end_time": 1.54,
+      "confidence": 0.7299365997314453
+    },
+    {
+      "text": "Lagni",
+      "start_time": 1.54,
+      "end_time": 1.8,
+      "confidence": 0.5320080369710922
+    },
+    {
+      "text": "Patel",
+      "start_time": 1.8,
+      "end_time": 2.1,
+      "confidence": 0.8491292297840118
+    },
+    {
+      "text": "and",
+      "start_time": 2.1,
+      "end_time": 2.46,
+      "confidence": 0.7977855205535889
+    },
+    {
+      "text": "I",
+      "start_time": 2.46,
+      "end_time": 2.56,
+      "confidence": 0.9765030145645142
+    },
+    {
+      "text": "recently",
+      "start_time": 2.56,
+      "end_time": 2.9,
+      "confidence": 0.9759652614593506
+    },
+    {
+      "text": "graduated",
+      "start_time": 2.9,
+      "end_time": 3.44,
+      "confidence": 0.9972677230834961
+    },
+    {
+      "text": "with",
+      "start_time": 3.44,
+      "end_time": 3.78,
+      "confidence": 0.9720708727836609
+    },
+    {
+      "text": "Masters",
+      "start_time": 3.78,
+      "end_time": 4.14,
+      "confidence": 0.5364590883255005
+    },
+    {
+      "text": "of",
+      "start_time": 4.14,
+      "end_time": 4.4,
+      "confidence": 0.9773285984992981
+    },
+    {
+      "text": "Computer",
+      "start_time": 4.4,
+      "end_time": 4.64,
+      "confidence": 0.9251616597175598
+    },
+    {
+      "text": "Science",
+      "start_time": 4.64,
+      "end_time": 4.98,
+      "confidence": 0.9871312975883484
+    },
+    {
+      "text": "from",
+      "start_time": 4.98,
+      "end_time": 5.52,
+      "confidence": 0.9644474983215332
+    },
+    {
+      "text": "North",
+      "start_time": 5.52,
+      "end_time": 5.84,
+      "confidence": 0.9836230874061584
+    },
+    {
+      "text": "Carolina",
+      "start_time": 5.84,
+      "end_time": 6.06,
+      "confidence": 0.3790108263492584
+    },
+    {
+      "text": "State",
+      "start_time": 6.06,
+      "end_time": 6.5,
+      "confidence": 0.967850923538208
+    },
+    {
+      "text": "University.",
+      "start_time": 6.5,
+      "end_time": 7.08,
+      "confidence": 0.9961342811584473
+    },
+    {
+      "text": "Over",
+      "start_time": 8.36,
+      "end_time": 8.64,
+      "confidence": 0.9492875337600708
+    },
+    {
+      "text": "the",
+      "start_time": 8.64,
+      "end_time": 8.8,
+      "confidence": 0.9973549842834473
+    },
+    {
+      "text": "past",
+      "start_time": 8.8,
+      "end_time": 9.04,
+      "confidence": 0.9962639212608337
+    },
+    {
+      "text": "few",
+      "start_time": 9.04,
+      "end_time": 9.32,
+      "confidence": 0.9941155910491943
+    },
+    {
+      "text": "years",
+      "start_time": 9.32,
+      "end_time": 9.62,
+      "confidence": 0.9864670634269714
+    },
+    {
+      "text": "I",
+      "start_time": 9.62,
+      "end_time": 9.9,
+      "confidence": 0.49329185485839844
+    },
+    {
+      "text": "have",
+      "start_time": 9.9,
+      "end_time": 10.04,
+      "confidence": 0.40837186574935913
+    },
+    {
+      "text": "worked",
+      "start_time": 10.04,
+      "end_time": 10.3,
+      "confidence": 0.9835312366485596
+    },
+    {
+      "text": "as",
+      "start_time": 10.3,
+      "end_time": 10.46,
+      "confidence": 0.9842687845230103
+    },
+    {
+      "text": "both",
+      "start_time": 10.46,
+      "end_time": 10.72,
+      "confidence": 0.9342529773712158
+    },
+    {
+      "text": "data",
+      "start_time": 10.72,
+      "end_time": 11.18,
+      "confidence": 0.4736339747905731
+    },
+    {
+      "text": "scientist",
+      "start_time": 11.18,
+      "end_time": 11.62,
+      "confidence": 0.9451045393943787
+    },
+    {
+      "text": "and",
+      "start_time": 11.62,
+      "end_time": 12.0,
+      "confidence": 0.9862480759620667
+    },
+    {
+      "text": "machine",
+      "start_time": 12.0,
+      "end_time": 12.28,
+      "confidence": 0.5498790740966797
+    },
+    {
+      "text": "learning",
+      "start_time": 12.28,
+      "end_time": 12.66,
+      "confidence": 0.8943577408790588
+    },
+    {
+      "text": "engineer",
+      "start_time": 12.66,
+      "end_time": 13.12,
+      "confidence": 0.931353747844696
+    },
+    {
+      "text": "and",
+      "start_time": 13.12,
+      "end_time": 13.74,
+      "confidence": 0.5319709777832031
+    },
+    {
+      "text": "somewhere",
+      "start_time": 13.74,
+      "end_time": 14.08,
+      "confidence": 0.8566530346870422
+    },
+    {
+      "text": "along",
+      "start_time": 14.08,
+      "end_time": 14.36,
+      "confidence": 0.9976220726966858
+    },
+    {
+      "text": "the",
+      "start_time": 14.36,
+      "end_time": 14.54,
+      "confidence": 0.9934099316596985
+    },
+    {
+      "text": "way",
+      "start_time": 14.54,
+      "end_time": 14.72,
+      "confidence": 0.9916505217552185
+    },
+    {
+      "text": "I",
+      "start_time": 14.72,
+      "end_time": 14.98,
+      "confidence": 0.8870522975921631
+    },
+    {
+      "text": "realized",
+      "start_time": 14.98,
+      "end_time": 15.32,
+      "confidence": 0.5778778791427612
+    },
+    {
+      "text": "that",
+      "start_time": 15.32,
+      "end_time": 15.78,
+      "confidence": 0.9520812630653381
+    },
+    {
+      "text": "what",
+      "start_time": 15.78,
+      "end_time": 16.12,
+      "confidence": 0.969008207321167
+    },
+    {
+      "text": "I",
+      "start_time": 16.12,
+      "end_time": 16.3,
+      "confidence": 0.9965992569923401
+    },
+    {
+      "text": "really",
+      "start_time": 16.3,
+      "end_time": 16.52,
+      "confidence": 0.9610823392868042
+    },
+    {
+      "text": "love",
+      "start_time": 16.52,
+      "end_time": 16.82,
+      "confidence": 0.9692942500114441
+    },
+    {
+      "text": "is",
+      "start_time": 16.82,
+      "end_time": 17.1,
+      "confidence": 0.9684494137763977
+    },
+    {
+      "text": "using",
+      "start_time": 17.1,
+      "end_time": 17.54,
+      "confidence": 0.9749042987823486
+    },
+    {
+      "text": "AI",
+      "start_time": 17.54,
+      "end_time": 18.0,
+      "confidence": 0.561025083065033
+    },
+    {
+      "text": "for",
+      "start_time": 18.0,
+      "end_time": 18.28,
+      "confidence": 0.9821897745132446
+    },
+    {
+      "text": "real",
+      "start_time": 18.28,
+      "end_time": 18.68,
+      "confidence": 0.9753433465957642
+    },
+    {
+      "text": "domain",
+      "start_time": 18.68,
+      "end_time": 19.26,
+      "confidence": 0.9362019300460815
+    },
+    {
+      "text": "specific",
+      "start_time": 19.26,
+      "end_time": 19.76,
+      "confidence": 0.6619229912757874
+    },
+    {
+      "text": "work,",
+      "start_time": 19.76,
+      "end_time": 20.3,
+      "confidence": 0.985758900642395
+    },
+    {
+      "text": "solving",
+      "start_time": 20.54,
+      "end_time": 20.9,
+      "confidence": 0.9027168154716492
+    },
+    {
+      "text": "problems",
+      "start_time": 20.9,
+      "end_time": 21.38,
+      "confidence": 0.9872345328330994
+    },
+    {
+      "text": "that",
+      "start_time": 21.38,
+      "end_time": 21.6,
+      "confidence": 0.9945297837257385
+    },
+    {
+      "text": "actually",
+      "start_time": 21.6,
+      "end_time": 22.04,
+      "confidence": 0.9662864208221436
+    },
+    {
+      "text": "matter",
+      "start_time": 22.04,
+      "end_time": 22.28,
+      "confidence": 0.9858493804931641
+    },
+    {
+      "text": "to",
+      "start_time": 22.28,
+      "end_time": 22.48,
+      "confidence": 0.9966616630554199
+    },
+    {
+      "text": "people",
+      "start_time": 22.48,
+      "end_time": 22.86,
+      "confidence": 0.9929832220077515
+    },
+    {
+      "text": "and",
+      "start_time": 22.86,
+      "end_time": 23.1,
+      "confidence": 0.84727543592453
+    },
+    {
+      "text": "not",
+      "start_time": 23.1,
+      "end_time": 23.26,
+      "confidence": 0.9920692443847656
+    },
+    {
+      "text": "just",
+      "start_time": 23.26,
+      "end_time": 23.52,
+      "confidence": 0.9933711290359497
+    },
+    {
+      "text": "running",
+      "start_time": 23.52,
+      "end_time": 23.78,
+      "confidence": 0.9917185306549072
+    },
+    {
+      "text": "the",
+      "start_time": 23.78,
+      "end_time": 23.96,
+      "confidence": 0.9797725677490234
+    },
+    {
+      "text": "models",
+      "start_time": 23.96,
+      "end_time": 24.22,
+      "confidence": 0.4125599265098572
+    },
+    {
+      "text": "for",
+      "start_time": 24.22,
+      "end_time": 24.38,
+      "confidence": 0.958341121673584
+    },
+    {
+      "text": "the",
+      "start_time": 24.38,
+      "end_time": 24.54,
+      "confidence": 0.9306854009628296
+    },
+    {
+      "text": "sake",
+      "start_time": 24.54,
+      "end_time": 24.68,
+      "confidence": 0.9255971908569336
+    },
+    {
+      "text": "of",
+      "start_time": 24.68,
+      "end_time": 24.9,
+      "confidence": 0.9824710488319397
+    },
+    {
+      "text": "it.",
+      "start_time": 24.9,
+      "end_time": 25.12,
+      "confidence": 0.951488196849823
+    },
+    {
+      "text": "As",
+      "start_time": 26.4,
+      "end_time": 26.74,
+      "confidence": 0.961949348449707
+    },
+    {
+      "text": "a",
+      "start_time": 26.74,
+      "end_time": 27.02,
+      "confidence": 0.9698189496994019
+    },
+    {
+      "text": "data",
+      "start_time": 27.02,
+      "end_time": 27.2,
+      "confidence": 0.9328746199607849
+    },
+    {
+      "text": "scientist",
+      "start_time": 27.2,
+      "end_time": 27.72,
+      "confidence": 0.986672043800354
+    },
+    {
+      "text": "at",
+      "start_time": 27.72,
+      "end_time": 28.24,
+      "confidence": 0.9042468667030334
+    },
+    {
+      "text": "the",
+      "start_time": 28.24,
+      "end_time": 28.42,
+      "confidence": 0.977691650390625
+    },
+    {
+      "text": "NC",
+      "start_time": 28.42,
+      "end_time": 29.0,
+      "confidence": 0.7854424118995667
+    },
+    {
+      "text": "Museum",
+      "start_time": 29.0,
+      "end_time": 29.32,
+      "confidence": 0.8709287643432617
+    },
+    {
+      "text": "of",
+      "start_time": 29.32,
+      "end_time": 29.56,
+      "confidence": 0.9901044964790344
+    },
+    {
+      "text": "Natural",
+      "start_time": 29.56,
+      "end_time": 29.84,
+      "confidence": 0.7384642362594604
+    },
+    {
+      "text": "Sciences,",
+      "start_time": 29.84,
+      "end_time": 30.32,
+      "confidence": 0.9950075149536133
+    },
+    {
+      "text": "I",
+      "start_time": 30.74,
+      "end_time": 30.98,
+      "confidence": 0.9936137795448303
+    },
+    {
+      "text": "worked",
+      "start_time": 30.98,
+      "end_time": 31.28,
+      "confidence": 0.8331910967826843
+    },
+    {
+      "text": "on",
+      "start_time": 31.28,
+      "end_time": 31.66,
+      "confidence": 0.9959190487861633
+    },
+    {
+      "text": "a",
+      "start_time": 31.66,
+      "end_time": 31.96,
+      "confidence": 0.9811940789222717
+    },
+    {
+      "text": "large",
+      "start_time": 31.96,
+      "end_time": 32.36,
+      "confidence": 0.9907675385475159
+    },
+    {
+      "text": "project,",
+      "start_time": 32.36,
+      "end_time": 32.78,
+      "confidence": 0.990522027015686
+    },
+    {
+      "text": "a",
+      "start_time": 33.36,
+      "end_time": 33.46,
+      "confidence": 0.8909599781036377
+    },
+    {
+      "text": "wildlife",
+      "start_time": 33.46,
+      "end_time": 33.64,
+      "confidence": 0.9626664519309998
+    },
+    {
+      "text": "project",
+      "start_time": 33.64,
+      "end_time": 34.14,
+      "confidence": 0.9982549548149109
+    },
+    {
+      "text": "called",
+      "start_time": 34.14,
+      "end_time": 34.66,
+      "confidence": 0.8983361124992371
+    },
+    {
+      "text": "Snapshot",
+      "start_time": 34.66,
+      "end_time": 35.16,
+      "confidence": 0.6996339162190756
+    },
+    {
+      "text": "USA,",
+      "start_time": 35.16,
+      "end_time": 35.48,
+      "confidence": 0.8661057353019714
+    },
+    {
+      "text": "where",
+      "start_time": 35.94,
+      "end_time": 36.02,
+      "confidence": 0.9907969236373901
+    },
+    {
+      "text": "we",
+      "start_time": 36.02,
+      "end_time": 36.18,
+      "confidence": 0.9975733160972595
+    },
+    {
+      "text": "analyzed",
+      "start_time": 36.18,
+      "end_time": 36.58,
+      "confidence": 0.8593320846557617
+    },
+    {
+      "text": "over",
+      "start_time": 36.58,
+      "end_time": 36.94,
+      "confidence": 0.9922992587089539
+    },
+    {
+      "text": "100k",
+      "start_time": 36.94,
+      "end_time": 37.68,
+      "confidence": 0.5909404158592224
+    },
+    {
+      "text": "camera",
+      "start_time": 37.68,
+      "end_time": 38.74,
+      "confidence": 0.9413506388664246
+    },
+    {
+      "text": "-trap",
+      "start_time": 38.74,
+      "end_time": 39.02,
+      "confidence": 0.47386858860651654
+    },
+    {
+      "text": "images",
+      "start_time": 39.02,
+      "end_time": 39.4,
+      "confidence": 0.9940199851989746
+    },
+    {
+      "text": "per",
+      "start_time": 39.4,
+      "end_time": 39.86,
+      "confidence": 0.999184787273407
+    },
+    {
+      "text": "week",
+      "start_time": 39.86,
+      "end_time": 40.1,
+      "confidence": 0.9994558691978455
+    },
+    {
+      "text": "to",
+      "start_time": 40.1,
+      "end_time": 40.44,
+      "confidence": 0.9779690504074097
+    },
+    {
+      "text": "estimate",
+      "start_time": 40.44,
+      "end_time": 40.92,
+      "confidence": 0.9837020635604858
+    },
+    {
+      "text": "animal",
+      "start_time": 40.92,
+      "end_time": 41.38,
+      "confidence": 0.8411916494369507
+    },
+    {
+      "text": "density.",
+      "start_time": 41.38,
+      "end_time": 41.78,
+      "confidence": 0.998986542224884
+    },
+    {
+      "text": "The",
+      "start_time": 42.6,
+      "end_time": 42.94,
+      "confidence": 0.9871360063552856
+    },
+    {
+      "text": "data",
+      "start_time": 42.94,
+      "end_time": 43.12,
+      "confidence": 0.9882460236549377
+    },
+    {
+      "text": "was",
+      "start_time": 43.12,
+      "end_time": 43.36,
+      "confidence": 0.9985669255256653
+    },
+    {
+      "text": "messy,",
+      "start_time": 43.36,
+      "end_time": 43.7,
+      "confidence": 0.7592850923538208
+    },
+    {
+      "text": "so",
+      "start_time": 43.98,
+      "end_time": 44.18,
+      "confidence": 0.9958797693252563
+    },
+    {
+      "text": "I",
+      "start_time": 44.18,
+      "end_time": 44.3,
+      "confidence": 0.9936254024505615
+    },
+    {
+      "text": "built",
+      "start_time": 44.3,
+      "end_time": 44.54,
+      "confidence": 0.981209933757782
+    },
+    {
+      "text": "a",
+      "start_time": 44.54,
+      "end_time": 44.8,
+      "confidence": 0.993931770324707
+    },
+    {
+      "text": "full",
+      "start_time": 44.8,
+      "end_time": 45.18,
+      "confidence": 0.995407223701477
+    },
+    {
+      "text": "ETL",
+      "start_time": 45.18,
+      "end_time": 45.78,
+      "confidence": 0.8953924775123596
+    },
+    {
+      "text": "pipeline",
+      "start_time": 45.78,
+      "end_time": 46.04,
+      "confidence": 0.9918999671936035
+    },
+    {
+      "text": "in",
+      "start_time": 46.04,
+      "end_time": 46.46,
+      "confidence": 0.9840632677078247
+    },
+    {
+      "text": "Python",
+      "start_time": 46.46,
+      "end_time": 46.82,
+      "confidence": 0.897295355796814
+    },
+    {
+      "text": "to",
+      "start_time": 46.82,
+      "end_time": 47.1,
+      "confidence": 0.9836957454681396
+    },
+    {
+      "text": "automate",
+      "start_time": 47.1,
+      "end_time": 47.48,
+      "confidence": 0.9981667995452881
+    },
+    {
+      "text": "metadata",
+      "start_time": 47.48,
+      "end_time": 47.9,
+      "confidence": 0.6763699054718018
+    },
+    {
+      "text": "extraction,",
+      "start_time": 47.9,
+      "end_time": 48.56,
+      "confidence": 0.9941273927688599
+    },
+    {
+      "text": "filtering",
+      "start_time": 48.56,
+      "end_time": 49.28,
+      "confidence": 0.5506128668785095
+    },
+    {
+      "text": "and",
+      "start_time": 49.28,
+      "end_time": 49.7,
+      "confidence": 0.9417948126792908
+    },
+    {
+      "text": "calibration",
+      "start_time": 49.7,
+      "end_time": 50.34,
+      "confidence": 0.9879701137542725
+    },
+    {
+      "text": "that",
+      "start_time": 50.34,
+      "end_time": 51.4,
+      "confidence": 0.6658640503883362
+    },
+    {
+      "text": "pipeline",
+      "start_time": 51.4,
+      "end_time": 51.8,
+      "confidence": 0.9765890836715698
+    },
+    {
+      "text": "reduced",
+      "start_time": 51.8,
+      "end_time": 52.24,
+      "confidence": 0.7570180892944336
+    },
+    {
+      "text": "overall",
+      "start_time": 52.24,
+      "end_time": 52.72,
+      "confidence": 0.9332962036132812
+    },
+    {
+      "text": "processing",
+      "start_time": 52.72,
+      "end_time": 53.16,
+      "confidence": 0.9915097951889038
+    },
+    {
+      "text": "time",
+      "start_time": 53.16,
+      "end_time": 53.94,
+      "confidence": 0.9466629028320312
+    },
+    {
+      "text": "by",
+      "start_time": 53.94,
+      "end_time": 54.28,
+      "confidence": 0.9942691326141357
+    },
+    {
+      "text": "65%.",
+      "start_time": 54.28,
+      "end_time": 55.66,
+      "confidence": 0.776628702878952
+    },
+    {
+      "text": "Once",
+      "start_time": 55.98,
+      "end_time": 56.36,
+      "confidence": 0.9819814562797546
+    },
+    {
+      "text": "the",
+      "start_time": 56.36,
+      "end_time": 56.5,
+      "confidence": 0.9904562830924988
+    },
+    {
+      "text": "data",
+      "start_time": 56.5,
+      "end_time": 56.64,
+      "confidence": 0.8801266551017761
+    },
+    {
+      "text": "was",
+      "start_time": 56.64,
+      "end_time": 56.88,
+      "confidence": 0.9944314360618591
+    },
+    {
+      "text": "clean,",
+      "start_time": 56.88,
+      "end_time": 57.18,
+      "confidence": 0.8732128143310547
+    },
+    {
+      "text": "I",
+      "start_time": 57.52,
+      "end_time": 57.56,
+      "confidence": 0.9805043339729309
+    },
+    {
+      "text": "trained",
+      "start_time": 57.56,
+      "end_time": 57.94,
+      "confidence": 0.9575307369232178
+    },
+    {
+      "text": "deep",
+      "start_time": 57.94,
+      "end_time": 58.22,
+      "confidence": 0.9674041271209717
+    },
+    {
+      "text": "learning",
+      "start_time": 58.22,
+      "end_time": 58.54,
+      "confidence": 0.9525443911552429
+    },
+    {
+      "text": "models",
+      "start_time": 58.54,
+      "end_time": 59.22,
+      "confidence": 0.9625530242919922
+    },
+    {
+      "text": "like",
+      "start_time": 59.22,
+      "end_time": 59.6,
+      "confidence": 0.8190555572509766
+    },
+    {
+      "text": "InPite",
+      "start_time": 59.6,
+      "end_time": 60.16,
+      "confidence": 0.2930508404970169
+    },
+    {
+      "text": "Torch",
+      "start_time": 60.16,
+      "end_time": 60.48,
+      "confidence": 0.5736531019210815
+    },
+    {
+      "text": "mainly",
+      "start_time": 60.48,
+      "end_time": 61.44,
+      "confidence": 0.785639226436615
+    },
+    {
+      "text": "resonate",
+      "start_time": 61.44,
+      "end_time": 61.88,
+      "confidence": 0.454700767993927
+    },
+    {
+      "text": "for",
+      "start_time": 61.88,
+      "end_time": 62.2,
+      "confidence": 0.8905190229415894
+    },
+    {
+      "text": "filtering",
+      "start_time": 62.2,
+      "end_time": 62.5,
+      "confidence": 0.989797055721283
+    },
+    {
+      "text": "classification",
+      "start_time": 62.5,
+      "end_time": 63.38,
+      "confidence": 0.9860919117927551
+    },
+    {
+      "text": "and",
+      "start_time": 63.38,
+      "end_time": 64.22,
+      "confidence": 0.9361101984977722
+    },
+    {
+      "text": "DPD,",
+      "start_time": 64.22,
+      "end_time": 64.58,
+      "confidence": 0.6258327513933182
+    },
+    {
+      "text": "depth",
+      "start_time": 65.16,
+      "end_time": 65.16,
+      "confidence": 0.8086093664169312
+    },
+    {
+      "text": "prediction",
+      "start_time": 65.16,
+      "end_time": 66.06,
+      "confidence": 0.5387833118438721
+    },
+    {
+      "text": "transformer",
+      "start_time": 66.06,
+      "end_time": 67.3,
+      "confidence": 0.8617331981658936
+    },
+    {
+      "text": "for",
+      "start_time": 67.3,
+      "end_time": 67.92,
+      "confidence": 0.9403202533721924
+    },
+    {
+      "text": "depth",
+      "start_time": 67.92,
+      "end_time": 68.16,
+      "confidence": 0.9974982142448425
+    },
+    {
+      "text": "estimation.",
+      "start_time": 68.16,
+      "end_time": 68.86,
+      "confidence": 0.9914138317108154
+    },
+    {
+      "text": "So",
+      "start_time": 69.24,
+      "end_time": 69.32,
+      "confidence": 0.9324743151664734
+    },
+    {
+      "text": "we",
+      "start_time": 69.32,
+      "end_time": 69.48,
+      "confidence": 0.8158300518989563
+    },
+    {
+      "text": "could",
+      "start_time": 69.48,
+      "end_time": 69.62,
+      "confidence": 0.9909794330596924
+    },
+    {
+      "text": "calculate",
+      "start_time": 69.62,
+      "end_time": 70.04,
+      "confidence": 0.9972623586654663
+    },
+    {
+      "text": "how",
+      "start_time": 70.04,
+      "end_time": 70.44,
+      "confidence": 0.9838283061981201
+    },
+    {
+      "text": "far",
+      "start_time": 70.44,
+      "end_time": 70.8,
+      "confidence": 0.9954654574394226
+    },
+    {
+      "text": "the",
+      "start_time": 70.8,
+      "end_time": 71.06,
+      "confidence": 0.9915438890457153
+    },
+    {
+      "text": "animals",
+      "start_time": 71.06,
+      "end_time": 71.38,
+      "confidence": 0.9897798299789429
+    },
+    {
+      "text": "are",
+      "start_time": 71.38,
+      "end_time": 71.7,
+      "confidence": 0.9958533048629761
+    },
+    {
+      "text": "from",
+      "start_time": 71.7,
+      "end_time": 71.92,
+      "confidence": 0.9938197731971741
+    },
+    {
+      "text": "the",
+      "start_time": 71.92,
+      "end_time": 72.06,
+      "confidence": 0.9914029240608215
+    },
+    {
+      "text": "camera.",
+      "start_time": 72.06,
+      "end_time": 72.4,
+      "confidence": 0.9942288398742676
+    },
+    {
+      "text": "By",
+      "start_time": 72.84,
+      "end_time": 73.2,
+      "confidence": 0.5485642552375793
+    },
+    {
+      "text": "combining",
+      "start_time": 73.2,
+      "end_time": 73.64,
+      "confidence": 0.9874334931373596
+    },
+    {
+      "text": "the",
+      "start_time": 73.64,
+      "end_time": 73.96,
+      "confidence": 0.8557186126708984
+    },
+    {
+      "text": "bounding",
+      "start_time": 73.96,
+      "end_time": 75.12,
+      "confidence": 0.8002016246318817
+    },
+    {
+      "text": "box",
+      "start_time": 75.12,
+      "end_time": 75.26,
+      "confidence": 0.9623438715934753
+    },
+    {
+      "text": "information",
+      "start_time": 75.26,
+      "end_time": 75.9,
+      "confidence": 0.9806175827980042
+    },
+    {
+      "text": "and",
+      "start_time": 75.9,
+      "end_time": 76.4,
+      "confidence": 0.9668828845024109
+    },
+    {
+      "text": "learned",
+      "start_time": 76.4,
+      "end_time": 76.66,
+      "confidence": 0.6248964667320251
+    },
+    {
+      "text": "depth",
+      "start_time": 76.66,
+      "end_time": 77.12,
+      "confidence": 0.9059974551200867
+    },
+    {
+      "text": "maps,",
+      "start_time": 77.12,
+      "end_time": 77.92,
+      "confidence": 0.9319285750389099
+    },
+    {
+      "text": "we",
+      "start_time": 78.38,
+      "end_time": 78.4,
+      "confidence": 0.9448431730270386
+    },
+    {
+      "text": "help",
+      "start_time": 78.4,
+      "end_time": 78.62,
+      "confidence": 0.9519403576850891
+    },
+    {
+      "text": "researchers",
+      "start_time": 78.62,
+      "end_time": 79.22,
+      "confidence": 0.9950395226478577
+    },
+    {
+      "text": "move",
+      "start_time": 79.22,
+      "end_time": 79.6,
+      "confidence": 0.93374103307724
+    },
+    {
+      "text": "from",
+      "start_time": 79.6,
+      "end_time": 79.94,
+      "confidence": 0.9956497550010681
+    },
+    {
+      "text": "just",
+      "start_time": 79.94,
+      "end_time": 80.08,
+      "confidence": 0.4089079797267914
+    },
+    {
+      "text": "prediction",
+      "start_time": 80.08,
+      "end_time": 80.68,
+      "confidence": 0.9694197177886963
+    },
+    {
+      "text": "to",
+      "start_time": 80.68,
+      "end_time": 81.1,
+      "confidence": 0.9853829145431519
+    },
+    {
+      "text": "true",
+      "start_time": 81.1,
+      "end_time": 81.38,
+      "confidence": 0.7608078718185425
+    },
+    {
+      "text": "population",
+      "start_time": 81.38,
+      "end_time": 82.5,
+      "confidence": 0.9744293689727783
+    },
+    {
+      "text": "density",
+      "start_time": 82.5,
+      "end_time": 83.0,
+      "confidence": 0.9921520352363586
+    },
+    {
+      "text": "estimation.",
+      "start_time": 83.0,
+      "end_time": 83.62,
+      "confidence": 0.9919463992118835
+    },
+    {
+      "text": "I",
+      "start_time": 84.2,
+      "end_time": 84.92,
+      "confidence": 0.9604291319847107
+    },
+    {
+      "text": "also",
+      "start_time": 84.92,
+      "end_time": 85.24,
+      "confidence": 0.2005719691514969
+    },
+    {
+      "text": "built",
+      "start_time": 85.24,
+      "end_time": 85.56,
+      "confidence": 0.7642998099327087
+    },
+    {
+      "text": "a",
+      "start_time": 85.56,
+      "end_time": 85.82,
+      "confidence": 0.9909043908119202
+    },
+    {
+      "text": "small",
+      "start_time": 85.82,
+      "end_time": 86.2,
+      "confidence": 0.9883202314376831
+    },
+    {
+      "text": "express",
+      "start_time": 86.2,
+      "end_time": 86.86,
+      "confidence": 0.44290176033973694
+    },
+    {
+      "text": ".js,",
+      "start_time": 86.86,
+      "end_time": 87.48,
+      "confidence": 0.853906124830246
+    },
+    {
+      "text": "the",
+      "start_time": 87.66,
+      "end_time": 87.78,
+      "confidence": 0.8381769061088562
+    },
+    {
+      "text": "portal",
+      "start_time": 87.78,
+      "end_time": 88.12,
+      "confidence": 0.9908978343009949
+    },
+    {
+      "text": "for",
+      "start_time": 88.12,
+      "end_time": 88.44,
+      "confidence": 0.9908464550971985
+    },
+    {
+      "text": "visualization",
+      "start_time": 88.44,
+      "end_time": 89.02,
+      "confidence": 0.9848916530609131
+    },
+    {
+      "text": "and",
+      "start_time": 89.02,
+      "end_time": 89.44,
+      "confidence": 0.8938941955566406
+    },
+    {
+      "text": "content",
+      "start_time": 89.44,
+      "end_time": 89.74,
+      "confidence": 0.34128084778785706
+    },
+    {
+      "text": "-arized",
+      "start_time": 89.74,
+      "end_time": 90.1,
+      "confidence": 0.3785301086803277
+    },
+    {
+      "text": "the",
+      "start_time": 90.1,
+      "end_time": 90.38,
+      "confidence": 0.8388113379478455
+    },
+    {
+      "text": "whole",
+      "start_time": 90.38,
+      "end_time": 90.58,
+      "confidence": 0.9664271473884583
+    },
+    {
+      "text": "workflow",
+      "start_time": 90.58,
+      "end_time": 91.08,
+      "confidence": 0.9942371845245361
+    },
+    {
+      "text": "using",
+      "start_time": 91.08,
+      "end_time": 91.52,
+      "confidence": 0.9584720730781555
+    },
+    {
+      "text": "dog",
+      "start_time": 91.52,
+      "end_time": 91.74,
+      "confidence": 0.14373719692230225
+    },
+    {
+      "text": "codes.",
+      "start_time": 91.74,
+      "end_time": 92.04,
+      "confidence": 0.4114525020122528
+    },
+    {
+      "text": "So",
+      "start_time": 92.48,
+      "end_time": 92.52,
+      "confidence": 0.9613377451896667
+    },
+    {
+      "text": "anyone",
+      "start_time": 92.52,
+      "end_time": 92.76,
+      "confidence": 0.8815024495124817
+    },
+    {
+      "text": "could",
+      "start_time": 92.76,
+      "end_time": 93.42,
+      "confidence": 0.870378315448761
+    },
+    {
+      "text": "use",
+      "start_time": 93.42,
+      "end_time": 93.76,
+      "confidence": 0.9827041029930115
+    },
+    {
+      "text": "the",
+      "start_time": 93.76,
+      "end_time": 93.96,
+      "confidence": 0.9779483079910278
+    },
+    {
+      "text": "lab",
+      "start_time": 93.96,
+      "end_time": 94.28,
+      "confidence": 0.9748099446296692
+    },
+    {
+      "text": "to",
+      "start_time": 94.28,
+      "end_time": 95.66,
+      "confidence": 0.9777611494064331
+    },
+    {
+      "text": "run",
+      "start_time": 95.66,
+      "end_time": 95.82,
+      "confidence": 0.9973579049110413
+    },
+    {
+      "text": "it",
+      "start_time": 95.82,
+      "end_time": 95.98,
+      "confidence": 0.9917801022529602
+    },
+    {
+      "text": "easily.",
+      "start_time": 95.98,
+      "end_time": 96.32,
+      "confidence": 0.9291872978210449
+    },
+    {
+      "text": "Before",
+      "start_time": 97.22,
+      "end_time": 97.98,
+      "confidence": 0.22419746220111847
+    },
+    {
+      "text": "that,",
+      "start_time": 97.98,
+      "end_time": 98.36,
+      "confidence": 0.9842448830604553
+    },
+    {
+      "text": "I",
+      "start_time": 98.58,
+      "end_time": 98.66,
+      "confidence": 0.9861867427825928
+    },
+    {
+      "text": "worked",
+      "start_time": 98.66,
+      "end_time": 98.92,
+      "confidence": 0.6754191517829895
+    },
+    {
+      "text": "as",
+      "start_time": 98.92,
+      "end_time": 99.28,
+      "confidence": 0.9852563738822937
+    },
+    {
+      "text": "a",
+      "start_time": 99.28,
+      "end_time": 99.44,
+      "confidence": 0.9804961085319519
+    },
+    {
+      "text": "machine",
+      "start_time": 99.44,
+      "end_time": 99.68,
+      "confidence": 0.810703456401825
+    },
+    {
+      "text": "learning",
+      "start_time": 99.68,
+      "end_time": 100.02,
+      "confidence": 0.8441228270530701
+    },
+    {
+      "text": "engineer",
+      "start_time": 100.02,
+      "end_time": 100.48,
+      "confidence": 0.9710104465484619
+    },
+    {
+      "text": "in",
+      "start_time": 100.48,
+      "end_time": 100.98,
+      "confidence": 0.9748466610908508
+    },
+    {
+      "text": "the",
+      "start_time": 100.98,
+      "end_time": 101.08,
+      "confidence": 0.9449290037155151
+    },
+    {
+      "text": "mechanical",
+      "start_time": 101.08,
+      "end_time": 101.38,
+      "confidence": 0.8460657000541687
+    },
+    {
+      "text": "and",
+      "start_time": 101.38,
+      "end_time": 101.98,
+      "confidence": 0.9772042036056519
+    },
+    {
+      "text": "aerospace",
+      "start_time": 101.98,
+      "end_time": 102.34,
+      "confidence": 0.9919264316558838
+    },
+    {
+      "text": "department",
+      "start_time": 102.34,
+      "end_time": 103.06,
+      "confidence": 0.9750809669494629
+    },
+    {
+      "text": "of",
+      "start_time": 103.48,
+      "end_time": 103.86,
+      "confidence": 0.9426628947257996
+    },
+    {
+      "text": "our",
+      "start_time": 103.86,
+      "end_time": 104.04,
+      "confidence": 0.758327841758728
+    },
+    {
+      "text": "university,",
+      "start_time": 104.04,
+      "end_time": 104.68,
+      "confidence": 0.8188842535018921
+    },
+    {
+      "text": "where",
+      "start_time": 104.8,
+      "end_time": 105.22,
+      "confidence": 0.9747817516326904
+    },
+    {
+      "text": "we",
+      "start_time": 105.22,
+      "end_time": 105.72,
+      "confidence": 0.9905343055725098
+    },
+    {
+      "text": "studied",
+      "start_time": 105.72,
+      "end_time": 106.1,
+      "confidence": 0.9966705441474915
+    },
+    {
+      "text": "thermal",
+      "start_time": 106.1,
+      "end_time": 106.54,
+      "confidence": 0.9383298754692078
+    },
+    {
+      "text": "conductivity",
+      "start_time": 106.54,
+      "end_time": 107.12,
+      "confidence": 0.9931938052177429
+    },
+    {
+      "text": "of",
+      "start_time": 107.12,
+      "end_time": 107.6,
+      "confidence": 0.9935247898101807
+    },
+    {
+      "text": "new",
+      "start_time": 107.6,
+      "end_time": 107.78,
+      "confidence": 0.9912030696868896
+    },
+    {
+      "text": "materials.",
+      "start_time": 107.78,
+      "end_time": 108.34,
+      "confidence": 0.9916312098503113
+    },
+    {
+      "text": "I",
+      "start_time": 109.02,
+      "end_time": 109.36,
+      "confidence": 0.9902331829071045
+    },
+    {
+      "text": "built",
+      "start_time": 109.36,
+      "end_time": 109.58,
+      "confidence": 0.9275771379470825
+    },
+    {
+      "text": "end",
+      "start_time": 109.58,
+      "end_time": 110.0,
+      "confidence": 0.5784372687339783
+    },
+    {
+      "text": "-to",
+      "start_time": 110.0,
+      "end_time": 110.12,
+      "confidence": 0.7030963450670242
+    },
+    {
+      "text": "-end",
+      "start_time": 110.12,
+      "end_time": 110.32,
+      "confidence": 0.9968551099300385
+    },
+    {
+      "text": "machine",
+      "start_time": 110.32,
+      "end_time": 110.7,
+      "confidence": 0.941665530204773
+    },
+    {
+      "text": "learning",
+      "start_time": 110.7,
+      "end_time": 111.1,
+      "confidence": 0.8988915681838989
+    },
+    {
+      "text": "workflows",
+      "start_time": 111.1,
+      "end_time": 111.5,
+      "confidence": 0.9802911281585693
+    },
+    {
+      "text": "in",
+      "start_time": 111.5,
+      "end_time": 111.84,
+      "confidence": 0.9923338890075684
+    },
+    {
+      "text": "Python,",
+      "start_time": 111.84,
+      "end_time": 112.14,
+      "confidence": 0.9371544122695923
+    },
+    {
+      "text": "applying",
+      "start_time": 112.68,
+      "end_time": 113.5,
+      "confidence": 0.986708402633667
+    },
+    {
+      "text": "models",
+      "start_time": 113.5,
+      "end_time": 114.42,
+      "confidence": 0.9784380197525024
+    },
+    {
+      "text": "like",
+      "start_time": 114.42,
+      "end_time": 114.98,
+      "confidence": 0.9823020696640015
+    },
+    {
+      "text": "linear",
+      "start_time": 114.98,
+      "end_time": 115.48,
+      "confidence": 0.9179092049598694
+    },
+    {
+      "text": "regression,",
+      "start_time": 115.48,
+      "end_time": 116.0,
+      "confidence": 0.9976198077201843
+    },
+    {
+      "text": "random",
+      "start_time": 116.28,
+      "end_time": 116.44,
+      "confidence": 0.9963082671165466
+    },
+    {
+      "text": "forest",
+      "start_time": 116.44,
+      "end_time": 116.72,
+      "confidence": 0.8995309472084045
+    },
+    {
+      "text": "and",
+      "start_time": 116.72,
+      "end_time": 117.12,
+      "confidence": 0.6136584281921387
+    },
+    {
+      "text": "XG",
+      "start_time": 117.12,
+      "end_time": 117.42,
+      "confidence": 0.6479058563709259
+    },
+    {
+      "text": "boost",
+      "start_time": 117.42,
+      "end_time": 117.68,
+      "confidence": 0.7110296487808228
+    },
+    {
+      "text": "and",
+      "start_time": 117.68,
+      "end_time": 118.62,
+      "confidence": 0.39675241708755493
+    },
+    {
+      "text": "compare",
+      "start_time": 118.62,
+      "end_time": 119.32,
+      "confidence": 0.8925151228904724
+    },
+    {
+      "text": "all",
+      "start_time": 119.32,
+      "end_time": 119.54,
+      "confidence": 0.9856588244438171
+    },
+    {
+      "text": "of",
+      "start_time": 119.54,
+      "end_time": 119.64,
+      "confidence": 0.9939431548118591
+    },
+    {
+      "text": "them",
+      "start_time": 119.64,
+      "end_time": 119.82,
+      "confidence": 0.9963655471801758
+    },
+    {
+      "text": "to",
+      "start_time": 119.82,
+      "end_time": 119.98,
+      "confidence": 0.9930190443992615
+    },
+    {
+      "text": "predict",
+      "start_time": 119.98,
+      "end_time": 120.26,
+      "confidence": 0.8964396715164185
+    },
+    {
+      "text": "conductivity",
+      "start_time": 120.26,
+      "end_time": 121.52,
+      "confidence": 0.991422712802887
+    },
+    {
+      "text": "patterns.",
+      "start_time": 121.52,
+      "end_time": 121.98,
+      "confidence": 0.9812865853309631
+    },
+    {
+      "text": "I",
+      "start_time": 122.92,
+      "end_time": 123.26,
+      "confidence": 0.27943968772888184
+    },
+    {
+      "text": "used",
+      "start_time": 123.26,
+      "end_time": 123.64,
+      "confidence": 0.8724938035011292
+    },
+    {
+      "text": "Cura",
+      "start_time": 123.64,
+      "end_time": 123.92,
+      "confidence": 0.36622563749551773
+    },
+    {
+      "text": "-based",
+      "start_time": 123.92,
+      "end_time": 124.28,
+      "confidence": 0.7712855339050293
+    },
+    {
+      "text": "GPU",
+      "start_time": 124.28,
+      "end_time": 124.62,
+      "confidence": 0.7588298320770264
+    },
+    {
+      "text": "acceleration",
+      "start_time": 124.62,
+      "end_time": 125.1,
+      "confidence": 0.8687477111816406
+    },
+    {
+      "text": "to",
+      "start_time": 125.1,
+      "end_time": 125.56,
+      "confidence": 0.9628925323486328
+    },
+    {
+      "text": "speed",
+      "start_time": 125.56,
+      "end_time": 125.82,
+      "confidence": 0.997086226940155
+    },
+    {
+      "text": "up",
+      "start_time": 125.82,
+      "end_time": 126.0,
+      "confidence": 0.9738744497299194
+    },
+    {
+      "text": "the",
+      "start_time": 126.0,
+      "end_time": 126.18,
+      "confidence": 0.9515241980552673
+    },
+    {
+      "text": "large",
+      "start_time": 126.18,
+      "end_time": 126.48,
+      "confidence": 0.9677916765213013
+    },
+    {
+      "text": "scale",
+      "start_time": 126.48,
+      "end_time": 126.86,
+      "confidence": 0.675147533416748
+    },
+    {
+      "text": "regression",
+      "start_time": 126.86,
+      "end_time": 127.44,
+      "confidence": 0.9913499355316162
+    },
+    {
+      "text": "experiments",
+      "start_time": 127.44,
+      "end_time": 128.28,
+      "confidence": 0.7706809639930725
+    },
+    {
+      "text": "as",
+      "start_time": 128.28,
+      "end_time": 128.54,
+      "confidence": 0.8765073418617249
+    },
+    {
+      "text": "well.",
+      "start_time": 128.54,
+      "end_time": 128.8,
+      "confidence": 0.986714780330658
+    },
+    {
+      "text": "Across",
+      "start_time": 129.86,
+      "end_time": 130.34,
+      "confidence": 0.8618394136428833
+    },
+    {
+      "text": "everything",
+      "start_time": 130.34,
+      "end_time": 130.98,
+      "confidence": 0.972812294960022
+    },
+    {
+      "text": "that",
+      "start_time": 130.98,
+      "end_time": 131.2,
+      "confidence": 0.8896649479866028
+    },
+    {
+      "text": "I've",
+      "start_time": 131.2,
+      "end_time": 131.52,
+      "confidence": 0.8791263401508331
+    },
+    {
+      "text": "worked",
+      "start_time": 131.52,
+      "end_time": 131.78,
+      "confidence": 0.9620368480682373
+    },
+    {
+      "text": "on,",
+      "start_time": 131.78,
+      "end_time": 132.08,
+      "confidence": 0.9959035515785217
+    },
+    {
+      "text": "I've",
+      "start_time": 132.62,
+      "end_time": 132.74,
+      "confidence": 0.9230848252773285
+    },
+    {
+      "text": "realized",
+      "start_time": 132.74,
+      "end_time": 133.06,
+      "confidence": 0.7086409330368042
+    },
+    {
+      "text": "that",
+      "start_time": 133.06,
+      "end_time": 133.44,
+      "confidence": 0.98183673620224
+    },
+    {
+      "text": "machine",
+      "start_time": 133.44,
+      "end_time": 133.76,
+      "confidence": 0.9292834401130676
+    },
+    {
+      "text": "learning",
+      "start_time": 133.76,
+      "end_time": 134.18,
+      "confidence": 0.9471298456192017
+    },
+    {
+      "text": "only",
+      "start_time": 134.18,
+      "end_time": 134.5,
+      "confidence": 0.9936621189117432
+    },
+    {
+      "text": "reaches",
+      "start_time": 134.5,
+      "end_time": 134.88,
+      "confidence": 0.9854620695114136
+    },
+    {
+      "text": "its",
+      "start_time": 134.88,
+      "end_time": 135.22,
+      "confidence": 0.9498132467269897
+    },
+    {
+      "text": "full",
+      "start_time": 135.22,
+      "end_time": 135.46,
+      "confidence": 0.9971873164176941
+    },
+    {
+      "text": "potential",
+      "start_time": 135.46,
+      "end_time": 135.96,
+      "confidence": 0.9989489912986755
+    },
+    {
+      "text": "when",
+      "start_time": 135.96,
+      "end_time": 136.26,
+      "confidence": 0.9649387001991272
+    },
+    {
+      "text": "you",
+      "start_time": 136.26,
+      "end_time": 136.4,
+      "confidence": 0.9910434484481812
+    },
+    {
+      "text": "truly",
+      "start_time": 136.4,
+      "end_time": 136.94,
+      "confidence": 0.9955829977989197
+    },
+    {
+      "text": "understand",
+      "start_time": 136.94,
+      "end_time": 137.42,
+      "confidence": 0.9962456822395325
+    },
+    {
+      "text": "the",
+      "start_time": 137.42,
+      "end_time": 137.66,
+      "confidence": 0.9855420589447021
+    },
+    {
+      "text": "domain",
+      "start_time": 137.66,
+      "end_time": 137.86,
+      "confidence": 0.9990105628967285
+    },
+    {
+      "text": "behind",
+      "start_time": 137.86,
+      "end_time": 138.26,
+      "confidence": 0.9970908164978027
+    },
+    {
+      "text": "it.",
+      "start_time": 138.26,
+      "end_time": 138.66,
+      "confidence": 0.992711067199707
+    },
+    {
+      "text": "That's",
+      "start_time": 139.14,
+      "end_time": 139.52,
+      "confidence": 0.9861736595630646
+    },
+    {
+      "text": "why",
+      "start_time": 139.52,
+      "end_time": 139.64,
+      "confidence": 0.9986379742622375
+    },
+    {
+      "text": "I",
+      "start_time": 139.64,
+      "end_time": 139.88,
+      "confidence": 0.984002411365509
+    },
+    {
+      "text": "always",
+      "start_time": 139.88,
+      "end_time": 140.2,
+      "confidence": 0.9929150342941284
+    },
+    {
+      "text": "take",
+      "start_time": 140.2,
+      "end_time": 140.44,
+      "confidence": 0.49329206347465515
+    },
+    {
+      "text": "the",
+      "start_time": 140.44,
+      "end_time": 140.6,
+      "confidence": 0.9724743962287903
+    },
+    {
+      "text": "time",
+      "start_time": 140.6,
+      "end_time": 140.88,
+      "confidence": 0.9980859756469727
+    },
+    {
+      "text": "to",
+      "start_time": 140.88,
+      "end_time": 141.06,
+      "confidence": 0.9984353184700012
+    },
+    {
+      "text": "learn",
+      "start_time": 141.06,
+      "end_time": 141.28,
+      "confidence": 0.9939129948616028
+    },
+    {
+      "text": "whether",
+      "start_time": 141.28,
+      "end_time": 141.66,
+      "confidence": 0.8736165165901184
+    },
+    {
+      "text": "it's",
+      "start_time": 141.66,
+      "end_time": 141.94,
+      "confidence": 0.9790638387203217
+    },
+    {
+      "text": "how",
+      "start_time": 141.94,
+      "end_time": 142.1,
+      "confidence": 0.9968323111534119
+    },
+    {
+      "text": "animal",
+      "start_time": 142.1,
+      "end_time": 142.44,
+      "confidence": 0.8553729057312012
+    },
+    {
+      "text": "behavior",
+      "start_time": 142.44,
+      "end_time": 142.9,
+      "confidence": 0.5286392569541931
+    },
+    {
+      "text": "data",
+      "start_time": 142.9,
+      "end_time": 143.24,
+      "confidence": 0.9604212045669556
+    },
+    {
+      "text": "is",
+      "start_time": 143.24,
+      "end_time": 143.5,
+      "confidence": 0.9974049925804138
+    },
+    {
+      "text": "collected",
+      "start_time": 143.5,
+      "end_time": 143.88,
+      "confidence": 0.9967071413993835
+    },
+    {
+      "text": "or",
+      "start_time": 143.88,
+      "end_time": 144.52,
+      "confidence": 0.8253741264343262
+    },
+    {
+      "text": "how",
+      "start_time": 144.52,
+      "end_time": 144.76,
+      "confidence": 0.9943587183952332
+    },
+    {
+      "text": "material",
+      "start_time": 144.76,
+      "end_time": 145.14,
+      "confidence": 0.9453254342079163
+    },
+    {
+      "text": "behaves",
+      "start_time": 145.14,
+      "end_time": 145.54,
+      "confidence": 0.9429875612258911
+    },
+    {
+      "text": "under",
+      "start_time": 145.54,
+      "end_time": 145.88,
+      "confidence": 0.954572856426239
+    },
+    {
+      "text": "heat.",
+      "start_time": 145.88,
+      "end_time": 146.12,
+      "confidence": 0.9798691868782043
+    },
+    {
+      "text": "I",
+      "start_time": 146.94,
+      "end_time": 147.24,
+      "confidence": 0.7034568786621094
+    },
+    {
+      "text": "adapt",
+      "start_time": 147.24,
+      "end_time": 147.64,
+      "confidence": 0.8815180659294128
+    },
+    {
+      "text": "quickly",
+      "start_time": 147.64,
+      "end_time": 148.14,
+      "confidence": 0.989476203918457
+    },
+    {
+      "text": "and",
+      "start_time": 148.14,
+      "end_time": 149.0,
+      "confidence": 0.7506285905838013
+    },
+    {
+      "text": "I",
+      "start_time": 149.0,
+      "end_time": 149.24,
+      "confidence": 0.9812740683555603
+    },
+    {
+      "text": "pour",
+      "start_time": 149.24,
+      "end_time": 149.46,
+      "confidence": 0.7084362506866455
+    },
+    {
+      "text": "my",
+      "start_time": 149.46,
+      "end_time": 149.7,
+      "confidence": 0.9970793724060059
+    },
+    {
+      "text": "heart",
+      "start_time": 149.7,
+      "end_time": 149.94,
+      "confidence": 0.9450579881668091
+    },
+    {
+      "text": "into",
+      "start_time": 149.94,
+      "end_time": 150.24,
+      "confidence": 0.96979159116745
+    },
+    {
+      "text": "understanding",
+      "start_time": 150.24,
+      "end_time": 151.14,
+      "confidence": 0.46238815784454346
+    },
+    {
+      "text": "the",
+      "start_time": 151.14,
+      "end_time": 151.6,
+      "confidence": 0.9942195415496826
+    },
+    {
+      "text": "science",
+      "start_time": 151.6,
+      "end_time": 151.86,
+      "confidence": 0.8542128801345825
+    },
+    {
+      "text": "or",
+      "start_time": 151.86,
+      "end_time": 152.06,
+      "confidence": 0.5411404967308044
+    },
+    {
+      "text": "the",
+      "start_time": 152.06,
+      "end_time": 152.2,
+      "confidence": 0.9872926473617554
+    },
+    {
+      "text": "system",
+      "start_time": 152.2,
+      "end_time": 152.52,
+      "confidence": 0.9886976480484009
+    },
+    {
+      "text": "behind",
+      "start_time": 152.52,
+      "end_time": 152.88,
+      "confidence": 0.9964607357978821
+    },
+    {
+      "text": "the",
+      "start_time": 152.88,
+      "end_time": 153.08,
+      "confidence": 0.9706099629402161
+    },
+    {
+      "text": "data",
+      "start_time": 153.08,
+      "end_time": 153.26,
+      "confidence": 0.9916650652885437
+    },
+    {
+      "text": "because",
+      "start_time": 153.26,
+      "end_time": 154.06,
+      "confidence": 0.6897938847541809
+    },
+    {
+      "text": "that's",
+      "start_time": 154.06,
+      "end_time": 154.48,
+      "confidence": 0.9887407124042511
+    },
+    {
+      "text": "what",
+      "start_time": 154.48,
+      "end_time": 154.6,
+      "confidence": 0.9983988404273987
+    },
+    {
+      "text": "makes",
+      "start_time": 154.6,
+      "end_time": 154.92,
+      "confidence": 0.9952073693275452
+    },
+    {
+      "text": "the",
+      "start_time": 154.92,
+      "end_time": 155.26,
+      "confidence": 0.9932142496109009
+    },
+    {
+      "text": "model",
+      "start_time": 155.26,
+      "end_time": 155.8,
+      "confidence": 0.9877089262008667
+    },
+    {
+      "text": "more",
+      "start_time": 155.8,
+      "end_time": 156.04,
+      "confidence": 0.9970561265945435
+    },
+    {
+      "text": "meaningful.",
+      "start_time": 156.04,
+      "end_time": 156.44,
+      "confidence": 0.9967459440231323
+    },
+    {
+      "text": "I",
+      "start_time": 157.2,
+      "end_time": 157.5,
+      "confidence": 0.9929371476173401
+    },
+    {
+      "text": "would",
+      "start_time": 157.5,
+      "end_time": 157.7,
+      "confidence": 0.995595395565033
+    },
+    {
+      "text": "love",
+      "start_time": 157.7,
+      "end_time": 157.98,
+      "confidence": 0.9964184761047363
+    },
+    {
+      "text": "to",
+      "start_time": 157.98,
+      "end_time": 158.28,
+      "confidence": 0.9990605711936951
+    },
+    {
+      "text": "bring",
+      "start_time": 158.28,
+      "end_time": 158.68,
+      "confidence": 0.9930583238601685
+    },
+    {
+      "text": "that",
+      "start_time": 158.68,
+      "end_time": 158.92,
+      "confidence": 0.9931880235671997
+    },
+    {
+      "text": "same",
+      "start_time": 158.92,
+      "end_time": 159.28,
+      "confidence": 0.6177506446838379
+    },
+    {
+      "text": "mindset",
+      "start_time": 159.28,
+      "end_time": 159.66,
+      "confidence": 0.9993075132369995
+    },
+    {
+      "text": "to",
+      "start_time": 159.66,
+      "end_time": 159.92,
+      "confidence": 0.9918056726455688
+    },
+    {
+      "text": "a",
+      "start_time": 159.92,
+      "end_time": 160.02,
+      "confidence": 0.9819667339324951
+    },
+    {
+      "text": "team",
+      "start_time": 160.02,
+      "end_time": 160.24,
+      "confidence": 0.997545063495636
+    },
+    {
+      "text": "that's",
+      "start_time": 160.24,
+      "end_time": 160.66,
+      "confidence": 0.9298151433467865
+    },
+    {
+      "text": "building",
+      "start_time": 160.66,
+      "end_time": 160.9,
+      "confidence": 0.9973656535148621
+    },
+    {
+      "text": "real",
+      "start_time": 160.9,
+      "end_time": 161.26,
+      "confidence": 0.7733138203620911
+    },
+    {
+      "text": "AI",
+      "start_time": 161.26,
+      "end_time": 161.52,
+      "confidence": 0.7585282325744629
+    },
+    {
+      "text": "products.",
+      "start_time": 161.52,
+      "end_time": 162.06,
+      "confidence": 0.9957720637321472
+    },
+    {
+      "text": "Thank",
+      "start_time": 162.64,
+      "end_time": 162.88,
+      "confidence": 0.9919488430023193
+    },
+    {
+      "text": "you",
+      "start_time": 162.88,
+      "end_time": 163.02,
+      "confidence": 0.993569016456604
+    },
+    {
+      "text": "for",
+      "start_time": 163.02,
+      "end_time": 163.18,
+      "confidence": 0.9952451586723328
+    },
+    {
+      "text": "listening.",
+      "start_time": 163.18,
+      "end_time": 163.54,
+      "confidence": 0.9981755018234253
+    }
+  ],
+  "speaker_segments": [
+    {
+      "speaker_id": "SPEAKER_00",
+      "start_time": 0.0,
+      "end_time": 165.719375
+    }
+  ],
+  "aligned_segments": [
+    {
+      "speaker_id": "SPEAKER_00",
+      "text": "Hello, I am Lagni Patel and I recently graduated with Masters of Computer Science from North Carolina State University. Over the past few years I have worked as both data scientist and machine learning engineer and somewhere along the way I realized that what I really love is using AI for real domain specific work, solving problems that actually matter to people and not just running the models for the sake of it. As a data scientist at the NC Museum of Natural Sciences, I worked on a large project, a wildlife project called Snapshot USA, where we analyzed over 100k camera -trap images per week to estimate animal density. The data was messy, so I built a full ETL pipeline in Python to automate metadata extraction, filtering and calibration that pipeline reduced overall processing time by 65%. Once the data was clean, I trained deep learning models like InPite Torch mainly resonate for filtering classification and DPD,",
+      "start_time": 0.0,
+      "end_time": 64.58,
+      "words": [
+        {
+          "text": "Hello,",
+          "start_time": 0.0,
+          "end_time": 0.86,
+          "confidence": 0.5705907940864563
+        },
+        {
+          "text": "I",
+          "start_time": 1.16,
+          "end_time": 1.38,
+          "confidence": 0.9765682220458984
+        },
+        {
+          "text": "am",
+          "start_time": 1.38,
+          "end_time": 1.54,
+          "confidence": 0.7299365997314453
+        },
+        {
+          "text": "Lagni",
+          "start_time": 1.54,
+          "end_time": 1.8,
+          "confidence": 0.5320080369710922
+        },
+        {
+          "text": "Patel",
+          "start_time": 1.8,
+          "end_time": 2.1,
+          "confidence": 0.8491292297840118
+        },
+        {
+          "text": "and",
+          "start_time": 2.1,
+          "end_time": 2.46,
+          "confidence": 0.7977855205535889
+        },
+        {
+          "text": "I",
+          "start_time": 2.46,
+          "end_time": 2.56,
+          "confidence": 0.9765030145645142
+        },
+        {
+          "text": "recently",
+          "start_time": 2.56,
+          "end_time": 2.9,
+          "confidence": 0.9759652614593506
+        },
+        {
+          "text": "graduated",
+          "start_time": 2.9,
+          "end_time": 3.44,
+          "confidence": 0.9972677230834961
+        },
+        {
+          "text": "with",
+          "start_time": 3.44,
+          "end_time": 3.78,
+          "confidence": 0.9720708727836609
+        },
+        {
+          "text": "Masters",
+          "start_time": 3.78,
+          "end_time": 4.14,
+          "confidence": 0.5364590883255005
+        },
+        {
+          "text": "of",
+          "start_time": 4.14,
+          "end_time": 4.4,
+          "confidence": 0.9773285984992981
+        },
+        {
+          "text": "Computer",
+          "start_time": 4.4,
+          "end_time": 4.64,
+          "confidence": 0.9251616597175598
+        },
+        {
+          "text": "Science",
+          "start_time": 4.64,
+          "end_time": 4.98,
+          "confidence": 0.9871312975883484
+        },
+        {
+          "text": "from",
+          "start_time": 4.98,
+          "end_time": 5.52,
+          "confidence": 0.9644474983215332
+        },
+        {
+          "text": "North",
+          "start_time": 5.52,
+          "end_time": 5.84,
+          "confidence": 0.9836230874061584
+        },
+        {
+          "text": "Carolina",
+          "start_time": 5.84,
+          "end_time": 6.06,
+          "confidence": 0.3790108263492584
+        },
+        {
+          "text": "State",
+          "start_time": 6.06,
+          "end_time": 6.5,
+          "confidence": 0.967850923538208
+        },
+        {
+          "text": "University.",
+          "start_time": 6.5,
+          "end_time": 7.08,
+          "confidence": 0.9961342811584473
+        },
+        {
+          "text": "Over",
+          "start_time": 8.36,
+          "end_time": 8.64,
+          "confidence": 0.9492875337600708
+        },
+        {
+          "text": "the",
+          "start_time": 8.64,
+          "end_time": 8.8,
+          "confidence": 0.9973549842834473
+        },
+        {
+          "text": "past",
+          "start_time": 8.8,
+          "end_time": 9.04,
+          "confidence": 0.9962639212608337
+        },
+        {
+          "text": "few",
+          "start_time": 9.04,
+          "end_time": 9.32,
+          "confidence": 0.9941155910491943
+        },
+        {
+          "text": "years",
+          "start_time": 9.32,
+          "end_time": 9.62,
+          "confidence": 0.9864670634269714
+        },
+        {
+          "text": "I",
+          "start_time": 9.62,
+          "end_time": 9.9,
+          "confidence": 0.49329185485839844
+        },
+        {
+          "text": "have",
+          "start_time": 9.9,
+          "end_time": 10.04,
+          "confidence": 0.40837186574935913
+        },
+        {
+          "text": "worked",
+          "start_time": 10.04,
+          "end_time": 10.3,
+          "confidence": 0.9835312366485596
+        },
+        {
+          "text": "as",
+          "start_time": 10.3,
+          "end_time": 10.46,
+          "confidence": 0.9842687845230103
+        },
+        {
+          "text": "both",
+          "start_time": 10.46,
+          "end_time": 10.72,
+          "confidence": 0.9342529773712158
+        },
+        {
+          "text": "data",
+          "start_time": 10.72,
+          "end_time": 11.18,
+          "confidence": 0.4736339747905731
+        },
+        {
+          "text": "scientist",
+          "start_time": 11.18,
+          "end_time": 11.62,
+          "confidence": 0.9451045393943787
+        },
+        {
+          "text": "and",
+          "start_time": 11.62,
+          "end_time": 12.0,
+          "confidence": 0.9862480759620667
+        },
+        {
+          "text": "machine",
+          "start_time": 12.0,
+          "end_time": 12.28,
+          "confidence": 0.5498790740966797
+        },
+        {
+          "text": "learning",
+          "start_time": 12.28,
+          "end_time": 12.66,
+          "confidence": 0.8943577408790588
+        },
+        {
+          "text": "engineer",
+          "start_time": 12.66,
+          "end_time": 13.12,
+          "confidence": 0.931353747844696
+        },
+        {
+          "text": "and",
+          "start_time": 13.12,
+          "end_time": 13.74,
+          "confidence": 0.5319709777832031
+        },
+        {
+          "text": "somewhere",
+          "start_time": 13.74,
+          "end_time": 14.08,
+          "confidence": 0.8566530346870422
+        },
+        {
+          "text": "along",
+          "start_time": 14.08,
+          "end_time": 14.36,
+          "confidence": 0.9976220726966858
+        },
+        {
+          "text": "the",
+          "start_time": 14.36,
+          "end_time": 14.54,
+          "confidence": 0.9934099316596985
+        },
+        {
+          "text": "way",
+          "start_time": 14.54,
+          "end_time": 14.72,
+          "confidence": 0.9916505217552185
+        },
+        {
+          "text": "I",
+          "start_time": 14.72,
+          "end_time": 14.98,
+          "confidence": 0.8870522975921631
+        },
+        {
+          "text": "realized",
+          "start_time": 14.98,
+          "end_time": 15.32,
+          "confidence": 0.5778778791427612
+        },
+        {
+          "text": "that",
+          "start_time": 15.32,
+          "end_time": 15.78,
+          "confidence": 0.9520812630653381
+        },
+        {
+          "text": "what",
+          "start_time": 15.78,
+          "end_time": 16.12,
+          "confidence": 0.969008207321167
+        },
+        {
+          "text": "I",
+          "start_time": 16.12,
+          "end_time": 16.3,
+          "confidence": 0.9965992569923401
+        },
+        {
+          "text": "really",
+          "start_time": 16.3,
+          "end_time": 16.52,
+          "confidence": 0.9610823392868042
+        },
+        {
+          "text": "love",
+          "start_time": 16.52,
+          "end_time": 16.82,
+          "confidence": 0.9692942500114441
+        },
+        {
+          "text": "is",
+          "start_time": 16.82,
+          "end_time": 17.1,
+          "confidence": 0.9684494137763977
+        },
+        {
+          "text": "using",
+          "start_time": 17.1,
+          "end_time": 17.54,
+          "confidence": 0.9749042987823486
+        },
+        {
+          "text": "AI",
+          "start_time": 17.54,
+          "end_time": 18.0,
+          "confidence": 0.561025083065033
+        },
+        {
+          "text": "for",
+          "start_time": 18.0,
+          "end_time": 18.28,
+          "confidence": 0.9821897745132446
+        },
+        {
+          "text": "real",
+          "start_time": 18.28,
+          "end_time": 18.68,
+          "confidence": 0.9753433465957642
+        },
+        {
+          "text": "domain",
+          "start_time": 18.68,
+          "end_time": 19.26,
+          "confidence": 0.9362019300460815
+        },
+        {
+          "text": "specific",
+          "start_time": 19.26,
+          "end_time": 19.76,
+          "confidence": 0.6619229912757874
+        },
+        {
+          "text": "work,",
+          "start_time": 19.76,
+          "end_time": 20.3,
+          "confidence": 0.985758900642395
+        },
+        {
+          "text": "solving",
+          "start_time": 20.54,
+          "end_time": 20.9,
+          "confidence": 0.9027168154716492
+        },
+        {
+          "text": "problems",
+          "start_time": 20.9,
+          "end_time": 21.38,
+          "confidence": 0.9872345328330994
+        },
+        {
+          "text": "that",
+          "start_time": 21.38,
+          "end_time": 21.6,
+          "confidence": 0.9945297837257385
+        },
+        {
+          "text": "actually",
+          "start_time": 21.6,
+          "end_time": 22.04,
+          "confidence": 0.9662864208221436
+        },
+        {
+          "text": "matter",
+          "start_time": 22.04,
+          "end_time": 22.28,
+          "confidence": 0.9858493804931641
+        },
+        {
+          "text": "to",
+          "start_time": 22.28,
+          "end_time": 22.48,
+          "confidence": 0.9966616630554199
+        },
+        {
+          "text": "people",
+          "start_time": 22.48,
+          "end_time": 22.86,
+          "confidence": 0.9929832220077515
+        },
+        {
+          "text": "and",
+          "start_time": 22.86,
+          "end_time": 23.1,
+          "confidence": 0.84727543592453
+        },
+        {
+          "text": "not",
+          "start_time": 23.1,
+          "end_time": 23.26,
+          "confidence": 0.9920692443847656
+        },
+        {
+          "text": "just",
+          "start_time": 23.26,
+          "end_time": 23.52,
+          "confidence": 0.9933711290359497
+        },
+        {
+          "text": "running",
+          "start_time": 23.52,
+          "end_time": 23.78,
+          "confidence": 0.9917185306549072
+        },
+        {
+          "text": "the",
+          "start_time": 23.78,
+          "end_time": 23.96,
+          "confidence": 0.9797725677490234
+        },
+        {
+          "text": "models",
+          "start_time": 23.96,
+          "end_time": 24.22,
+          "confidence": 0.4125599265098572
+        },
+        {
+          "text": "for",
+          "start_time": 24.22,
+          "end_time": 24.38,
+          "confidence": 0.958341121673584
+        },
+        {
+          "text": "the",
+          "start_time": 24.38,
+          "end_time": 24.54,
+          "confidence": 0.9306854009628296
+        },
+        {
+          "text": "sake",
+          "start_time": 24.54,
+          "end_time": 24.68,
+          "confidence": 0.9255971908569336
+        },
+        {
+          "text": "of",
+          "start_time": 24.68,
+          "end_time": 24.9,
+          "confidence": 0.9824710488319397
+        },
+        {
+          "text": "it.",
+          "start_time": 24.9,
+          "end_time": 25.12,
+          "confidence": 0.951488196849823
+        },
+        {
+          "text": "As",
+          "start_time": 26.4,
+          "end_time": 26.74,
+          "confidence": 0.961949348449707
+        },
+        {
+          "text": "a",
+          "start_time": 26.74,
+          "end_time": 27.02,
+          "confidence": 0.9698189496994019
+        },
+        {
+          "text": "data",
+          "start_time": 27.02,
+          "end_time": 27.2,
+          "confidence": 0.9328746199607849
+        },
+        {
+          "text": "scientist",
+          "start_time": 27.2,
+          "end_time": 27.72,
+          "confidence": 0.986672043800354
+        },
+        {
+          "text": "at",
+          "start_time": 27.72,
+          "end_time": 28.24,
+          "confidence": 0.9042468667030334
+        },
+        {
+          "text": "the",
+          "start_time": 28.24,
+          "end_time": 28.42,
+          "confidence": 0.977691650390625
+        },
+        {
+          "text": "NC",
+          "start_time": 28.42,
+          "end_time": 29.0,
+          "confidence": 0.7854424118995667
+        },
+        {
+          "text": "Museum",
+          "start_time": 29.0,
+          "end_time": 29.32,
+          "confidence": 0.8709287643432617
+        },
+        {
+          "text": "of",
+          "start_time": 29.32,
+          "end_time": 29.56,
+          "confidence": 0.9901044964790344
+        },
+        {
+          "text": "Natural",
+          "start_time": 29.56,
+          "end_time": 29.84,
+          "confidence": 0.7384642362594604
+        },
+        {
+          "text": "Sciences,",
+          "start_time": 29.84,
+          "end_time": 30.32,
+          "confidence": 0.9950075149536133
+        },
+        {
+          "text": "I",
+          "start_time": 30.74,
+          "end_time": 30.98,
+          "confidence": 0.9936137795448303
+        },
+        {
+          "text": "worked",
+          "start_time": 30.98,
+          "end_time": 31.28,
+          "confidence": 0.8331910967826843
+        },
+        {
+          "text": "on",
+          "start_time": 31.28,
+          "end_time": 31.66,
+          "confidence": 0.9959190487861633
+        },
+        {
+          "text": "a",
+          "start_time": 31.66,
+          "end_time": 31.96,
+          "confidence": 0.9811940789222717
+        },
+        {
+          "text": "large",
+          "start_time": 31.96,
+          "end_time": 32.36,
+          "confidence": 0.9907675385475159
+        },
+        {
+          "text": "project,",
+          "start_time": 32.36,
+          "end_time": 32.78,
+          "confidence": 0.990522027015686
+        },
+        {
+          "text": "a",
+          "start_time": 33.36,
+          "end_time": 33.46,
+          "confidence": 0.8909599781036377
+        },
+        {
+          "text": "wildlife",
+          "start_time": 33.46,
+          "end_time": 33.64,
+          "confidence": 0.9626664519309998
+        },
+        {
+          "text": "project",
+          "start_time": 33.64,
+          "end_time": 34.14,
+          "confidence": 0.9982549548149109
+        },
+        {
+          "text": "called",
+          "start_time": 34.14,
+          "end_time": 34.66,
+          "confidence": 0.8983361124992371
+        },
+        {
+          "text": "Snapshot",
+          "start_time": 34.66,
+          "end_time": 35.16,
+          "confidence": 0.6996339162190756
+        },
+        {
+          "text": "USA,",
+          "start_time": 35.16,
+          "end_time": 35.48,
+          "confidence": 0.8661057353019714
+        },
+        {
+          "text": "where",
+          "start_time": 35.94,
+          "end_time": 36.02,
+          "confidence": 0.9907969236373901
+        },
+        {
+          "text": "we",
+          "start_time": 36.02,
+          "end_time": 36.18,
+          "confidence": 0.9975733160972595
+        },
+        {
+          "text": "analyzed",
+          "start_time": 36.18,
+          "end_time": 36.58,
+          "confidence": 0.8593320846557617
+        },
+        {
+          "text": "over",
+          "start_time": 36.58,
+          "end_time": 36.94,
+          "confidence": 0.9922992587089539
+        },
+        {
+          "text": "100k",
+          "start_time": 36.94,
+          "end_time": 37.68,
+          "confidence": 0.5909404158592224
+        },
+        {
+          "text": "camera",
+          "start_time": 37.68,
+          "end_time": 38.74,
+          "confidence": 0.9413506388664246
+        },
+        {
+          "text": "-trap",
+          "start_time": 38.74,
+          "end_time": 39.02,
+          "confidence": 0.47386858860651654
+        },
+        {
+          "text": "images",
+          "start_time": 39.02,
+          "end_time": 39.4,
+          "confidence": 0.9940199851989746
+        },
+        {
+          "text": "per",
+          "start_time": 39.4,
+          "end_time": 39.86,
+          "confidence": 0.999184787273407
+        },
+        {
+          "text": "week",
+          "start_time": 39.86,
+          "end_time": 40.1,
+          "confidence": 0.9994558691978455
+        },
+        {
+          "text": "to",
+          "start_time": 40.1,
+          "end_time": 40.44,
+          "confidence": 0.9779690504074097
+        },
+        {
+          "text": "estimate",
+          "start_time": 40.44,
+          "end_time": 40.92,
+          "confidence": 0.9837020635604858
+        },
+        {
+          "text": "animal",
+          "start_time": 40.92,
+          "end_time": 41.38,
+          "confidence": 0.8411916494369507
+        },
+        {
+          "text": "density.",
+          "start_time": 41.38,
+          "end_time": 41.78,
+          "confidence": 0.998986542224884
+        },
+        {
+          "text": "The",
+          "start_time": 42.6,
+          "end_time": 42.94,
+          "confidence": 0.9871360063552856
+        },
+        {
+          "text": "data",
+          "start_time": 42.94,
+          "end_time": 43.12,
+          "confidence": 0.9882460236549377
+        },
+        {
+          "text": "was",
+          "start_time": 43.12,
+          "end_time": 43.36,
+          "confidence": 0.9985669255256653
+        },
+        {
+          "text": "messy,",
+          "start_time": 43.36,
+          "end_time": 43.7,
+          "confidence": 0.7592850923538208
+        },
+        {
+          "text": "so",
+          "start_time": 43.98,
+          "end_time": 44.18,
+          "confidence": 0.9958797693252563
+        },
+        {
+          "text": "I",
+          "start_time": 44.18,
+          "end_time": 44.3,
+          "confidence": 0.9936254024505615
+        },
+        {
+          "text": "built",
+          "start_time": 44.3,
+          "end_time": 44.54,
+          "confidence": 0.981209933757782
+        },
+        {
+          "text": "a",
+          "start_time": 44.54,
+          "end_time": 44.8,
+          "confidence": 0.993931770324707
+        },
+        {
+          "text": "full",
+          "start_time": 44.8,
+          "end_time": 45.18,
+          "confidence": 0.995407223701477
+        },
+        {
+          "text": "ETL",
+          "start_time": 45.18,
+          "end_time": 45.78,
+          "confidence": 0.8953924775123596
+        },
+        {
+          "text": "pipeline",
+          "start_time": 45.78,
+          "end_time": 46.04,
+          "confidence": 0.9918999671936035
+        },
+        {
+          "text": "in",
+          "start_time": 46.04,
+          "end_time": 46.46,
+          "confidence": 0.9840632677078247
+        },
+        {
+          "text": "Python",
+          "start_time": 46.46,
+          "end_time": 46.82,
+          "confidence": 0.897295355796814
+        },
+        {
+          "text": "to",
+          "start_time": 46.82,
+          "end_time": 47.1,
+          "confidence": 0.9836957454681396
+        },
+        {
+          "text": "automate",
+          "start_time": 47.1,
+          "end_time": 47.48,
+          "confidence": 0.9981667995452881
+        },
+        {
+          "text": "metadata",
+          "start_time": 47.48,
+          "end_time": 47.9,
+          "confidence": 0.6763699054718018
+        },
+        {
+          "text": "extraction,",
+          "start_time": 47.9,
+          "end_time": 48.56,
+          "confidence": 0.9941273927688599
+        },
+        {
+          "text": "filtering",
+          "start_time": 48.56,
+          "end_time": 49.28,
+          "confidence": 0.5506128668785095
+        },
+        {
+          "text": "and",
+          "start_time": 49.28,
+          "end_time": 49.7,
+          "confidence": 0.9417948126792908
+        },
+        {
+          "text": "calibration",
+          "start_time": 49.7,
+          "end_time": 50.34,
+          "confidence": 0.9879701137542725
+        },
+        {
+          "text": "that",
+          "start_time": 50.34,
+          "end_time": 51.4,
+          "confidence": 0.6658640503883362
+        },
+        {
+          "text": "pipeline",
+          "start_time": 51.4,
+          "end_time": 51.8,
+          "confidence": 0.9765890836715698
+        },
+        {
+          "text": "reduced",
+          "start_time": 51.8,
+          "end_time": 52.24,
+          "confidence": 0.7570180892944336
+        },
+        {
+          "text": "overall",
+          "start_time": 52.24,
+          "end_time": 52.72,
+          "confidence": 0.9332962036132812
+        },
+        {
+          "text": "processing",
+          "start_time": 52.72,
+          "end_time": 53.16,
+          "confidence": 0.9915097951889038
+        },
+        {
+          "text": "time",
+          "start_time": 53.16,
+          "end_time": 53.94,
+          "confidence": 0.9466629028320312
+        },
+        {
+          "text": "by",
+          "start_time": 53.94,
+          "end_time": 54.28,
+          "confidence": 0.9942691326141357
+        },
+        {
+          "text": "65%.",
+          "start_time": 54.28,
+          "end_time": 55.66,
+          "confidence": 0.776628702878952
+        },
+        {
+          "text": "Once",
+          "start_time": 55.98,
+          "end_time": 56.36,
+          "confidence": 0.9819814562797546
+        },
+        {
+          "text": "the",
+          "start_time": 56.36,
+          "end_time": 56.5,
+          "confidence": 0.9904562830924988
+        },
+        {
+          "text": "data",
+          "start_time": 56.5,
+          "end_time": 56.64,
+          "confidence": 0.8801266551017761
+        },
+        {
+          "text": "was",
+          "start_time": 56.64,
+          "end_time": 56.88,
+          "confidence": 0.9944314360618591
+        },
+        {
+          "text": "clean,",
+          "start_time": 56.88,
+          "end_time": 57.18,
+          "confidence": 0.8732128143310547
+        },
+        {
+          "text": "I",
+          "start_time": 57.52,
+          "end_time": 57.56,
+          "confidence": 0.9805043339729309
+        },
+        {
+          "text": "trained",
+          "start_time": 57.56,
+          "end_time": 57.94,
+          "confidence": 0.9575307369232178
+        },
+        {
+          "text": "deep",
+          "start_time": 57.94,
+          "end_time": 58.22,
+          "confidence": 0.9674041271209717
+        },
+        {
+          "text": "learning",
+          "start_time": 58.22,
+          "end_time": 58.54,
+          "confidence": 0.9525443911552429
+        },
+        {
+          "text": "models",
+          "start_time": 58.54,
+          "end_time": 59.22,
+          "confidence": 0.9625530242919922
+        },
+        {
+          "text": "like",
+          "start_time": 59.22,
+          "end_time": 59.6,
+          "confidence": 0.8190555572509766
+        },
+        {
+          "text": "InPite",
+          "start_time": 59.6,
+          "end_time": 60.16,
+          "confidence": 0.2930508404970169
+        },
+        {
+          "text": "Torch",
+          "start_time": 60.16,
+          "end_time": 60.48,
+          "confidence": 0.5736531019210815
+        },
+        {
+          "text": "mainly",
+          "start_time": 60.48,
+          "end_time": 61.44,
+          "confidence": 0.785639226436615
+        },
+        {
+          "text": "resonate",
+          "start_time": 61.44,
+          "end_time": 61.88,
+          "confidence": 0.454700767993927
+        },
+        {
+          "text": "for",
+          "start_time": 61.88,
+          "end_time": 62.2,
+          "confidence": 0.8905190229415894
+        },
+        {
+          "text": "filtering",
+          "start_time": 62.2,
+          "end_time": 62.5,
+          "confidence": 0.989797055721283
+        },
+        {
+          "text": "classification",
+          "start_time": 62.5,
+          "end_time": 63.38,
+          "confidence": 0.9860919117927551
+        },
+        {
+          "text": "and",
+          "start_time": 63.38,
+          "end_time": 64.22,
+          "confidence": 0.9361101984977722
+        },
+        {
+          "text": "DPD,",
+          "start_time": 64.22,
+          "end_time": 64.58,
+          "confidence": 0.6258327513933182
+        }
+      ]
+    },
+    {
+      "speaker_id": "UNKNOWN",
+      "text": "depth",
+      "start_time": 65.16,
+      "end_time": 65.16,
+      "words": [
+        {
+          "text": "depth",
+          "start_time": 65.16,
+          "end_time": 65.16,
+          "confidence": 0.8086093664169312
+        }
+      ]
+    },
+    {
+      "speaker_id": "SPEAKER_00",
+      "text": "prediction transformer for depth estimation. So we could calculate how far the animals are from the camera. By combining the bounding box information and learned depth maps, we help researchers move from just prediction to true population density estimation. I also built a small express .js, the portal for visualization and content -arized the whole workflow using dog codes. So anyone could use the lab to run it easily. Before that, I worked as a machine learning engineer in the mechanical and aerospace department of our university, where we studied thermal conductivity of new materials. I built end -to -end machine learning workflows in Python, applying models like linear regression, random forest and XG boost and compare all of them to predict conductivity patterns. I used Cura -based GPU acceleration to speed up the large scale regression experiments as well. Across everything that I've worked on, I've realized that machine learning only reaches its full potential when you truly understand the domain behind it. That's why I always take the time to learn whether it's how animal behavior data is collected or how material behaves under heat. I adapt quickly and I pour my heart into understanding the science or the system behind the data because that's what makes the model more meaningful. I would love to bring that same mindset to a team that's building real AI products. Thank you for listening.",
+      "start_time": 65.16,
+      "end_time": 163.54,
+      "words": [
+        {
+          "text": "prediction",
+          "start_time": 65.16,
+          "end_time": 66.06,
+          "confidence": 0.5387833118438721
+        },
+        {
+          "text": "transformer",
+          "start_time": 66.06,
+          "end_time": 67.3,
+          "confidence": 0.8617331981658936
+        },
+        {
+          "text": "for",
+          "start_time": 67.3,
+          "end_time": 67.92,
+          "confidence": 0.9403202533721924
+        },
+        {
+          "text": "depth",
+          "start_time": 67.92,
+          "end_time": 68.16,
+          "confidence": 0.9974982142448425
+        },
+        {
+          "text": "estimation.",
+          "start_time": 68.16,
+          "end_time": 68.86,
+          "confidence": 0.9914138317108154
+        },
+        {
+          "text": "So",
+          "start_time": 69.24,
+          "end_time": 69.32,
+          "confidence": 0.9324743151664734
+        },
+        {
+          "text": "we",
+          "start_time": 69.32,
+          "end_time": 69.48,
+          "confidence": 0.8158300518989563
+        },
+        {
+          "text": "could",
+          "start_time": 69.48,
+          "end_time": 69.62,
+          "confidence": 0.9909794330596924
+        },
+        {
+          "text": "calculate",
+          "start_time": 69.62,
+          "end_time": 70.04,
+          "confidence": 0.9972623586654663
+        },
+        {
+          "text": "how",
+          "start_time": 70.04,
+          "end_time": 70.44,
+          "confidence": 0.9838283061981201
+        },
+        {
+          "text": "far",
+          "start_time": 70.44,
+          "end_time": 70.8,
+          "confidence": 0.9954654574394226
+        },
+        {
+          "text": "the",
+          "start_time": 70.8,
+          "end_time": 71.06,
+          "confidence": 0.9915438890457153
+        },
+        {
+          "text": "animals",
+          "start_time": 71.06,
+          "end_time": 71.38,
+          "confidence": 0.9897798299789429
+        },
+        {
+          "text": "are",
+          "start_time": 71.38,
+          "end_time": 71.7,
+          "confidence": 0.9958533048629761
+        },
+        {
+          "text": "from",
+          "start_time": 71.7,
+          "end_time": 71.92,
+          "confidence": 0.9938197731971741
+        },
+        {
+          "text": "the",
+          "start_time": 71.92,
+          "end_time": 72.06,
+          "confidence": 0.9914029240608215
+        },
+        {
+          "text": "camera.",
+          "start_time": 72.06,
+          "end_time": 72.4,
+          "confidence": 0.9942288398742676
+        },
+        {
+          "text": "By",
+          "start_time": 72.84,
+          "end_time": 73.2,
+          "confidence": 0.5485642552375793
+        },
+        {
+          "text": "combining",
+          "start_time": 73.2,
+          "end_time": 73.64,
+          "confidence": 0.9874334931373596
+        },
+        {
+          "text": "the",
+          "start_time": 73.64,
+          "end_time": 73.96,
+          "confidence": 0.8557186126708984
+        },
+        {
+          "text": "bounding",
+          "start_time": 73.96,
+          "end_time": 75.12,
+          "confidence": 0.8002016246318817
+        },
+        {
+          "text": "box",
+          "start_time": 75.12,
+          "end_time": 75.26,
+          "confidence": 0.9623438715934753
+        },
+        {
+          "text": "information",
+          "start_time": 75.26,
+          "end_time": 75.9,
+          "confidence": 0.9806175827980042
+        },
+        {
+          "text": "and",
+          "start_time": 75.9,
+          "end_time": 76.4,
+          "confidence": 0.9668828845024109
+        },
+        {
+          "text": "learned",
+          "start_time": 76.4,
+          "end_time": 76.66,
+          "confidence": 0.6248964667320251
+        },
+        {
+          "text": "depth",
+          "start_time": 76.66,
+          "end_time": 77.12,
+          "confidence": 0.9059974551200867
+        },
+        {
+          "text": "maps,",
+          "start_time": 77.12,
+          "end_time": 77.92,
+          "confidence": 0.9319285750389099
+        },
+        {
+          "text": "we",
+          "start_time": 78.38,
+          "end_time": 78.4,
+          "confidence": 0.9448431730270386
+        },
+        {
+          "text": "help",
+          "start_time": 78.4,
+          "end_time": 78.62,
+          "confidence": 0.9519403576850891
+        },
+        {
+          "text": "researchers",
+          "start_time": 78.62,
+          "end_time": 79.22,
+          "confidence": 0.9950395226478577
+        },
+        {
+          "text": "move",
+          "start_time": 79.22,
+          "end_time": 79.6,
+          "confidence": 0.93374103307724
+        },
+        {
+          "text": "from",
+          "start_time": 79.6,
+          "end_time": 79.94,
+          "confidence": 0.9956497550010681
+        },
+        {
+          "text": "just",
+          "start_time": 79.94,
+          "end_time": 80.08,
+          "confidence": 0.4089079797267914
+        },
+        {
+          "text": "prediction",
+          "start_time": 80.08,
+          "end_time": 80.68,
+          "confidence": 0.9694197177886963
+        },
+        {
+          "text": "to",
+          "start_time": 80.68,
+          "end_time": 81.1,
+          "confidence": 0.9853829145431519
+        },
+        {
+          "text": "true",
+          "start_time": 81.1,
+          "end_time": 81.38,
+          "confidence": 0.7608078718185425
+        },
+        {
+          "text": "population",
+          "start_time": 81.38,
+          "end_time": 82.5,
+          "confidence": 0.9744293689727783
+        },
+        {
+          "text": "density",
+          "start_time": 82.5,
+          "end_time": 83.0,
+          "confidence": 0.9921520352363586
+        },
+        {
+          "text": "estimation.",
+          "start_time": 83.0,
+          "end_time": 83.62,
+          "confidence": 0.9919463992118835
+        },
+        {
+          "text": "I",
+          "start_time": 84.2,
+          "end_time": 84.92,
+          "confidence": 0.9604291319847107
+        },
+        {
+          "text": "also",
+          "start_time": 84.92,
+          "end_time": 85.24,
+          "confidence": 0.2005719691514969
+        },
+        {
+          "text": "built",
+          "start_time": 85.24,
+          "end_time": 85.56,
+          "confidence": 0.7642998099327087
+        },
+        {
+          "text": "a",
+          "start_time": 85.56,
+          "end_time": 85.82,
+          "confidence": 0.9909043908119202
+        },
+        {
+          "text": "small",
+          "start_time": 85.82,
+          "end_time": 86.2,
+          "confidence": 0.9883202314376831
+        },
+        {
+          "text": "express",
+          "start_time": 86.2,
+          "end_time": 86.86,
+          "confidence": 0.44290176033973694
+        },
+        {
+          "text": ".js,",
+          "start_time": 86.86,
+          "end_time": 87.48,
+          "confidence": 0.853906124830246
+        },
+        {
+          "text": "the",
+          "start_time": 87.66,
+          "end_time": 87.78,
+          "confidence": 0.8381769061088562
+        },
+        {
+          "text": "portal",
+          "start_time": 87.78,
+          "end_time": 88.12,
+          "confidence": 0.9908978343009949
+        },
+        {
+          "text": "for",
+          "start_time": 88.12,
+          "end_time": 88.44,
+          "confidence": 0.9908464550971985
+        },
+        {
+          "text": "visualization",
+          "start_time": 88.44,
+          "end_time": 89.02,
+          "confidence": 0.9848916530609131
+        },
+        {
+          "text": "and",
+          "start_time": 89.02,
+          "end_time": 89.44,
+          "confidence": 0.8938941955566406
+        },
+        {
+          "text": "content",
+          "start_time": 89.44,
+          "end_time": 89.74,
+          "confidence": 0.34128084778785706
+        },
+        {
+          "text": "-arized",
+          "start_time": 89.74,
+          "end_time": 90.1,
+          "confidence": 0.3785301086803277
+        },
+        {
+          "text": "the",
+          "start_time": 90.1,
+          "end_time": 90.38,
+          "confidence": 0.8388113379478455
+        },
+        {
+          "text": "whole",
+          "start_time": 90.38,
+          "end_time": 90.58,
+          "confidence": 0.9664271473884583
+        },
+        {
+          "text": "workflow",
+          "start_time": 90.58,
+          "end_time": 91.08,
+          "confidence": 0.9942371845245361
+        },
+        {
+          "text": "using",
+          "start_time": 91.08,
+          "end_time": 91.52,
+          "confidence": 0.9584720730781555
+        },
+        {
+          "text": "dog",
+          "start_time": 91.52,
+          "end_time": 91.74,
+          "confidence": 0.14373719692230225
+        },
+        {
+          "text": "codes.",
+          "start_time": 91.74,
+          "end_time": 92.04,
+          "confidence": 0.4114525020122528
+        },
+        {
+          "text": "So",
+          "start_time": 92.48,
+          "end_time": 92.52,
+          "confidence": 0.9613377451896667
+        },
+        {
+          "text": "anyone",
+          "start_time": 92.52,
+          "end_time": 92.76,
+          "confidence": 0.8815024495124817
+        },
+        {
+          "text": "could",
+          "start_time": 92.76,
+          "end_time": 93.42,
+          "confidence": 0.870378315448761
+        },
+        {
+          "text": "use",
+          "start_time": 93.42,
+          "end_time": 93.76,
+          "confidence": 0.9827041029930115
+        },
+        {
+          "text": "the",
+          "start_time": 93.76,
+          "end_time": 93.96,
+          "confidence": 0.9779483079910278
+        },
+        {
+          "text": "lab",
+          "start_time": 93.96,
+          "end_time": 94.28,
+          "confidence": 0.9748099446296692
+        },
+        {
+          "text": "to",
+          "start_time": 94.28,
+          "end_time": 95.66,
+          "confidence": 0.9777611494064331
+        },
+        {
+          "text": "run",
+          "start_time": 95.66,
+          "end_time": 95.82,
+          "confidence": 0.9973579049110413
+        },
+        {
+          "text": "it",
+          "start_time": 95.82,
+          "end_time": 95.98,
+          "confidence": 0.9917801022529602
+        },
+        {
+          "text": "easily.",
+          "start_time": 95.98,
+          "end_time": 96.32,
+          "confidence": 0.9291872978210449
+        },
+        {
+          "text": "Before",
+          "start_time": 97.22,
+          "end_time": 97.98,
+          "confidence": 0.22419746220111847
+        },
+        {
+          "text": "that,",
+          "start_time": 97.98,
+          "end_time": 98.36,
+          "confidence": 0.9842448830604553
+        },
+        {
+          "text": "I",
+          "start_time": 98.58,
+          "end_time": 98.66,
+          "confidence": 0.9861867427825928
+        },
+        {
+          "text": "worked",
+          "start_time": 98.66,
+          "end_time": 98.92,
+          "confidence": 0.6754191517829895
+        },
+        {
+          "text": "as",
+          "start_time": 98.92,
+          "end_time": 99.28,
+          "confidence": 0.9852563738822937
+        },
+        {
+          "text": "a",
+          "start_time": 99.28,
+          "end_time": 99.44,
+          "confidence": 0.9804961085319519
+        },
+        {
+          "text": "machine",
+          "start_time": 99.44,
+          "end_time": 99.68,
+          "confidence": 0.810703456401825
+        },
+        {
+          "text": "learning",
+          "start_time": 99.68,
+          "end_time": 100.02,
+          "confidence": 0.8441228270530701
+        },
+        {
+          "text": "engineer",
+          "start_time": 100.02,
+          "end_time": 100.48,
+          "confidence": 0.9710104465484619
+        },
+        {
+          "text": "in",
+          "start_time": 100.48,
+          "end_time": 100.98,
+          "confidence": 0.9748466610908508
+        },
+        {
+          "text": "the",
+          "start_time": 100.98,
+          "end_time": 101.08,
+          "confidence": 0.9449290037155151
+        },
+        {
+          "text": "mechanical",
+          "start_time": 101.08,
+          "end_time": 101.38,
+          "confidence": 0.8460657000541687
+        },
+        {
+          "text": "and",
+          "start_time": 101.38,
+          "end_time": 101.98,
+          "confidence": 0.9772042036056519
+        },
+        {
+          "text": "aerospace",
+          "start_time": 101.98,
+          "end_time": 102.34,
+          "confidence": 0.9919264316558838
+        },
+        {
+          "text": "department",
+          "start_time": 102.34,
+          "end_time": 103.06,
+          "confidence": 0.9750809669494629
+        },
+        {
+          "text": "of",
+          "start_time": 103.48,
+          "end_time": 103.86,
+          "confidence": 0.9426628947257996
+        },
+        {
+          "text": "our",
+          "start_time": 103.86,
+          "end_time": 104.04,
+          "confidence": 0.758327841758728
+        },
+        {
+          "text": "university,",
+          "start_time": 104.04,
+          "end_time": 104.68,
+          "confidence": 0.8188842535018921
+        },
+        {
+          "text": "where",
+          "start_time": 104.8,
+          "end_time": 105.22,
+          "confidence": 0.9747817516326904
+        },
+        {
+          "text": "we",
+          "start_time": 105.22,
+          "end_time": 105.72,
+          "confidence": 0.9905343055725098
+        },
+        {
+          "text": "studied",
+          "start_time": 105.72,
+          "end_time": 106.1,
+          "confidence": 0.9966705441474915
+        },
+        {
+          "text": "thermal",
+          "start_time": 106.1,
+          "end_time": 106.54,
+          "confidence": 0.9383298754692078
+        },
+        {
+          "text": "conductivity",
+          "start_time": 106.54,
+          "end_time": 107.12,
+          "confidence": 0.9931938052177429
+        },
+        {
+          "text": "of",
+          "start_time": 107.12,
+          "end_time": 107.6,
+          "confidence": 0.9935247898101807
+        },
+        {
+          "text": "new",
+          "start_time": 107.6,
+          "end_time": 107.78,
+          "confidence": 0.9912030696868896
+        },
+        {
+          "text": "materials.",
+          "start_time": 107.78,
+          "end_time": 108.34,
+          "confidence": 0.9916312098503113
+        },
+        {
+          "text": "I",
+          "start_time": 109.02,
+          "end_time": 109.36,
+          "confidence": 0.9902331829071045
+        },
+        {
+          "text": "built",
+          "start_time": 109.36,
+          "end_time": 109.58,
+          "confidence": 0.9275771379470825
+        },
+        {
+          "text": "end",
+          "start_time": 109.58,
+          "end_time": 110.0,
+          "confidence": 0.5784372687339783
+        },
+        {
+          "text": "-to",
+          "start_time": 110.0,
+          "end_time": 110.12,
+          "confidence": 0.7030963450670242
+        },
+        {
+          "text": "-end",
+          "start_time": 110.12,
+          "end_time": 110.32,
+          "confidence": 0.9968551099300385
+        },
+        {
+          "text": "machine",
+          "start_time": 110.32,
+          "end_time": 110.7,
+          "confidence": 0.941665530204773
+        },
+        {
+          "text": "learning",
+          "start_time": 110.7,
+          "end_time": 111.1,
+          "confidence": 0.8988915681838989
+        },
+        {
+          "text": "workflows",
+          "start_time": 111.1,
+          "end_time": 111.5,
+          "confidence": 0.9802911281585693
+        },
+        {
+          "text": "in",
+          "start_time": 111.5,
+          "end_time": 111.84,
+          "confidence": 0.9923338890075684
+        },
+        {
+          "text": "Python,",
+          "start_time": 111.84,
+          "end_time": 112.14,
+          "confidence": 0.9371544122695923
+        },
+        {
+          "text": "applying",
+          "start_time": 112.68,
+          "end_time": 113.5,
+          "confidence": 0.986708402633667
+        },
+        {
+          "text": "models",
+          "start_time": 113.5,
+          "end_time": 114.42,
+          "confidence": 0.9784380197525024
+        },
+        {
+          "text": "like",
+          "start_time": 114.42,
+          "end_time": 114.98,
+          "confidence": 0.9823020696640015
+        },
+        {
+          "text": "linear",
+          "start_time": 114.98,
+          "end_time": 115.48,
+          "confidence": 0.9179092049598694
+        },
+        {
+          "text": "regression,",
+          "start_time": 115.48,
+          "end_time": 116.0,
+          "confidence": 0.9976198077201843
+        },
+        {
+          "text": "random",
+          "start_time": 116.28,
+          "end_time": 116.44,
+          "confidence": 0.9963082671165466
+        },
+        {
+          "text": "forest",
+          "start_time": 116.44,
+          "end_time": 116.72,
+          "confidence": 0.8995309472084045
+        },
+        {
+          "text": "and",
+          "start_time": 116.72,
+          "end_time": 117.12,
+          "confidence": 0.6136584281921387
+        },
+        {
+          "text": "XG",
+          "start_time": 117.12,
+          "end_time": 117.42,
+          "confidence": 0.6479058563709259
+        },
+        {
+          "text": "boost",
+          "start_time": 117.42,
+          "end_time": 117.68,
+          "confidence": 0.7110296487808228
+        },
+        {
+          "text": "and",
+          "start_time": 117.68,
+          "end_time": 118.62,
+          "confidence": 0.39675241708755493
+        },
+        {
+          "text": "compare",
+          "start_time": 118.62,
+          "end_time": 119.32,
+          "confidence": 0.8925151228904724
+        },
+        {
+          "text": "all",
+          "start_time": 119.32,
+          "end_time": 119.54,
+          "confidence": 0.9856588244438171
+        },
+        {
+          "text": "of",
+          "start_time": 119.54,
+          "end_time": 119.64,
+          "confidence": 0.9939431548118591
+        },
+        {
+          "text": "them",
+          "start_time": 119.64,
+          "end_time": 119.82,
+          "confidence": 0.9963655471801758
+        },
+        {
+          "text": "to",
+          "start_time": 119.82,
+          "end_time": 119.98,
+          "confidence": 0.9930190443992615
+        },
+        {
+          "text": "predict",
+          "start_time": 119.98,
+          "end_time": 120.26,
+          "confidence": 0.8964396715164185
+        },
+        {
+          "text": "conductivity",
+          "start_time": 120.26,
+          "end_time": 121.52,
+          "confidence": 0.991422712802887
+        },
+        {
+          "text": "patterns.",
+          "start_time": 121.52,
+          "end_time": 121.98,
+          "confidence": 0.9812865853309631
+        },
+        {
+          "text": "I",
+          "start_time": 122.92,
+          "end_time": 123.26,
+          "confidence": 0.27943968772888184
+        },
+        {
+          "text": "used",
+          "start_time": 123.26,
+          "end_time": 123.64,
+          "confidence": 0.8724938035011292
+        },
+        {
+          "text": "Cura",
+          "start_time": 123.64,
+          "end_time": 123.92,
+          "confidence": 0.36622563749551773
+        },
+        {
+          "text": "-based",
+          "start_time": 123.92,
+          "end_time": 124.28,
+          "confidence": 0.7712855339050293
+        },
+        {
+          "text": "GPU",
+          "start_time": 124.28,
+          "end_time": 124.62,
+          "confidence": 0.7588298320770264
+        },
+        {
+          "text": "acceleration",
+          "start_time": 124.62,
+          "end_time": 125.1,
+          "confidence": 0.8687477111816406
+        },
+        {
+          "text": "to",
+          "start_time": 125.1,
+          "end_time": 125.56,
+          "confidence": 0.9628925323486328
+        },
+        {
+          "text": "speed",
+          "start_time": 125.56,
+          "end_time": 125.82,
+          "confidence": 0.997086226940155
+        },
+        {
+          "text": "up",
+          "start_time": 125.82,
+          "end_time": 126.0,
+          "confidence": 0.9738744497299194
+        },
+        {
+          "text": "the",
+          "start_time": 126.0,
+          "end_time": 126.18,
+          "confidence": 0.9515241980552673
+        },
+        {
+          "text": "large",
+          "start_time": 126.18,
+          "end_time": 126.48,
+          "confidence": 0.9677916765213013
+        },
+        {
+          "text": "scale",
+          "start_time": 126.48,
+          "end_time": 126.86,
+          "confidence": 0.675147533416748
+        },
+        {
+          "text": "regression",
+          "start_time": 126.86,
+          "end_time": 127.44,
+          "confidence": 0.9913499355316162
+        },
+        {
+          "text": "experiments",
+          "start_time": 127.44,
+          "end_time": 128.28,
+          "confidence": 0.7706809639930725
+        },
+        {
+          "text": "as",
+          "start_time": 128.28,
+          "end_time": 128.54,
+          "confidence": 0.8765073418617249
+        },
+        {
+          "text": "well.",
+          "start_time": 128.54,
+          "end_time": 128.8,
+          "confidence": 0.986714780330658
+        },
+        {
+          "text": "Across",
+          "start_time": 129.86,
+          "end_time": 130.34,
+          "confidence": 0.8618394136428833
+        },
+        {
+          "text": "everything",
+          "start_time": 130.34,
+          "end_time": 130.98,
+          "confidence": 0.972812294960022
+        },
+        {
+          "text": "that",
+          "start_time": 130.98,
+          "end_time": 131.2,
+          "confidence": 0.8896649479866028
+        },
+        {
+          "text": "I've",
+          "start_time": 131.2,
+          "end_time": 131.52,
+          "confidence": 0.8791263401508331
+        },
+        {
+          "text": "worked",
+          "start_time": 131.52,
+          "end_time": 131.78,
+          "confidence": 0.9620368480682373
+        },
+        {
+          "text": "on,",
+          "start_time": 131.78,
+          "end_time": 132.08,
+          "confidence": 0.9959035515785217
+        },
+        {
+          "text": "I've",
+          "start_time": 132.62,
+          "end_time": 132.74,
+          "confidence": 0.9230848252773285
+        },
+        {
+          "text": "realized",
+          "start_time": 132.74,
+          "end_time": 133.06,
+          "confidence": 0.7086409330368042
+        },
+        {
+          "text": "that",
+          "start_time": 133.06,
+          "end_time": 133.44,
+          "confidence": 0.98183673620224
+        },
+        {
+          "text": "machine",
+          "start_time": 133.44,
+          "end_time": 133.76,
+          "confidence": 0.9292834401130676
+        },
+        {
+          "text": "learning",
+          "start_time": 133.76,
+          "end_time": 134.18,
+          "confidence": 0.9471298456192017
+        },
+        {
+          "text": "only",
+          "start_time": 134.18,
+          "end_time": 134.5,
+          "confidence": 0.9936621189117432
+        },
+        {
+          "text": "reaches",
+          "start_time": 134.5,
+          "end_time": 134.88,
+          "confidence": 0.9854620695114136
+        },
+        {
+          "text": "its",
+          "start_time": 134.88,
+          "end_time": 135.22,
+          "confidence": 0.9498132467269897
+        },
+        {
+          "text": "full",
+          "start_time": 135.22,
+          "end_time": 135.46,
+          "confidence": 0.9971873164176941
+        },
+        {
+          "text": "potential",
+          "start_time": 135.46,
+          "end_time": 135.96,
+          "confidence": 0.9989489912986755
+        },
+        {
+          "text": "when",
+          "start_time": 135.96,
+          "end_time": 136.26,
+          "confidence": 0.9649387001991272
+        },
+        {
+          "text": "you",
+          "start_time": 136.26,
+          "end_time": 136.4,
+          "confidence": 0.9910434484481812
+        },
+        {
+          "text": "truly",
+          "start_time": 136.4,
+          "end_time": 136.94,
+          "confidence": 0.9955829977989197
+        },
+        {
+          "text": "understand",
+          "start_time": 136.94,
+          "end_time": 137.42,
+          "confidence": 0.9962456822395325
+        },
+        {
+          "text": "the",
+          "start_time": 137.42,
+          "end_time": 137.66,
+          "confidence": 0.9855420589447021
+        },
+        {
+          "text": "domain",
+          "start_time": 137.66,
+          "end_time": 137.86,
+          "confidence": 0.9990105628967285
+        },
+        {
+          "text": "behind",
+          "start_time": 137.86,
+          "end_time": 138.26,
+          "confidence": 0.9970908164978027
+        },
+        {
+          "text": "it.",
+          "start_time": 138.26,
+          "end_time": 138.66,
+          "confidence": 0.992711067199707
+        },
+        {
+          "text": "That's",
+          "start_time": 139.14,
+          "end_time": 139.52,
+          "confidence": 0.9861736595630646
+        },
+        {
+          "text": "why",
+          "start_time": 139.52,
+          "end_time": 139.64,
+          "confidence": 0.9986379742622375
+        },
+        {
+          "text": "I",
+          "start_time": 139.64,
+          "end_time": 139.88,
+          "confidence": 0.984002411365509
+        },
+        {
+          "text": "always",
+          "start_time": 139.88,
+          "end_time": 140.2,
+          "confidence": 0.9929150342941284
+        },
+        {
+          "text": "take",
+          "start_time": 140.2,
+          "end_time": 140.44,
+          "confidence": 0.49329206347465515
+        },
+        {
+          "text": "the",
+          "start_time": 140.44,
+          "end_time": 140.6,
+          "confidence": 0.9724743962287903
+        },
+        {
+          "text": "time",
+          "start_time": 140.6,
+          "end_time": 140.88,
+          "confidence": 0.9980859756469727
+        },
+        {
+          "text": "to",
+          "start_time": 140.88,
+          "end_time": 141.06,
+          "confidence": 0.9984353184700012
+        },
+        {
+          "text": "learn",
+          "start_time": 141.06,
+          "end_time": 141.28,
+          "confidence": 0.9939129948616028
+        },
+        {
+          "text": "whether",
+          "start_time": 141.28,
+          "end_time": 141.66,
+          "confidence": 0.8736165165901184
+        },
+        {
+          "text": "it's",
+          "start_time": 141.66,
+          "end_time": 141.94,
+          "confidence": 0.9790638387203217
+        },
+        {
+          "text": "how",
+          "start_time": 141.94,
+          "end_time": 142.1,
+          "confidence": 0.9968323111534119
+        },
+        {
+          "text": "animal",
+          "start_time": 142.1,
+          "end_time": 142.44,
+          "confidence": 0.8553729057312012
+        },
+        {
+          "text": "behavior",
+          "start_time": 142.44,
+          "end_time": 142.9,
+          "confidence": 0.5286392569541931
+        },
+        {
+          "text": "data",
+          "start_time": 142.9,
+          "end_time": 143.24,
+          "confidence": 0.9604212045669556
+        },
+        {
+          "text": "is",
+          "start_time": 143.24,
+          "end_time": 143.5,
+          "confidence": 0.9974049925804138
+        },
+        {
+          "text": "collected",
+          "start_time": 143.5,
+          "end_time": 143.88,
+          "confidence": 0.9967071413993835
+        },
+        {
+          "text": "or",
+          "start_time": 143.88,
+          "end_time": 144.52,
+          "confidence": 0.8253741264343262
+        },
+        {
+          "text": "how",
+          "start_time": 144.52,
+          "end_time": 144.76,
+          "confidence": 0.9943587183952332
+        },
+        {
+          "text": "material",
+          "start_time": 144.76,
+          "end_time": 145.14,
+          "confidence": 0.9453254342079163
+        },
+        {
+          "text": "behaves",
+          "start_time": 145.14,
+          "end_time": 145.54,
+          "confidence": 0.9429875612258911
+        },
+        {
+          "text": "under",
+          "start_time": 145.54,
+          "end_time": 145.88,
+          "confidence": 0.954572856426239
+        },
+        {
+          "text": "heat.",
+          "start_time": 145.88,
+          "end_time": 146.12,
+          "confidence": 0.9798691868782043
+        },
+        {
+          "text": "I",
+          "start_time": 146.94,
+          "end_time": 147.24,
+          "confidence": 0.7034568786621094
+        },
+        {
+          "text": "adapt",
+          "start_time": 147.24,
+          "end_time": 147.64,
+          "confidence": 0.8815180659294128
+        },
+        {
+          "text": "quickly",
+          "start_time": 147.64,
+          "end_time": 148.14,
+          "confidence": 0.989476203918457
+        },
+        {
+          "text": "and",
+          "start_time": 148.14,
+          "end_time": 149.0,
+          "confidence": 0.7506285905838013
+        },
+        {
+          "text": "I",
+          "start_time": 149.0,
+          "end_time": 149.24,
+          "confidence": 0.9812740683555603
+        },
+        {
+          "text": "pour",
+          "start_time": 149.24,
+          "end_time": 149.46,
+          "confidence": 0.7084362506866455
+        },
+        {
+          "text": "my",
+          "start_time": 149.46,
+          "end_time": 149.7,
+          "confidence": 0.9970793724060059
+        },
+        {
+          "text": "heart",
+          "start_time": 149.7,
+          "end_time": 149.94,
+          "confidence": 0.9450579881668091
+        },
+        {
+          "text": "into",
+          "start_time": 149.94,
+          "end_time": 150.24,
+          "confidence": 0.96979159116745
+        },
+        {
+          "text": "understanding",
+          "start_time": 150.24,
+          "end_time": 151.14,
+          "confidence": 0.46238815784454346
+        },
+        {
+          "text": "the",
+          "start_time": 151.14,
+          "end_time": 151.6,
+          "confidence": 0.9942195415496826
+        },
+        {
+          "text": "science",
+          "start_time": 151.6,
+          "end_time": 151.86,
+          "confidence": 0.8542128801345825
+        },
+        {
+          "text": "or",
+          "start_time": 151.86,
+          "end_time": 152.06,
+          "confidence": 0.5411404967308044
+        },
+        {
+          "text": "the",
+          "start_time": 152.06,
+          "end_time": 152.2,
+          "confidence": 0.9872926473617554
+        },
+        {
+          "text": "system",
+          "start_time": 152.2,
+          "end_time": 152.52,
+          "confidence": 0.9886976480484009
+        },
+        {
+          "text": "behind",
+          "start_time": 152.52,
+          "end_time": 152.88,
+          "confidence": 0.9964607357978821
+        },
+        {
+          "text": "the",
+          "start_time": 152.88,
+          "end_time": 153.08,
+          "confidence": 0.9706099629402161
+        },
+        {
+          "text": "data",
+          "start_time": 153.08,
+          "end_time": 153.26,
+          "confidence": 0.9916650652885437
+        },
+        {
+          "text": "because",
+          "start_time": 153.26,
+          "end_time": 154.06,
+          "confidence": 0.6897938847541809
+        },
+        {
+          "text": "that's",
+          "start_time": 154.06,
+          "end_time": 154.48,
+          "confidence": 0.9887407124042511
+        },
+        {
+          "text": "what",
+          "start_time": 154.48,
+          "end_time": 154.6,
+          "confidence": 0.9983988404273987
+        },
+        {
+          "text": "makes",
+          "start_time": 154.6,
+          "end_time": 154.92,
+          "confidence": 0.9952073693275452
+        },
+        {
+          "text": "the",
+          "start_time": 154.92,
+          "end_time": 155.26,
+          "confidence": 0.9932142496109009
+        },
+        {
+          "text": "model",
+          "start_time": 155.26,
+          "end_time": 155.8,
+          "confidence": 0.9877089262008667
+        },
+        {
+          "text": "more",
+          "start_time": 155.8,
+          "end_time": 156.04,
+          "confidence": 0.9970561265945435
+        },
+        {
+          "text": "meaningful.",
+          "start_time": 156.04,
+          "end_time": 156.44,
+          "confidence": 0.9967459440231323
+        },
+        {
+          "text": "I",
+          "start_time": 157.2,
+          "end_time": 157.5,
+          "confidence": 0.9929371476173401
+        },
+        {
+          "text": "would",
+          "start_time": 157.5,
+          "end_time": 157.7,
+          "confidence": 0.995595395565033
+        },
+        {
+          "text": "love",
+          "start_time": 157.7,
+          "end_time": 157.98,
+          "confidence": 0.9964184761047363
+        },
+        {
+          "text": "to",
+          "start_time": 157.98,
+          "end_time": 158.28,
+          "confidence": 0.9990605711936951
+        },
+        {
+          "text": "bring",
+          "start_time": 158.28,
+          "end_time": 158.68,
+          "confidence": 0.9930583238601685
+        },
+        {
+          "text": "that",
+          "start_time": 158.68,
+          "end_time": 158.92,
+          "confidence": 0.9931880235671997
+        },
+        {
+          "text": "same",
+          "start_time": 158.92,
+          "end_time": 159.28,
+          "confidence": 0.6177506446838379
+        },
+        {
+          "text": "mindset",
+          "start_time": 159.28,
+          "end_time": 159.66,
+          "confidence": 0.9993075132369995
+        },
+        {
+          "text": "to",
+          "start_time": 159.66,
+          "end_time": 159.92,
+          "confidence": 0.9918056726455688
+        },
+        {
+          "text": "a",
+          "start_time": 159.92,
+          "end_time": 160.02,
+          "confidence": 0.9819667339324951
+        },
+        {
+          "text": "team",
+          "start_time": 160.02,
+          "end_time": 160.24,
+          "confidence": 0.997545063495636
+        },
+        {
+          "text": "that's",
+          "start_time": 160.24,
+          "end_time": 160.66,
+          "confidence": 0.9298151433467865
+        },
+        {
+          "text": "building",
+          "start_time": 160.66,
+          "end_time": 160.9,
+          "confidence": 0.9973656535148621
+        },
+        {
+          "text": "real",
+          "start_time": 160.9,
+          "end_time": 161.26,
+          "confidence": 0.7733138203620911
+        },
+        {
+          "text": "AI",
+          "start_time": 161.26,
+          "end_time": 161.52,
+          "confidence": 0.7585282325744629
+        },
+        {
+          "text": "products.",
+          "start_time": 161.52,
+          "end_time": 162.06,
+          "confidence": 0.9957720637321472
+        },
+        {
+          "text": "Thank",
+          "start_time": 162.64,
+          "end_time": 162.88,
+          "confidence": 0.9919488430023193
+        },
+        {
+          "text": "you",
+          "start_time": 162.88,
+          "end_time": 163.02,
+          "confidence": 0.993569016456604
+        },
+        {
+          "text": "for",
+          "start_time": 163.02,
+          "end_time": 163.18,
+          "confidence": 0.9952451586723328
+        },
+        {
+          "text": "listening.",
+          "start_time": 163.18,
+          "end_time": 163.54,
+          "confidence": 0.9981755018234253
+        }
+      ]
+    }
+  ],
+  "tone_events": [
+    {
+      "scene_id": "scene_000",
+      "start_time": 0.0,
+      "end_time": 8.0,
+      "tone_label": "neutral",
+      "confidence": 0.5
+    },
+    {
+      "scene_id": "scene_001",
+      "start_time": 6.0,
+      "end_time": 14.0,
+      "tone_label": "neutral",
+      "confidence": 0.5
+    },
+    {
+      "scene_id": "scene_002",
+      "start_time": 12.0,
+      "end_time": 20.0,
+      "tone_label": "neutral",
+      "confidence": 0.5
+    },
+    {
+      "scene_id": "scene_003",
+      "start_time": 18.0,
+      "end_time": 26.0,
+      "tone_label": "neutral",
+      "confidence": 0.5
+    },
+    {
+      "scene_id": "scene_004",
+      "start_time": 24.0,
+      "end_time": 32.0,
+      "tone_label": "neutral",
+      "confidence": 0.5
+    },
+    {
+      "scene_id": "scene_005",
+      "start_time": 30.0,
+      "end_time": 38.0,
+      "tone_label": "neutral",
+      "confidence": 0.5
+    },
+    {
+      "scene_id": "scene_006",
+      "start_time": 36.0,
+      "end_time": 44.0,
+      "tone_label": "neutral",
+      "confidence": 0.5
+    },
+    {
+      "scene_id": "scene_007",
+      "start_time": 42.0,
+      "end_time": 50.0,
+      "tone_label": "neutral",
+      "confidence": 0.5
+    },
+    {
+      "scene_id": "scene_008",
+      "start_time": 48.0,
+      "end_time": 56.0,
+      "tone_label": "neutral",
+      "confidence": 0.5
+    },
+    {
+      "scene_id": "scene_009",
+      "start_time": 54.0,
+      "end_time": 62.0,
+      "tone_label": "neutral",
+      "confidence": 0.5
+    },
+    {
+      "scene_id": "scene_010",
+      "start_time": 60.0,
+      "end_time": 68.0,
+      "tone_label": "neutral",
+      "confidence": 0.5
+    },
+    {
+      "scene_id": "scene_011",
+      "start_time": 66.0,
+      "end_time": 74.0,
+      "tone_label": "neutral",
+      "confidence": 0.5
+    },
+    {
+      "scene_id": "scene_012",
+      "start_time": 72.0,
+      "end_time": 80.0,
+      "tone_label": "neutral",
+      "confidence": 0.5
+    },
+    {
+      "scene_id": "scene_013",
+      "start_time": 78.0,
+      "end_time": 86.0,
+      "tone_label": "neutral",
+      "confidence": 0.5
+    },
+    {
+      "scene_id": "scene_014",
+      "start_time": 84.0,
+      "end_time": 92.0,
+      "tone_label": "neutral",
+      "confidence": 0.5
+    },
+    {
+      "scene_id": "scene_015",
+      "start_time": 90.0,
+      "end_time": 98.0,
+      "tone_label": "neutral",
+      "confidence": 0.5
+    },
+    {
+      "scene_id": "scene_016",
+      "start_time": 96.0,
+      "end_time": 104.0,
+      "tone_label": "neutral",
+      "confidence": 0.5
+    },
+    {
+      "scene_id": "scene_017",
+      "start_time": 102.0,
+      "end_time": 110.0,
+      "tone_label": "neutral",
+      "confidence": 0.5
+    },
+    {
+      "scene_id": "scene_018",
+      "start_time": 108.0,
+      "end_time": 116.0,
+      "tone_label": "neutral",
+      "confidence": 0.5
+    },
+    {
+      "scene_id": "scene_019",
+      "start_time": 114.0,
+      "end_time": 122.0,
+      "tone_label": "neutral",
+      "confidence": 0.5
+    },
+    {
+      "scene_id": "scene_020",
+      "start_time": 120.0,
+      "end_time": 128.0,
+      "tone_label": "neutral",
+      "confidence": 0.5
+    },
+    {
+      "scene_id": "scene_021",
+      "start_time": 126.0,
+      "end_time": 134.0,
+      "tone_label": "neutral",
+      "confidence": 0.5
+    },
+    {
+      "scene_id": "scene_022",
+      "start_time": 132.0,
+      "end_time": 140.0,
+      "tone_label": "neutral",
+      "confidence": 0.5
+    },
+    {
+      "scene_id": "scene_023",
+      "start_time": 138.0,
+      "end_time": 146.0,
+      "tone_label": "neutral",
+      "confidence": 0.5
+    },
+    {
+      "scene_id": "scene_024",
+      "start_time": 144.0,
+      "end_time": 152.0,
+      "tone_label": "neutral",
+      "confidence": 0.5
+    },
+    {
+      "scene_id": "scene_025",
+      "start_time": 150.0,
+      "end_time": 158.0,
+      "tone_label": "neutral",
+      "confidence": 0.5
+    },
+    {
+      "scene_id": "scene_026",
+      "start_time": 156.0,
+      "end_time": 164.0,
+      "tone_label": "neutral",
+      "confidence": 0.5
+    }
+  ],
+  "scene_summaries": [
+    {
+      "scene_id": "scene_000",
+      "start_time": 0.0,
+      "end_time": 30.0,
+      "summary_text": "Normal dialogue occurs between the participant. The tone is balanced and unremarkable.",
+      "tone_label": "neutral",
+      "key_speakers": [
+        "SPEAKER_00"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "scene_id": "scene_001",
+      "start_time": 30.0,
+      "end_time": 60.0,
+      "summary_text": "Normal dialogue occurs between the participant. The tone is balanced and unremarkable.",
+      "tone_label": "neutral",
+      "key_speakers": [
+        "SPEAKER_00"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "scene_id": "scene_002",
+      "start_time": 60.0,
+      "end_time": 90.0,
+      "summary_text": "Normal dialogue occurs between the participant. The tone is balanced and unremarkable.",
+      "tone_label": "neutral",
+      "key_speakers": [
+        "SPEAKER_00"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "scene_id": "scene_003",
+      "start_time": 90.0,
+      "end_time": 120.0,
+      "summary_text": "A standard conversation takes place with SPEAKER_00 maintaining a neutral tone. The interaction follows typical conversational patterns.",
+      "tone_label": "neutral",
+      "key_speakers": [
+        "SPEAKER_00"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "scene_id": "scene_004",
+      "start_time": 120.0,
+      "end_time": 150.0,
+      "summary_text": "A standard conversation takes place with SPEAKER_00 maintaining a neutral tone. The interaction follows typical conversational patterns.",
+      "tone_label": "neutral",
+      "key_speakers": [
+        "SPEAKER_00"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "scene_id": "scene_005",
+      "start_time": 150.0,
+      "end_time": 165.73166666666668,
+      "summary_text": "A standard conversation takes place with SPEAKER_00 maintaining a neutral tone. The interaction follows typical conversational patterns.",
+      "tone_label": "neutral",
+      "key_speakers": [
+        "SPEAKER_00"
+      ],
+      "confidence": 1.0
+    }
+  ],
+  "video_captions": [
+    {
+      "window_id": 0,
+      "start_time": 0.0,
+      "end_time": 5.0,
+      "caption": "person speaking with gestures, low motion, well-lit scene",
+      "confidence": 1.0
+    },
+    {
+      "window_id": 1,
+      "start_time": 5.0,
+      "end_time": 10.0,
+      "caption": "person speaking with gestures, low motion, well-lit scene",
+      "confidence": 1.0
+    },
+    {
+      "window_id": 2,
+      "start_time": 10.0,
+      "end_time": 15.0,
+      "caption": "person speaking with gestures, low motion, well-lit scene",
+      "confidence": 1.0
+    },
+    {
+      "window_id": 3,
+      "start_time": 15.0,
+      "end_time": 20.0,
+      "caption": "person speaking with gestures, low motion, well-lit scene",
+      "confidence": 1.0
+    },
+    {
+      "window_id": 4,
+      "start_time": 20.0,
+      "end_time": 25.0,
+      "caption": "person speaking with gestures, low motion, well-lit scene",
+      "confidence": 1.0
+    },
+    {
+      "window_id": 5,
+      "start_time": 25.0,
+      "end_time": 30.0,
+      "caption": "person speaking with gestures, moderate movement, well-lit scene",
+      "confidence": 1.0
+    },
+    {
+      "window_id": 6,
+      "start_time": 30.0,
+      "end_time": 35.0,
+      "caption": "person speaking with gestures, low motion, well-lit scene",
+      "confidence": 1.0
+    },
+    {
+      "window_id": 7,
+      "start_time": 35.0,
+      "end_time": 40.0,
+      "caption": "person speaking with gestures, low motion, well-lit scene",
+      "confidence": 1.0
+    },
+    {
+      "window_id": 8,
+      "start_time": 40.0,
+      "end_time": 45.0,
+      "caption": "person speaking with gestures, low motion, well-lit scene",
+      "confidence": 1.0
+    },
+    {
+      "window_id": 9,
+      "start_time": 45.0,
+      "end_time": 50.0,
+      "caption": "person speaking with gestures, low motion, well-lit scene",
+      "confidence": 1.0
+    },
+    {
+      "window_id": 10,
+      "start_time": 50.0,
+      "end_time": 55.0,
+      "caption": "person speaking with gestures, low motion, well-lit scene",
+      "confidence": 1.0
+    },
+    {
+      "window_id": 11,
+      "start_time": 55.0,
+      "end_time": 60.0,
+      "caption": "person speaking with gestures, low motion, well-lit scene",
+      "confidence": 1.0
+    },
+    {
+      "window_id": 12,
+      "start_time": 60.0,
+      "end_time": 65.0,
+      "caption": "person speaking with gestures, low motion, well-lit scene",
+      "confidence": 1.0
+    },
+    {
+      "window_id": 13,
+      "start_time": 65.0,
+      "end_time": 70.0,
+      "caption": "person speaking with gestures, moderate movement, well-lit scene",
+      "confidence": 1.0
+    },
+    {
+      "window_id": 14,
+      "start_time": 70.0,
+      "end_time": 75.0,
+      "caption": "person speaking with gestures, low motion, well-lit scene",
+      "confidence": 1.0
+    },
+    {
+      "window_id": 15,
+      "start_time": 75.0,
+      "end_time": 80.0,
+      "caption": "person speaking with gestures, low motion, well-lit scene",
+      "confidence": 1.0
+    },
+    {
+      "window_id": 16,
+      "start_time": 80.0,
+      "end_time": 85.0,
+      "caption": "person speaking with gestures, low motion, well-lit scene",
+      "confidence": 1.0
+    },
+    {
+      "window_id": 17,
+      "start_time": 85.0,
+      "end_time": 90.0,
+      "caption": "person speaking with gestures, low motion, well-lit scene",
+      "confidence": 1.0
+    },
+    {
+      "window_id": 18,
+      "start_time": 90.0,
+      "end_time": 95.0,
+      "caption": "person speaking with gestures, moderate movement, well-lit scene",
+      "confidence": 1.0
+    },
+    {
+      "window_id": 19,
+      "start_time": 95.0,
+      "end_time": 100.0,
+      "caption": "person speaking with gestures, moderate movement, well-lit scene",
+      "confidence": 1.0
+    },
+    {
+      "window_id": 20,
+      "start_time": 100.0,
+      "end_time": 105.0,
+      "caption": "person speaking with gestures, moderate movement, well-lit scene",
+      "confidence": 1.0
+    },
+    {
+      "window_id": 21,
+      "start_time": 105.0,
+      "end_time": 110.0,
+      "caption": "person speaking with gestures, low motion, well-lit scene",
+      "confidence": 1.0
+    },
+    {
+      "window_id": 22,
+      "start_time": 110.0,
+      "end_time": 115.0,
+      "caption": "person speaking with gestures, low motion, well-lit scene",
+      "confidence": 1.0
+    },
+    {
+      "window_id": 23,
+      "start_time": 115.0,
+      "end_time": 120.0,
+      "caption": "person speaking with gestures, low motion, well-lit scene",
+      "confidence": 1.0
+    },
+    {
+      "window_id": 24,
+      "start_time": 120.0,
+      "end_time": 125.0,
+      "caption": "person speaking with gestures, low motion, well-lit scene",
+      "confidence": 1.0
+    },
+    {
+      "window_id": 25,
+      "start_time": 125.0,
+      "end_time": 130.0,
+      "caption": "person speaking with gestures, low motion, well-lit scene",
+      "confidence": 1.0
+    },
+    {
+      "window_id": 26,
+      "start_time": 130.0,
+      "end_time": 135.0,
+      "caption": "person speaking with gestures, low motion, well-lit scene",
+      "confidence": 1.0
+    },
+    {
+      "window_id": 27,
+      "start_time": 135.0,
+      "end_time": 140.0,
+      "caption": "person speaking with gestures, low motion, well-lit scene",
+      "confidence": 1.0
+    },
+    {
+      "window_id": 28,
+      "start_time": 140.0,
+      "end_time": 145.0,
+      "caption": "person speaking with gestures, low motion, well-lit scene",
+      "confidence": 1.0
+    },
+    {
+      "window_id": 29,
+      "start_time": 145.0,
+      "end_time": 150.0,
+      "caption": "person speaking with gestures, low motion, well-lit scene",
+      "confidence": 1.0
+    },
+    {
+      "window_id": 30,
+      "start_time": 150.0,
+      "end_time": 155.0,
+      "caption": "person speaking with gestures, low motion, well-lit scene",
+      "confidence": 1.0
+    },
+    {
+      "window_id": 31,
+      "start_time": 155.0,
+      "end_time": 160.0,
+      "caption": "person speaking with gestures, low motion, well-lit scene",
+      "confidence": 1.0
+    },
+    {
+      "window_id": 32,
+      "start_time": 160.0,
+      "end_time": 165.0,
+      "caption": "person speaking with gestures, low motion, well-lit scene",
+      "confidence": 1.0
+    },
+    {
+      "window_id": 33,
+      "start_time": 165.0,
+      "end_time": 165.73166666666668,
+      "caption": "person speaking with gestures, low motion, well-lit scene",
+      "confidence": 1.0
+    }
+  ],
+  "db_path": "/Users/laganipatel/Wizard/web/results/20260222_225432_Lagani_Patel__AI_Engineer.db",
+  "audio_waveform": [
+    0.007537841796875,
+    -0.0052490234375,
+    0.005462646484375,
+    -0.008209228515625,
+    0.0419921875,
+    -0.034088134765625,
+    0.0042724609375,
+    -0.0306396484375,
+    0.030975341796875,
+    -0.026519775390625,
+    0.0208740234375,
+    -0.022918701171875,
+    0.02496337890625,
+    -0.019500732421875,
+    0.030487060546875,
+    -0.0394287109375,
+    0.04364013671875,
+    -0.0421142578125,
+    0.02325439453125,
+    -0.021087646484375,
+    0.0247802734375,
+    -0.020263671875,
+    0.02099609375,
+    -0.0242919921875,
+    0.0224609375,
+    -0.025146484375,
+    0.026458740234375,
+    -0.025665283203125,
+    0.02508544921875,
+    -0.017822265625,
+    0.042755126953125,
+    -0.010223388671875,
+    0.01190185546875,
+    -0.0576171875,
+    0.038726806640625,
+    -0.026824951171875,
+    0.028411865234375,
+    -0.022308349609375,
+    0.015625,
+    -0.023590087890625,
+    0.02691650390625,
+    -0.022796630859375,
+    0.0213623046875,
+    -0.01708984375,
+    0.005462646484375,
+    -0.004852294921875,
+    0.006683349609375,
+    -0.006134033203125,
+    0.052459716796875,
+    -0.00653076171875,
+    0.00341796875,
+    -0.0589599609375,
+    0.0574951171875,
+    -0.051177978515625,
+    0.031890869140625,
+    -0.026092529296875,
+    0.024322509765625,
+    -0.030242919921875,
+    0.016265869140625,
+    -0.04022216796875,
+    0.0242919921875,
+    -0.02880859375,
+    0.034576416015625,
+    -0.02630615234375,
+    0.026611328125,
+    -0.02142333984375,
+    0.054901123046875,
+    -0.036346435546875,
+    0.024932861328125,
+    -0.020599365234375,
+    0.036651611328125,
+    -0.032806396484375,
+    0.023529052734375,
+    -0.032928466796875,
+    0.032501220703125,
+    -0.02606201171875,
+    0.023834228515625,
+    -0.020782470703125,
+    0.022735595703125,
+    -0.02276611328125,
+    0.00494384765625,
+    -0.005584716796875,
+    0.053741455078125,
+    -0.042327880859375,
+    0.05450439453125,
+    -0.047943115234375,
+    0.03131103515625,
+    -0.03900146484375,
+    0.026885986328125,
+    -0.020477294921875,
+    0.0357666015625,
+    -0.035858154296875,
+    0.026275634765625,
+    -0.0152587890625,
+    0.02471923828125,
+    -0.01654052734375,
+    0.016876220703125,
+    -0.035369873046875,
+    0.031646728515625,
+    -0.0418701171875,
+    0.03411865234375,
+    -0.026519775390625,
+    0.027557373046875,
+    -0.025726318359375,
+    0.02044677734375,
+    -0.027587890625,
+    0.01715087890625,
+    -0.020111083984375,
+    0.0418701171875,
+    -0.034210205078125,
+    0.02239990234375,
+    -0.0225830078125,
+    0.034759521484375,
+    -0.006561279296875,
+    0.002899169921875,
+    -0.056488037109375,
+    0.062286376953125,
+    -0.051361083984375,
+    0.03875732421875,
+    -0.01849365234375,
+    0.009063720703125,
+    -0.017730712890625,
+    0.01123046875,
+    -0.004150390625,
+    0.014190673828125,
+    -0.035858154296875,
+    0.050994873046875,
+    -0.041473388671875,
+    0.03021240234375,
+    -0.029449462890625,
+    0.02667236328125,
+    -0.045440673828125,
+    0.03515625,
+    -0.042877197265625,
+    0.02276611328125,
+    -0.0218505859375,
+    0.021392822265625,
+    -0.021697998046875,
+    0.027557373046875,
+    -0.046173095703125,
+    0.038909912109375,
+    -0.039459228515625,
+    0.085052490234375,
+    -0.019317626953125,
+    0.022064208984375,
+    -0.0245361328125,
+    0.01995849609375,
+    -0.018707275390625,
+    0.0172119140625,
+    -0.014617919921875,
+    0.009490966796875,
+    -0.023101806640625,
+    0.004119873046875,
+    -0.002227783203125,
+    0.00341796875,
+    -0.00372314453125,
+    0.014617919921875,
+    -0.0126953125,
+    0.0068359375,
+    -0.01971435546875,
+    0.041900634765625,
+    -0.0440673828125,
+    0.03594970703125,
+    -0.040130615234375,
+    0.032379150390625,
+    -0.025177001953125,
+    0.025177001953125,
+    -0.026885986328125,
+    0.0386962890625,
+    -0.03692626953125,
+    0.029296875,
+    -0.03350830078125,
+    0.021514892578125,
+    -0.0377197265625,
+    0.035736083984375,
+    -0.042694091796875,
+    0.029632568359375,
+    -0.02532958984375,
+    0.0286865234375,
+    -0.021331787109375,
+    0.01910400390625,
+    -0.02154541015625,
+    0.02081298828125,
+    -0.03009033203125,
+    0.00726318359375,
+    -0.005523681640625,
+    0.124359130859375,
+    -0.0247802734375,
+    0.0467529296875,
+    -0.028076171875,
+    0.024505615234375,
+    -0.02001953125,
+    0.03497314453125,
+    -0.0316162109375,
+    0.033172607421875,
+    -0.022857666015625,
+    0.028900146484375,
+    -0.038177490234375,
+    0.017120361328125,
+    -0.028045654296875,
+    0.00604248046875,
+    -0.024505615234375,
+    0.0401611328125,
+    -0.04473876953125,
+    0.033599853515625,
+    -0.03900146484375,
+    0.029388427734375,
+    -0.005279541015625,
+    0.042510986328125,
+    -0.03485107421875,
+    0.03240966796875,
+    -0.031463623046875,
+    0.0308837890625,
+    -0.030303955078125,
+    0.0284423828125,
+    -0.027191162109375,
+    0.016571044921875,
+    -0.0208740234375,
+    0.02435302734375,
+    -0.023651123046875,
+    0.032684326171875,
+    -0.02734375,
+    0.02581787109375,
+    -0.0272216796875,
+    0.02081298828125,
+    -0.0361328125,
+    0.03082275390625,
+    -0.02935791015625,
+    0.010589599609375,
+    -0.008209228515625,
+    0.00775146484375,
+    -0.025726318359375,
+    0.047943115234375,
+    -0.030181884765625,
+    0.030487060546875,
+    -0.036041259765625,
+    0.029571533203125,
+    -0.041656494140625,
+    0.026702880859375,
+    -0.037078857421875,
+    0.047119140625,
+    -0.03289794921875,
+    0.018035888671875,
+    -0.0347900390625,
+    0.036651611328125,
+    -0.034912109375,
+    0.03271484375,
+    -0.02740478515625,
+    0.032867431640625,
+    -0.030303955078125,
+    0.021759033203125,
+    -0.0174560546875,
+    0.02276611328125,
+    -0.01080322265625,
+    0.0030517578125,
+    -0.003326416015625,
+    0.0037841796875,
+    -0.0089111328125,
+    0.066253662109375,
+    -0.079345703125,
+    0.055877685546875,
+    -0.0465087890625,
+    0.039215087890625,
+    -0.022216796875,
+    0.0205078125,
+    -0.00836181640625,
+    0.03582763671875,
+    -0.03131103515625,
+    0.044281005859375,
+    -0.033233642578125,
+    0.02618408203125,
+    -0.0595703125,
+    0.03546142578125,
+    -0.00579833984375,
+    0.06414794921875,
+    -0.042694091796875,
+    0.0400390625,
+    -0.031097412109375,
+    0.03155517578125,
+    -0.0263671875,
+    0.026031494140625,
+    -0.023681640625,
+    0.02349853515625,
+    -0.045501708984375,
+    0.0374755859375,
+    -0.0335693359375,
+    0.028961181640625,
+    -0.028350830078125,
+    0.03607177734375,
+    -0.030853271484375,
+    0.0289306640625,
+    -0.035736083984375,
+    0.026611328125,
+    -0.05340576171875,
+    0.0211181640625,
+    -0.0533447265625,
+    0.066558837890625,
+    -0.05560302734375,
+    0.039398193359375,
+    -0.0408935546875,
+    0.040008544921875,
+    -0.030609130859375,
+    0.026947021484375,
+    -0.05108642578125,
+    0.034912109375,
+    -0.00665283203125,
+    0.004638671875,
+    -0.004119873046875,
+    0.00469970703125,
+    -0.045654296875,
+    0.03729248046875,
+    -0.0487060546875,
+    0.02825927734375,
+    -0.0458984375,
+    0.029571533203125,
+    -0.0465087890625,
+    0.0347900390625,
+    -0.0323486328125,
+    0.052642822265625,
+    -0.03375244140625,
+    0.03076171875,
+    -0.031402587890625,
+    0.014068603515625,
+    -0.0048828125,
+    0.034210205078125,
+    -0.033233642578125,
+    0.05181884765625,
+    -0.035400390625,
+    0.028411865234375,
+    -0.028076171875,
+    0.037506103515625,
+    -0.0242919921875,
+    0.020782470703125,
+    -0.0167236328125,
+    0.010284423828125,
+    -0.016448974609375,
+    0.004974365234375,
+    -0.0045166015625,
+    0.004302978515625,
+    -0.0572509765625,
+    0.03021240234375,
+    -0.051483154296875,
+    0.032958984375,
+    -0.017425537109375,
+    0.0355224609375,
+    -0.0218505859375,
+    0.02630615234375,
+    -0.02667236328125,
+    0.0787353515625,
+    -0.02764892578125,
+    0.02764892578125,
+    -0.043487548828125,
+    0.029754638671875,
+    -0.034515380859375,
+    0.030029296875,
+    -0.02764892578125,
+    0.024322509765625,
+    -0.036163330078125,
+    0.02734375,
+    -0.0294189453125,
+    0.038177490234375,
+    -0.037933349609375,
+    0.050048828125,
+    -0.0340576171875,
+    0.03607177734375,
+    -0.017578125,
+    0.005340576171875,
+    -0.03173828125,
+    0.032806396484375,
+    -0.0361328125,
+    0.034881591796875,
+    -0.05224609375,
+    0.054901123046875,
+    -0.035675048828125,
+    0.0306396484375,
+    -0.02349853515625,
+    0.031646728515625,
+    -0.037994384765625,
+    0.025360107421875,
+    -0.025482177734375,
+    0.03204345703125,
+    -0.029052734375,
+    0.043487548828125,
+    -0.052490234375,
+    0.010009765625,
+    -0.031524658203125,
+    0.033843994140625,
+    -0.027496337890625,
+    0.053619384765625,
+    -0.0299072265625,
+    0.03216552734375,
+    -0.023529052734375,
+    0.033538818359375,
+    -0.019073486328125,
+    0.028289794921875,
+    -0.03350830078125,
+    0.034454345703125,
+    -0.03790283203125,
+    0.03948974609375,
+    -0.0281982421875,
+    0.029998779296875,
+    -0.02520751953125,
+    0.0050048828125,
+    -0.0400390625,
+    0.026519775390625,
+    -0.029205322265625,
+    0.035858154296875,
+    -0.009246826171875,
+    0.00823974609375,
+    -0.04730224609375,
+    0.057098388671875,
+    -0.0504150390625,
+    0.03204345703125,
+    -0.04705810546875,
+    0.0352783203125,
+    -0.038543701171875,
+    0.017333984375,
+    -0.02587890625,
+    0.042266845703125,
+    -0.046661376953125,
+    0.047882080078125,
+    -0.03472900390625,
+    0.043487548828125,
+    -0.02117919921875,
+    0.031951904296875,
+    -0.030181884765625,
+    0.029449462890625,
+    -0.024810791015625,
+    0.026031494140625,
+    -0.024169921875,
+    0.030120849609375,
+    -0.026275634765625,
+    0.025360107421875,
+    -0.023345947265625,
+    0.02423095703125,
+    -0.01934814453125,
+    0.0130615234375,
+    -0.011016845703125,
+    0.002685546875,
+    -0.017822265625,
+    0.0042724609375,
+    -0.042083740234375,
+    0.0350341796875,
+    -0.03082275390625,
+    0.049072265625,
+    -0.04168701171875,
+    0.0301513671875,
+    -0.028656005859375,
+    0.02520751953125,
+    -0.0064697265625,
+    0.016448974609375,
+    -0.045806884765625,
+    0.0657958984375,
+    -0.079498291015625,
+    0.03167724609375,
+    -0.020477294921875,
+    0.028167724609375,
+    -0.033447265625,
+    0.05389404296875,
+    -0.021087646484375,
+    0.02410888671875,
+    -0.03662109375,
+    0.03570556640625,
+    -0.058013916015625,
+    0.0301513671875,
+    -0.036773681640625,
+    0.020751953125,
+    -0.0224609375,
+    0.0291748046875,
+    -0.031341552734375,
+    0.0128173828125,
+    -0.008819580078125,
+    0.0218505859375,
+    -0.023651123046875,
+    0.05633544921875,
+    -0.029998779296875,
+    0.030914306640625,
+    -0.029083251953125,
+    0.02032470703125,
+    -0.02655029296875,
+    0.030242919921875,
+    -0.0260009765625,
+    0.03460693359375,
+    -0.031494140625,
+    0.035064697265625,
+    -0.03216552734375,
+    0.044677734375,
+    -0.05859375,
+    0.0074462890625,
+    -0.037200927734375,
+    0.057098388671875,
+    -0.04510498046875,
+    0.02960205078125,
+    -0.034393310546875,
+    0.02911376953125,
+    -0.050689697265625,
+    0.035400390625,
+    -0.044158935546875,
+    0.0252685546875,
+    -0.0386962890625,
+    0.019989013671875,
+    -0.023895263671875,
+    0.018310546875,
+    -0.025543212890625,
+    0.026763916015625,
+    -0.0166015625,
+    0.005218505859375,
+    -0.00439453125,
+    0.003997802734375,
+    -0.0045166015625,
+    0.24127197265625,
+    -0.008270263671875,
+    0.06268310546875,
+    -0.0447998046875,
+    0.024566650390625,
+    -0.041046142578125,
+    0.042388916015625,
+    -0.030487060546875,
+    0.04498291015625,
+    -0.03790283203125,
+    0.055694580078125,
+    -0.02227783203125,
+    0.0296630859375,
+    -0.039306640625,
+    0.033294677734375,
+    -0.0498046875,
+    0.048675537109375,
+    -0.0322265625,
+    0.02606201171875,
+    -0.031463623046875,
+    0.04296875,
+    -0.037322998046875,
+    0.0208740234375,
+    -0.036773681640625,
+    0.037933349609375,
+    -0.02490234375,
+    0.0296630859375,
+    -0.025909423828125,
+    0.032012939453125,
+    -0.014495849609375,
+    0.03533935546875,
+    -0.030517578125,
+    0.0234375,
+    -0.022186279296875,
+    0.012939453125,
+    -0.031036376953125,
+    0.03582763671875,
+    -0.02764892578125,
+    0.032684326171875,
+    -0.028472900390625,
+    0.025543212890625,
+    -0.018463134765625,
+    0.025115966796875,
+    -0.03302001953125,
+    0.020904541015625,
+    -0.0142822265625,
+    0.00701904296875,
+    -0.012054443359375,
+    0.03961181640625,
+    -0.073272705078125,
+    0.042755126953125,
+    -0.04071044921875,
+    0.0438232421875,
+    -0.065093994140625,
+    0.050262451171875,
+    -0.02593994140625,
+    0.024261474609375,
+    -0.025238037109375,
+    0.02655029296875,
+    -0.017669677734375,
+    0.007598876953125,
+    -0.025787353515625,
+    0.030914306640625,
+    -0.029937744140625,
+    0.0277099609375,
+    -0.033843994140625,
+    0.007659912109375,
+    -0.03448486328125,
+    0.026458740234375,
+    -0.025634765625,
+    0.020660400390625,
+    -0.01690673828125,
+    0.0048828125,
+    -0.0050048828125,
+    0.00408935546875,
+    -0.006744384765625,
+    0.003509521484375,
+    -0.005828857421875,
+    0.002960205078125,
+    -0.0172119140625,
+    0.069549560546875,
+    -0.04376220703125,
+    0.044647216796875,
+    -0.01922607421875,
+    0.037811279296875,
+    -0.018707275390625,
+    0.040557861328125,
+    -0.032440185546875,
+    0.02874755859375,
+    -0.021026611328125,
+    0.029296875,
+    -0.04180908203125,
+    0.027435302734375,
+    -0.02899169921875,
+    0.03387451171875,
+    -0.031890869140625,
+    0.03131103515625,
+    -0.012176513671875,
+    0.005615234375,
+    -0.029815673828125,
+    0.03778076171875,
+    -0.030517578125,
+    0.02978515625,
+    -0.035736083984375,
+    0.034423828125,
+    -0.03228759765625,
+    0.028961181640625,
+    -0.020263671875,
+    0.024261474609375,
+    -0.031494140625,
+    0.022705078125,
+    -0.03131103515625,
+    0.0467529296875,
+    -0.009521484375,
+    0.006072998046875,
+    -0.0042724609375,
+    0.03082275390625,
+    -0.0325927734375,
+    0.039703369140625,
+    -0.030670166015625,
+    0.02288818359375,
+    -0.0328369140625,
+    0.037994384765625,
+    -0.022064208984375,
+    0.041595458984375,
+    -0.038665771484375,
+    0.01849365234375,
+    -0.0262451171875,
+    0.023590087890625,
+    -0.03143310546875,
+    0.052825927734375,
+    -0.029998779296875,
+    0.03155517578125,
+    -0.029815673828125,
+    0.02410888671875,
+    -0.026153564453125,
+    0.020599365234375,
+    -0.02630615234375,
+    0.031463623046875,
+    -0.04119873046875,
+    0.03314208984375,
+    -0.02813720703125,
+    0.01348876953125,
+    -0.017303466796875,
+    0.01153564453125,
+    -0.00421142578125,
+    0.003448486328125,
+    -0.004180908203125,
+    0.0037841796875,
+    -0.028045654296875,
+    0.037933349609375,
+    -0.042266845703125,
+    0.02056884765625,
+    -0.082183837890625,
+    0.059356689453125,
+    -0.054962158203125,
+    0.05389404296875,
+    -0.05535888671875,
+    0.0302734375,
+    -0.02972412109375,
+    0.027984619140625,
+    -0.03564453125,
+    0.01971435546875,
+    -0.026458740234375,
+    0.024871826171875,
+    -0.0335693359375,
+    0.02276611328125,
+    -0.048675537109375,
+    0.0096435546875,
+    -0.029998779296875,
+    0.031280517578125,
+    -0.031402587890625,
+    0.031219482421875,
+    -0.033843994140625,
+    0.0379638671875,
+    -0.0323486328125,
+    0.0318603515625,
+    -0.009735107421875,
+    0.03533935546875,
+    -0.043365478515625,
+    0.039886474609375,
+    -0.027191162109375,
+    0.042266845703125,
+    -0.03631591796875,
+    0.02197265625,
+    -0.02752685546875,
+    0.0447998046875,
+    -0.034271240234375,
+    0.04412841796875,
+    -0.041107177734375,
+    0.024383544921875,
+    -0.040924072265625,
+    0.02813720703125,
+    -0.02325439453125,
+    0.027618408203125,
+    -0.02935791015625,
+    0.02349853515625,
+    -0.03076171875,
+    0.031707763671875,
+    -0.03131103515625,
+    0.04144287109375,
+    -0.02630615234375,
+    0.01177978515625,
+    -0.0377197265625,
+    0.029266357421875,
+    -0.02593994140625,
+    0.066131591796875,
+    -0.062713623046875,
+    0.03497314453125,
+    -0.0594482421875,
+    0.0404052734375,
+    -0.0458984375,
+    0.0267333984375,
+    -0.036834716796875,
+    0.046142578125,
+    -0.035430908203125,
+    0.023834228515625,
+    -0.007293701171875,
+    0.0458984375,
+    -0.033111572265625,
+    0.026336669921875,
+    -0.0472412109375,
+    0.0438232421875,
+    -0.039276123046875,
+    0.030059814453125,
+    -0.033111572265625,
+    0.016693115234375,
+    -0.009674072265625,
+    0.003387451171875,
+    -0.0057373046875,
+    0.0037841796875,
+    -0.003997802734375,
+    0.015838623046875,
+    -0.13201904296875,
+    0.052215576171875,
+    -0.056671142578125,
+    0.020416259765625,
+    -0.0482177734375,
+    0.037139892578125,
+    -0.049407958984375,
+    0.03857421875,
+    -0.03570556640625,
+    0.030548095703125,
+    -0.02545166015625,
+    0.03570556640625,
+    -0.05450439453125,
+    0.058746337890625,
+    -0.030731201171875,
+    0.03216552734375,
+    -0.030975341796875,
+    0.022918701171875,
+    -0.032440185546875,
+    0.03826904296875,
+    -0.03594970703125,
+    0.02471923828125,
+    -0.027191162109375,
+    0.021636962890625,
+    -0.0333251953125,
+    0.0367431640625,
+    -0.029876708984375,
+    0.019989013671875,
+    -0.005706787109375,
+    0.02618408203125,
+    -0.026397705078125,
+    0.021331787109375,
+    -0.013519287109375,
+    0.026580810546875,
+    -0.005828857421875,
+    0.00390625,
+    -0.004547119140625,
+    0.004547119140625,
+    -0.00482177734375,
+    0.005767822265625,
+    -0.0052490234375,
+    0.00445556640625,
+    -0.027679443359375,
+    0.05194091796875,
+    -0.0638427734375,
+    0.03765869140625,
+    -0.0606689453125,
+    0.04010009765625,
+    -0.045654296875,
+    0.0301513671875,
+    -0.0157470703125,
+    0.0374755859375,
+    -0.033599853515625,
+    0.03955078125,
+    -0.03857421875,
+    0.0042724609375,
+    -0.004364013671875,
+    0.03790283203125,
+    -0.04888916015625,
+    0.0325927734375,
+    -0.03570556640625,
+    0.016265869140625,
+    -0.027252197265625,
+    0.0323486328125,
+    -0.03802490234375,
+    0.041656494140625,
+    -0.038787841796875,
+    0.051727294921875,
+    -0.03167724609375,
+    0.05084228515625,
+    -0.0438232421875,
+    0.02423095703125,
+    -0.014862060546875,
+    0.033905029296875,
+    -0.049560546875,
+    0.04034423828125,
+    -0.037811279296875,
+    0.033599853515625,
+    -0.020294189453125,
+    0.024871826171875,
+    -0.01422119140625,
+    0.003509521484375,
+    -0.04339599609375,
+    0.058624267578125,
+    -0.04766845703125,
+    0.0164794921875,
+    -0.020233154296875,
+    0.02587890625,
+    -0.025054931640625,
+    0.0157470703125,
+    -0.010528564453125,
+    0.011932373046875,
+    -0.009613037109375,
+    0.014923095703125,
+    -0.00482177734375,
+    0.002777099609375,
+    -0.003662109375,
+    0.040618896484375,
+    -0.0418701171875,
+    0.0289306640625,
+    -0.038848876953125,
+    0.0426025390625,
+    -0.04254150390625,
+    0.05029296875,
+    -0.042144775390625,
+    0.035369873046875,
+    -0.021759033203125,
+    0.021728515625,
+    -0.041656494140625,
+    0.031524658203125,
+    -0.018829345703125,
+    0.029205322265625,
+    -0.021087646484375,
+    0.030975341796875,
+    -0.028717041015625,
+    0.028900146484375,
+    -0.022613525390625,
+    0.025970458984375,
+    -0.0244140625,
+    0.02447509765625,
+    -0.04052734375,
+    0.034698486328125,
+    -0.022979736328125,
+    0.024566650390625,
+    -0.02197265625,
+    0.043975830078125,
+    -0.01513671875,
+    0.0059814453125,
+    -0.031402587890625,
+    0.04010009765625,
+    -0.034698486328125,
+    0.03369140625,
+    -0.04058837890625,
+    0.035064697265625,
+    -0.027191162109375,
+    0.0274658203125,
+    -0.0196533203125,
+    0.03314208984375,
+    -0.02581787109375,
+    0.010406494140625,
+    -0.0030517578125,
+    0.00396728515625,
+    -0.003814697265625,
+    0.003631591796875,
+    -0.066162109375,
+    0.035247802734375,
+    -0.0418701171875,
+    0.038909912109375,
+    -0.035430908203125,
+    0.032012939453125,
+    -0.0308837890625,
+    0.0335693359375,
+    -0.00469970703125,
+    0.005157470703125,
+    -0.034210205078125,
+    0.029144287109375,
+    -0.031280517578125,
+    0.03076171875,
+    -0.06549072265625,
+    0.06915283203125,
+    -0.038055419921875,
+    0.0303955078125,
+    -0.0294189453125,
+    0.02630615234375,
+    -0.0289306640625,
+    0.0302734375,
+    -0.021392822265625,
+    0.04095458984375,
+    -0.0311279296875,
+    0.040771484375,
+    -0.034332275390625,
+    0.020538330078125,
+    -0.027435302734375,
+    0.02105712890625,
+    -0.026702880859375,
+    0.019989013671875,
+    -0.028076171875,
+    0.02642822265625,
+    -0.0213623046875,
+    0.014739990234375,
+    -0.027313232421875,
+    0.01904296875,
+    -0.01080322265625,
+    0.00384521484375,
+    -0.012359619140625,
+    0.02911376953125,
+    -0.042999267578125,
+    0.053741455078125,
+    -0.04534912109375,
+    0.02777099609375,
+    -0.022186279296875,
+    0.029327392578125,
+    -0.020263671875,
+    0.0308837890625,
+    -0.032623291015625,
+    0.01416015625,
+    -0.03009033203125,
+    0.026336669921875,
+    -0.028350830078125,
+    0.0133056640625,
+    -0.0220947265625,
+    0.011810302734375,
+    -0.00860595703125,
+    0.005218505859375,
+    -0.005340576171875,
+    0.002410888671875,
+    -0.0048828125,
+    0.03826904296875,
+    -0.02655029296875,
+    0.0384521484375,
+    -0.043426513671875,
+    0.03912353515625,
+    -0.03668212890625,
+    0.01788330078125,
+    -0.0283203125,
+    0.026214599609375,
+    -0.023193359375,
+    0.028045654296875,
+    -0.0648193359375,
+    0.036651611328125,
+    -0.025482177734375,
+    0.024200439453125,
+    -0.027984619140625,
+    0.02001953125,
+    -0.0242919921875,
+    0.023040771484375,
+    -0.011505126953125,
+    0.03228759765625,
+    -0.033477783203125,
+    0.035919189453125,
+    -0.039459228515625,
+    0.01971435546875,
+    -0.012298583984375,
+    0.015869140625,
+    -0.00714111328125,
+    0.0123291015625,
+    -0.002288818359375,
+    0.00390625,
+    -0.00384521484375,
+    0.029571533203125,
+    -0.039398193359375,
+    0.025177001953125,
+    -0.017120361328125,
+    0.011688232421875,
+    -0.009979248046875,
+    0.00531005859375,
+    -0.00482177734375,
+    0.004608154296875,
+    -0.00225830078125,
+    0.004791259765625,
+    -0.007293701171875,
+    0.006378173828125,
+    -0.0037841796875,
+    0.002899169921875,
+    -0.002044677734375,
+    0.00286865234375,
+    -0.0054931640625
+  ]
+}

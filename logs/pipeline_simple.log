@@ -1,0 +1,21 @@
+2026-02-21 19:54:53,427 - INFO - Pipeline monitor initialized
+2026-02-21 19:54:53,788 - INFO - Started session test-session-1 for test_video.mp4 (0.33MB, 3.0s)
+2026-02-21 19:54:53,893 - INFO - Task blink_detection completed in 1.20s for session test-session-1
+2026-02-21 19:54:53,998 - INFO - Task breath_detection completed in 0.80s for session test-session-1
+2026-02-21 19:54:54,103 - INFO - Task speech_processing completed in 2.50s for session test-session-1
+2026-02-21 19:54:54,107 - INFO - Session test-session-1 completed: Total time: 0.32s, Speed ratio: 0.11x, Blinks: 5, Breaths: 3, Speakers: 2, Errors: 0
+2026-02-21 19:58:15,008 - INFO - Pipeline monitor initialized
+2026-02-21 19:58:15,009 - ERROR - Error starting session demo-session-1: [Errno 2] No such file or directory: 'test_video_1.mp4'
+2026-02-21 19:58:24,127 - INFO - Pipeline monitor initialized
+2026-02-21 19:58:24,285 - INFO - Started session demo-session-1 for test_video.mp4 (0.33MB, 3.0s)
+2026-02-21 19:58:24,387 - INFO - Task blink_detection completed in 1.20s for session demo-session-1
+2026-02-21 19:58:24,388 - INFO - Task breath_detection completed in 0.80s for session demo-session-1
+2026-02-21 19:58:24,389 - INFO - Session demo-session-1 completed: Total time: 0.10s, Speed ratio: 0.03x, Blinks: 3, Breaths: 2, Speakers: 0, Errors: 0
+2026-02-21 19:58:24,392 - INFO - Started session demo-session-2 for test_video.mp4 (0.33MB, 3.0s)
+2026-02-21 19:58:24,493 - INFO - Task blink_detection completed in 1.50s for session demo-session-2
+2026-02-21 19:58:24,496 - INFO - Task breath_detection completed in 1.00s for session demo-session-2
+2026-02-21 19:58:24,498 - INFO - Task speech_processing completed in 2.10s for session demo-session-2
+2026-02-21 19:58:24,500 - INFO - Session demo-session-2 completed: Total time: 0.11s, Speed ratio: 0.04x, Blinks: 4, Breaths: 3, Speakers: 1, Errors: 0
+2026-02-21 19:58:24,503 - INFO - Started session demo-session-3 for test_video.mp4 (0.33MB, 3.0s)
+2026-02-21 19:58:24,609 - ERROR - Session demo-session-3: [blink_detection] Simulated processing error
+2026-02-21 19:58:24,611 - INFO - Session demo-session-3 failed: Total time: 0.11s, Speed ratio: 0.04x, Blinks: 0, Breaths: 0, Speakers: 0, Errors: 1

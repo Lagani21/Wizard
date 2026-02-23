@@ -3,11 +3,16 @@ Local Pyannote speaker diarization model for the WIZ Intelligence Pipeline.
 """
 
 import logging
-import tempfile
 import os
+import tempfile
 import numpy as np
 from typing import List, Optional, Dict, Any
-from ..core.context import SpeakerSegment
+try:
+    # Try relative imports first
+    from ..core.context import SpeakerSegment
+except ImportError:
+    # Fall back to absolute imports
+    from core.context import SpeakerSegment
 
 
 class DiarizationModel:
@@ -54,14 +59,20 @@ class DiarizationModel:
         
         try:
             from pyannote.audio import Pipeline
-            
+
             self.logger.info(f"Loading Pyannote model: {self.model_name}")
-            
-            # Load the pipeline
-            if self.auth_token:
+
+            # Resolve auth token: explicit arg → HF_TOKEN env → HUGGING_FACE_HUB_TOKEN env
+            token = (
+                self.auth_token
+                or os.environ.get("HF_TOKEN")
+                or os.environ.get("HUGGING_FACE_HUB_TOKEN")
+            )
+
+            if token:
                 self.pipeline = Pipeline.from_pretrained(
                     self.model_name,
-                    use_auth_token=self.auth_token
+                    use_auth_token=token,
                 )
             else:
                 self.pipeline = Pipeline.from_pretrained(self.model_name)

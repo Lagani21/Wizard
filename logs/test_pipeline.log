@@ -1,0 +1,52 @@
+[2026-02-21 20:05:25] [INFO] [Pipeline] Pipeline monitor initialized
+[2026-02-21 20:05:25] [INFO] [Pipeline] Pipeline execution started
+[2026-02-21 20:05:25] [INFO] [Pipeline] === PIPELINE EXECUTION START ===
+[2026-02-21 20:05:25] [INFO] [Pipeline] Video file: test_video.mp4
+[2026-02-21 20:05:25] [INFO] [MetadataExtraction] Started
+[2026-02-21 20:05:25] [INFO] [MetadataExtraction] Task completed successfully
+[2026-02-21 20:05:25] [INFO] [MetadataExtraction] Completed in 0.00s
+[2026-02-21 20:05:25] [METRIC] [Pipeline] MetadataExtraction.duration=0.00s
+[2026-02-21 20:05:25] [INFO] [AudioExtraction] Started
+[2026-02-21 20:05:25] [INFO] [AudioExtraction] Task completed successfully
+[2026-02-21 20:05:25] [INFO] [AudioExtraction] Completed in 0.00s
+[2026-02-21 20:05:25] [METRIC] [Pipeline] AudioExtraction.duration=0.00s
+[2026-02-21 20:05:25] [INFO] [BlinkTask] Started
+[2026-02-21 20:05:25] [INFO] [BlinkTask] Task completed successfully
+[2026-02-21 20:05:25] [METRIC] [BlinkTask] detection.blink_events=15.00
+[2026-02-21 20:05:25] [INFO] [BlinkTask] Completed in 0.00s
+[2026-02-21 20:05:25] [METRIC] [Pipeline] BlinkTask.duration=0.00s
+[2026-02-21 20:05:25] [INFO] [BreathTask] Started
+[2026-02-21 20:05:25] [INFO] [BreathTask] Task completed successfully
+[2026-02-21 20:05:25] [METRIC] [BreathTask] detection.breath_events=22.00
+[2026-02-21 20:05:25] [INFO] [BreathTask] Completed in 0.00s
+[2026-02-21 20:05:25] [METRIC] [Pipeline] BreathTask.duration=0.00s
+[2026-02-21 20:05:25] [INFO] [TranscriptionTask] Started
+[2026-02-21 20:05:25] [INFO] [TranscriptionTask] Task completed successfully
+[2026-02-21 20:05:25] [METRIC] [TranscriptionTask] detection.transcript_words=145.00
+[2026-02-21 20:05:25] [METRIC] [TranscriptionTask] detection.speakers=2.00
+[2026-02-21 20:05:25] [INFO] [TranscriptionTask] Completed in 0.00s
+[2026-02-21 20:05:25] [METRIC] [Pipeline] TranscriptionTask.duration=0.00s
+[2026-02-21 20:05:25] [INFO] [DiarizationTask] Started
+[2026-02-21 20:05:25] [INFO] [DiarizationTask] Task completed successfully
+[2026-02-21 20:05:25] [INFO] [DiarizationTask] Completed in 0.00s
+[2026-02-21 20:05:25] [METRIC] [Pipeline] DiarizationTask.duration=0.00s
+[2026-02-21 20:05:25] [INFO] [ToneDetectionTask] Started
+[2026-02-21 20:05:25] [INFO] [ToneDetectionTask] Task completed successfully
+[2026-02-21 20:05:25] [METRIC] [ToneDetectionTask] detection.tone_segments=12.00
+[2026-02-21 20:05:25] [INFO] [ToneDetectionTask] Completed in 0.00s
+[2026-02-21 20:05:25] [METRIC] [Pipeline] ToneDetectionTask.duration=0.00s
+[2026-02-21 20:05:25] [INFO] [ContextSummaryTask] Started
+[2026-02-21 20:05:25] [INFO] [ContextSummaryTask] Task completed successfully
+[2026-02-21 20:05:25] [METRIC] [ContextSummaryTask] detection.summaries=5.00
+[2026-02-21 20:05:25] [INFO] [ContextSummaryTask] Completed in 0.00s
+[2026-02-21 20:05:25] [METRIC] [Pipeline] ContextSummaryTask.duration=0.00s
+[2026-02-21 20:05:25] [METRIC] [Pipeline] whisper-base.load_time=2.10s
+[2026-02-21 20:05:25] [METRIC] [Pipeline] mediapipe.load_time=0.80s
+[2026-02-21 20:05:25] [METRIC] [Pipeline] whisper-base.inference_time=6.50s
+[2026-02-21 20:05:25] [METRIC] [Pipeline] mediapipe.inference_time=3.20s
+[2026-02-21 20:05:25] [METRIC] [Pipeline] system.memory_usage=234.70MB
+[2026-02-21 20:05:25] [METRIC] [Pipeline] pipeline.total_duration=0.02s
+[2026-02-21 20:05:25] [INFO] [Pipeline] Pipeline execution completed
+[2026-02-21 20:05:25] [METRIC] [Pipeline] pipeline.total_events=62.00
+[2026-02-21 20:05:25] [METRIC] [Pipeline] performance.speed_ratio=3.70x
+[2026-02-21 20:05:25] [METRIC] [Pipeline] memory.peak_usage=234.70MB

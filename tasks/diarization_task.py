@@ -3,9 +3,16 @@ Speaker diarization task for the WIZ Intelligence Pipeline.
 """
 
 import numpy as np
-from ..core.base_task import BaseTask
-from ..core.context import PipelineContext
-from ..models.diarization_model import DiarizationModel
+try:
+    # Try relative imports first
+    from ..core.base_task import BaseTask
+    from ..core.context import PipelineContext
+    from ..models.diarization_model import DiarizationModel
+except ImportError:
+    # Fall back to absolute imports
+    from core.base_task import BaseTask
+    from core.context import PipelineContext
+    from models.diarization_model import DiarizationModel
 
 
 class DiarizationTask(BaseTask):
@@ -33,24 +40,29 @@ class DiarizationTask(BaseTask):
         Args:
             context: Pipeline context containing audio waveform
         """
+        logger = context.logger
         if context.audio_waveform is None:
             raise ValueError("Audio waveform not available in context")
         
         # Log audio information
         duration_s = len(context.audio_waveform) / 16000  # Assuming 16kHz
-        self.logger.info(
+        logger.log_info(
             f"Processing audio for diarization: {len(context.audio_waveform)} samples, "
             f"{duration_s:.2f}s duration"
         )
         
-        # Ensure model is loaded
+        # Ensure model is loaded (failure is non-fatal — diarize() has a single-speaker fallback)
         if not self.diarization_model.is_loaded:
-            self.logger.info("Loading Pyannote diarization model...")
+            logger.log_info("Loading Pyannote diarization model...")
             if not self.diarization_model.load_model():
-                raise RuntimeError("Failed to load Pyannote diarization model")
+                logger.log_warning(
+                    "Pyannote model failed to load — falling back to single-speaker diarization. "
+                    "To enable full diarization set the HF_TOKEN environment variable and accept "
+                    "the model license at https://hf.co/pyannote/speaker-diarization-3.1"
+                )
         
         # Perform diarization
-        self.logger.info("Running speaker diarization...")
+        logger.log_info("Running speaker diarization...")
         speaker_segments = self.diarization_model.diarize(
             context.audio_waveform, 
             sample_rate=16000
@@ -59,7 +71,7 @@ class DiarizationTask(BaseTask):
         # Merge adjacent segments from same speaker (optional optimization)
         if len(speaker_segments) > 1:
             merged_segments = self.diarization_model.merge_adjacent_segments(speaker_segments)
-            self.logger.info(f"Merged {len(speaker_segments)} segments into {len(merged_segments)}")
+            logger.log_info(f"Merged {len(speaker_segments)} segments into {len(merged_segments)}")
             speaker_segments = merged_segments
         
         # Store results in context
@@ -80,17 +92,17 @@ class DiarizationTask(BaseTask):
         
         # Log results
         num_speakers = speaker_stats['num_speakers']
-        self.logger.info(
+        logger.log_info(
             f"Diarization completed: {num_speakers} speakers, "
             f"{len(speaker_segments)} segments"
         )
         
         # Log speaker breakdown
         if speaker_stats['speaker_percentages']:
-            self.logger.info("Speaker breakdown:")
+            logger.log_info("Speaker breakdown:")
             for speaker_id, percentage in speaker_stats['speaker_percentages'].items():
                 duration = speaker_stats['speaker_durations'][speaker_id]
-                self.logger.info(f"  {speaker_id}: {duration:.1f}s ({percentage:.1f}%)")
+                logger.log_info(f"  {speaker_id}: {duration:.1f}s ({percentage:.1f}%)")
     
     @classmethod
     def create_default(cls, 

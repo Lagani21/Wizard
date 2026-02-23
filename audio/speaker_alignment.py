@@ -4,7 +4,12 @@ Speaker-transcript alignment utilities for the WIZ Intelligence Pipeline.
 
 import logging
 from typing import List, Optional, Dict, Any
-from ..core.context import TranscriptWord, SpeakerSegment, SpeakerAlignedSegment
+try:
+    # Try relative imports first
+    from ..core.context import TranscriptWord, SpeakerSegment, SpeakerAlignedSegment
+except ImportError:
+    # Fall back to absolute imports
+    from core.context import TranscriptWord, SpeakerSegment, SpeakerAlignedSegment
 
 
 class SpeakerAligner:
