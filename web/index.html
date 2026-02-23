@@ -18,6 +18,7 @@
             <nav class="sidebar-nav">
                 <a href="#" class="nav-item active" data-view="upload">Upload</a>
                 <a href="/monitoring" class="nav-item" target="_blank">Monitoring</a>
+                <a href="/benchmark" class="nav-item" target="_blank">Benchmark</a>
             </nav>
         </aside>
 
@@ -139,6 +140,7 @@
                             <button class="dtab" data-tab="scenes">Scenes</button>
                             <button class="dtab" data-tab="captions">Captions</button>
                             <button class="dtab" data-tab="events">Events</button>
+                            <button class="dtab" data-tab="search">Search</button>
                         </div>
 
                         <div class="dtab-content active" id="transcriptTab">
@@ -152,6 +154,30 @@
                         </div>
                         <div class="dtab-content" id="eventsTab">
                             <div id="eventsContent" class="scroll-pane"></div>
+                        </div>
+                        <div class="dtab-content" id="searchTab">
+                            <div class="search-box">
+                                <div class="search-mode-pills">
+                                    <button class="mode-pill active" data-mode="topic">Topic</button>
+                                    <button class="mode-pill" data-mode="emotion">Emotion</button>
+                                    <button class="mode-pill" data-mode="speaker_topic">Speaker + Topic</button>
+                                    <button class="mode-pill" data-mode="safe_cuts">Safe Cuts</button>
+                                </div>
+                                <div class="search-fields">
+                                    <input class="search-input" id="searchQuery" placeholder="e.g. machine learning" autocomplete="off">
+                                    <div class="search-speaker-row" id="searchSpeakerRow" style="display:none">
+                                        <select class="search-select" id="searchSpeaker">
+                                            <option value="">Any speaker</option>
+                                        </select>
+                                        <label class="search-toggle">
+                                            <input type="checkbox" id="searchNoBlink">
+                                            <span>No blink</span>
+                                        </label>
+                                    </div>
+                                    <button class="btn-search" id="searchBtn">Search</button>
+                                </div>
+                            </div>
+                            <div id="searchResults" class="scroll-pane"></div>
                         </div>
                     </div>
                 </div>

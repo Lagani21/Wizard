@@ -23,16 +23,16 @@ except ImportError:
     from core.logger import Logger
     from core.monitor import PipelineMonitor
 
-# Optional DB persistence — non-critical; pipeline still works without it
-PipelineContextWriter = None
-get_db_path_for_video = None
+# Optional .wiz persistence — non-critical; pipeline still works without it
+WizWriter = None
+get_wiz_path_for_video = None
 try:
-    from ..database.writer import PipelineContextWriter
-    from ..database.schema import get_db_path_for_video
+    from ..wiz.writer import WizWriter
+    from ..wiz.format import get_wiz_path_for_video
 except ImportError:
     try:
-        from database.writer import PipelineContextWriter
-        from database.schema import get_db_path_for_video
+        from wiz.writer import WizWriter
+        from wiz.format import get_wiz_path_for_video
     except ImportError:
         pass
 
@@ -488,10 +488,10 @@ class Pipeline:
             # Record final pipeline metrics
             self._record_final_metrics(context)
 
-            # Persist results to SQLite (non-critical)
-            db_path = self._write_database(video_path, context)
-            if db_path:
-                context.processing_metadata['db_path'] = db_path
+            # Persist results to .wiz file (non-critical)
+            wiz_path = self._write_database(video_path, context)
+            if wiz_path:
+                context.processing_metadata['wiz_path'] = wiz_path
 
             # End pipeline monitoring
             self.monitor.end_pipeline()
@@ -509,28 +509,27 @@ class Pipeline:
     
     def _write_database(self, video_path: str, context: PipelineContext) -> Optional[str]:
         """
-        Persist completed pipeline context to a SQLite database.
+        Persist completed pipeline context to a .wiz file.
 
         Non-critical: any failure is logged as a warning and the pipeline
         result is still returned to the caller.
 
         Returns:
-            Absolute path to the written .db file, or None on failure.
+            Absolute path to the written .wiz file, or None on failure.
         """
-        if PipelineContextWriter is None or get_db_path_for_video is None:
-            self.logger.log_warning("DB writer not available — skipping database persistence")
+        if WizWriter is None or get_wiz_path_for_video is None:
+            self.logger.log_warning("WizWriter not available — skipping .wiz persistence")
             return None
         if context.video_metadata is None:
-            self.logger.log_warning("No video_metadata in context — skipping DB write")
+            self.logger.log_warning("No video_metadata in context — skipping .wiz write")
             return None
         try:
-            db_path = get_db_path_for_video(video_path, output_dir="results")
-            writer = PipelineContextWriter()
-            abs_path = writer.write(context, db_path)
-            self.logger.log_info(f"Results persisted to database: {abs_path}")
+            wiz_path = get_wiz_path_for_video(video_path, output_dir="results")
+            abs_path = WizWriter().write(context, wiz_path)
+            self.logger.log_info(f"Results persisted to: {abs_path}")
             return abs_path
         except Exception as exc:
-            self.logger.log_warning(f"DB write failed (non-critical): {exc}")
+            self.logger.log_warning(f".wiz write failed (non-critical): {exc}")
             return None
 
     def _record_detection_metrics(self, context: PipelineContext) -> None:

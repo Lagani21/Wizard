@@ -337,3 +337,15 @@ class WizFile:
             time_start=time_start,
             time_end=time_end,
         )
+
+
+def get_wiz_path_for_video(video_path: str, output_dir: str = "results") -> str:
+    """
+    Derive a .wiz output path from an input video path.
+
+    Example:
+        video_path = "/data/interview.mov"
+        → "results/interview.wiz"
+    """
+    stem = Path(video_path).stem
+    return str(Path(output_dir) / f"{stem}.wiz")

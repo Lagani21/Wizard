@@ -3,537 +3,529 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WIZ Pipeline Monitoring</title>
+    <title>WIZ · Monitoring</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { font-size: 14px; }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #1a1a1a;
-            color: #e0e0e0;
-            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+            background: #0d0f14;
+            color: #e2e8f0;
+            min-height: 100vh;
         }
-        
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        .header {
-            background: #2d2d2d;
-            border-radius: 12px;
-            padding: 24px;
-            margin-bottom: 24px;
-            border-left: 4px solid #4CAF50;
-        }
-        
-        .header h1 {
-            font-size: 2.5rem;
-            color: #4CAF50;
-            margin-bottom: 8px;
-        }
-        
-        .header p {
-            color: #b0b0b0;
-            font-size: 1.1rem;
-        }
-        
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-            margin-bottom: 32px;
-        }
-        
-        .card {
-            background: #2d2d2d;
-            border-radius: 12px;
-            padding: 24px;
-            border: 1px solid #3d3d3d;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 32px rgba(76, 175, 80, 0.1);
-        }
-        
-        .card h3 {
-            color: #4CAF50;
-            font-size: 1.3rem;
-            margin-bottom: 16px;
+
+        /* ── Top bar ─────────────────────────────────────────────── */
+        .topbar {
             display: flex;
             align-items: center;
-            gap: 8px;
-        }
-        
-        .metric {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-            padding: 8px 0;
-            border-bottom: 1px solid #3d3d3d;
-        }
-        
-        .metric:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-        }
-        
-        .metric-label {
-            color: #b0b0b0;
-            font-size: 0.95rem;
-        }
-        
-        .metric-value {
-            color: #e0e0e0;
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-        
-        .metric-value.success {
-            color: #4CAF50;
-        }
-        
-        .metric-value.warning {
-            color: #FF9800;
-        }
-        
-        .metric-value.error {
-            color: #f44336;
-        }
-        
-        .progress-bar {
-            width: 100%;
-            height: 8px;
-            background: #3d3d3d;
-            border-radius: 4px;
-            overflow: hidden;
-            margin: 8px 0;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #4CAF50, #45a049);
-            transition: width 0.3s ease;
-        }
-        
-        .sessions-table {
-            background: #2d2d2d;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid #3d3d3d;
-        }
-        
-        .table-header {
-            background: #3d3d3d;
-            padding: 16px 24px;
-            border-bottom: 1px solid #4d4d4d;
-        }
-        
-        .table-header h3 {
-            color: #4CAF50;
-            font-size: 1.3rem;
-        }
-        
-        .table-content {
-            max-height: 400px;
-            overflow-y: auto;
-        }
-        
-        .session-row {
-            padding: 16px 24px;
-            border-bottom: 1px solid #3d3d3d;
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
             gap: 16px;
-            align-items: center;
-            transition: background 0.2s ease;
+            padding: 16px 28px;
+            background: #111318;
+            border-bottom: 1px solid #1e2130;
         }
-        
-        .session-row:hover {
-            background: #353535;
-        }
-        
-        .session-row:last-child {
-            border-bottom: none;
-        }
-        
-        .status-badge {
-            padding: 4px 12px;
-            border-radius: 16px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-align: center;
-        }
-        
-        .status-completed {
-            background: rgba(76, 175, 80, 0.2);
-            color: #4CAF50;
-            border: 1px solid #4CAF50;
-        }
-        
-        .status-failed {
-            background: rgba(244, 67, 54, 0.2);
-            color: #f44336;
-            border: 1px solid #f44336;
-        }
-        
-        .status-running {
-            background: rgba(255, 152, 0, 0.2);
-            color: #FF9800;
-            border: 1px solid #FF9800;
-        }
-        
-        .logs-section {
-            background: #2d2d2d;
-            border-radius: 12px;
-            border: 1px solid #3d3d3d;
-            margin-top: 24px;
-        }
-        
-        .logs-header {
-            background: #3d3d3d;
-            padding: 16px 24px;
-            border-bottom: 1px solid #4d4d4d;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logs-header h3 {
-            color: #4CAF50;
-            font-size: 1.3rem;
-        }
-        
-        .logs-content {
-            padding: 24px;
-            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
-            font-size: 0.9rem;
-            line-height: 1.4;
-            max-height: 400px;
-            overflow-y: auto;
-            background: #1a1a1a;
-        }
-        
-        .log-line {
-            margin-bottom: 4px;
-            padding: 2px 0;
-        }
-        
-        .log-line.info {
-            color: #b0b0b0;
-        }
-        
-        .log-line.warning {
-            color: #FF9800;
-        }
-        
-        .log-line.error {
-            color: #f44336;
-        }
-        
-        .refresh-btn {
-            background: #4CAF50;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: background 0.2s ease;
-        }
-        
-        .refresh-btn:hover {
-            background: #45a049;
-        }
-        
-        .auto-refresh {
+
+        .topbar-logo {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            text-decoration: none;
         }
-        
-        .auto-refresh input[type="checkbox"] {
-            transform: scale(1.2);
+
+        .logo-mark {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 7px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1rem;
+            color: #fff;
         }
-        
-        @keyframes pulse {
-            0% { opacity: 0.6; }
-            50% { opacity: 1; }
-            100% { opacity: 0.6; }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            color: #e2e8f0;
         }
-        
-        .loading {
-            animation: pulse 1.5s ease-in-out infinite;
-        }
-        
-        .icon {
+
+        .topbar-sep {
+            color: #2d3a52;
             font-size: 1.2rem;
         }
-        
+
+        .topbar-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #94a3b8;
+        }
+
+        .topbar-right {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #22c55e;
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50%       { opacity: 0.3; }
+        }
+
+        .live-label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: #22c55e;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: #818cf8;
+            border: 1px solid #2d3a52;
+            padding: 6px 16px;
+            border-radius: 7px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.15s;
+            text-decoration: none;
+        }
+        .btn-ghost:hover { background: #1e2130; }
+
+        /* ── Main ────────────────────────────────────────────────── */
+        .main {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 28px 24px;
+        }
+
+        /* ── Summary strip ───────────────────────────────────────── */
+        .summary-strip {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+        }
+
+        .stat-card {
+            background: #161b27;
+            border: 1px solid #1e2a40;
+            border-radius: 12px;
+            padding: 18px 24px;
+            flex: 1;
+            min-width: 140px;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #475569;
+            margin-bottom: 8px;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #e2e8f0;
+            line-height: 1;
+        }
+
+        .stat-value.green  { color: #22c55e; }
+        .stat-value.purple { color: #818cf8; }
+        .stat-value.orange { color: #f97316; }
+        .stat-value.blue   { color: #38bdf8; }
+
+        /* ── Section header ──────────────────────────────────────── */
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+        }
+
+        .section-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: #64748b;
+        }
+
+        /* ── Sessions table ──────────────────────────────────────── */
+        .table-wrap {
+            background: #111318;
+            border: 1px solid #1e2130;
+            border-radius: 14px;
+            overflow: hidden;
+            margin-bottom: 28px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead tr {
+            background: #161b27;
+            border-bottom: 1px solid #1e2130;
+        }
+
+        th {
+            padding: 11px 16px;
+            text-align: left;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #475569;
+            white-space: nowrap;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid #161b27;
+            transition: background 0.12s;
+        }
+
+        tbody tr:last-child { border-bottom: none; }
+        tbody tr:hover { background: #161b27; }
+
+        td {
+            padding: 12px 16px;
+            font-size: 0.88rem;
+            color: #cbd5e1;
+            white-space: nowrap;
+        }
+
+        .video-name {
+            font-weight: 600;
+            color: #e2e8f0;
+            max-width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .badge-completed { background: rgba(34,197,94,0.15);  color: #22c55e;  border: 1px solid rgba(34,197,94,0.3); }
+        .badge-failed    { background: rgba(239,68,68,0.15);  color: #f87171;  border: 1px solid rgba(239,68,68,0.3); }
+        .badge-running   { background: rgba(249,115,22,0.15); color: #fb923c;  border: 1px solid rgba(249,115,22,0.3); }
+        .badge-pending   { background: rgba(100,116,139,0.15);color: #94a3b8;  border: 1px solid rgba(100,116,139,0.3); }
+
+        .det-cell {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .det-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .dot-blink   { background: #f97316; }
+        .dot-breath  { background: #38bdf8; }
+        .dot-speaker { background: #22c55e; }
+        .dot-scene   { background: #a855f7; }
+
+        .empty-row td {
+            text-align: center;
+            color: #475569;
+            padding: 40px;
+        }
+
+        /* ── Logs ────────────────────────────────────────────────── */
+        .logs-wrap {
+            background: #111318;
+            border: 1px solid #1e2130;
+            border-radius: 14px;
+            overflow: hidden;
+        }
+
+        .logs-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            border-bottom: 1px solid #1e2130;
+            background: #161b27;
+        }
+
+        .logs-title {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #64748b;
+        }
+
+        .logs-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .toggle-label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            color: #64748b;
+            cursor: pointer;
+        }
+        .toggle-label input { accent-color: #6366f1; }
+
+        .logs-body {
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            font-size: 0.8rem;
+            line-height: 1.55;
+            padding: 16px;
+            max-height: 340px;
+            overflow-y: auto;
+            background: #0d0f14;
+        }
+
+        .log-line { padding: 1px 0; color: #64748b; }
+        .log-line.info    { color: #94a3b8; }
+        .log-line.warning { color: #fb923c; }
+        .log-line.error   { color: #f87171; }
+
+        /* ── Scrollbar ───────────────────────────────────────────── */
+        ::-webkit-scrollbar { width: 5px; height: 5px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #2d3a52; border-radius: 3px; }
+
+        /* ── Responsive ──────────────────────────────────────────── */
         @media (max-width: 768px) {
-            .grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .session-row {
-                grid-template-columns: 1fr;
-                gap: 8px;
-            }
-            
-            .logs-header {
-                flex-direction: column;
-                gap: 12px;
-                align-items: stretch;
-            }
+            .summary-strip { flex-direction: column; }
+            table { font-size: 0.78rem; }
+            th, td { padding: 9px 10px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>🧙‍♂️ WIZ Pipeline Monitoring</h1>
-            <p>Real-time monitoring and analytics for video intelligence processing</p>
-        </div>
-        
-        <div class="grid">
-            <div class="card">
-                <h3><span class="icon">📊</span> System Status</h3>
-                <div class="metric">
-                    <span class="metric-label">Active Sessions</span>
-                    <span class="metric-value" id="activeSessions">-</span>
-                </div>
-                <div class="metric">
-                    <span class="metric-label">Total Sessions</span>
-                    <span class="metric-value" id="totalSessions">-</span>
-                </div>
-                <div class="metric">
-                    <span class="metric-label">Success Rate</span>
-                    <span class="metric-value success" id="successRate">-</span>
-                </div>
-                <div class="metric">
-                    <span class="metric-label">Avg Processing Time</span>
-                    <span class="metric-value" id="avgProcessingTime">-</span>
-                </div>
-            </div>
-            
-            <div class="card">
-                <h3><span class="icon">🖥️</span> System Resources</h3>
-                <div class="metric">
-                    <span class="metric-label">CPU Usage</span>
-                    <span class="metric-value" id="cpuUsage">-</span>
-                </div>
-                <div class="progress-bar">
-                    <div class="progress-fill" id="cpuProgress"></div>
-                </div>
-                <div class="metric">
-                    <span class="metric-label">Memory Usage</span>
-                    <span class="metric-value" id="memoryUsage">-</span>
-                </div>
-                <div class="progress-bar">
-                    <div class="progress-fill" id="memoryProgress"></div>
-                </div>
-            </div>
-            
-            <div class="card">
-                <h3><span class="icon">⚡</span> Performance</h3>
-                <div class="metric">
-                    <span class="metric-label">Avg Speed Ratio</span>
-                    <span class="metric-value" id="speedRatio">-</span>
-                </div>
-                <div class="metric">
-                    <span class="metric-label">Successful Sessions</span>
-                    <span class="metric-value success" id="successfulSessions">-</span>
-                </div>
-                <div class="metric">
-                    <span class="metric-label">Failed Sessions</span>
-                    <span class="metric-value error" id="failedSessions">-</span>
-                </div>
-                <div class="metric">
-                    <span class="metric-label">Last Update</span>
-                    <span class="metric-value" id="lastUpdate">-</span>
-                </div>
-            </div>
-        </div>
-        
-        <div class="sessions-table">
-            <div class="table-header">
-                <h3>📹 Recent Processing Sessions</h3>
-            </div>
-            <div class="table-content" id="sessionsTable">
-                <div class="session-row loading">
-                    <div>Loading sessions...</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="logs-section">
-            <div class="logs-header">
-                <h3>📝 System Logs</h3>
-                <div class="auto-refresh">
-                    <label>
-                        <input type="checkbox" id="autoRefresh" checked> Auto Refresh
-                    </label>
-                    <button class="refresh-btn" onclick="refreshLogs()">Refresh</button>
-                </div>
-            </div>
-            <div class="logs-content" id="logsContent">
-                <div class="log-line loading">Loading logs...</div>
-            </div>
+
+    <div class="topbar">
+        <a href="/" class="topbar-logo">
+            <div class="logo-mark">W</div>
+            <span class="logo-text">WIZ</span>
+        </a>
+        <span class="topbar-sep">/</span>
+        <span class="topbar-title">Monitoring</span>
+        <div class="topbar-right">
+            <div class="live-dot"></div>
+            <span class="live-label">Live</span>
+            <a href="/benchmark" class="btn-ghost">Benchmark →</a>
+            <a href="/" class="btn-ghost">← Back</a>
         </div>
     </div>
-    
+
+    <div class="main">
+
+        <!-- Summary strip -->
+        <div class="summary-strip" id="summaryStrip">
+            <div class="stat-card">
+                <div class="stat-label">Videos Processed</div>
+                <div class="stat-value purple" id="statTotal">—</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Completed</div>
+                <div class="stat-value green" id="statCompleted">—</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Total Blinks</div>
+                <div class="stat-value orange" id="statBlinks">—</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Total Breaths</div>
+                <div class="stat-value blue" id="statBreaths">—</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Unique Speakers</div>
+                <div class="stat-value" id="statSpeakers">—</div>
+            </div>
+        </div>
+
+        <!-- Sessions table -->
+        <div class="section-header">
+            <span class="section-title">Processing Sessions</span>
+        </div>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Video</th>
+                        <th>Status</th>
+                        <th>Duration</th>
+                        <th>Blinks</th>
+                        <th>Breaths</th>
+                        <th>Speakers</th>
+                        <th>Scenes</th>
+                        <th>Captions</th>
+                        <th>Started</th>
+                    </tr>
+                </thead>
+                <tbody id="sessionsBody">
+                    <tr class="empty-row"><td colspan="9">Loading…</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Logs -->
+        <div class="section-header">
+            <span class="section-title">Pipeline Logs</span>
+        </div>
+        <div class="logs-wrap">
+            <div class="logs-toolbar">
+                <span class="logs-title">Last 100 lines</span>
+                <div class="logs-controls">
+                    <label class="toggle-label">
+                        <input type="checkbox" id="autoRefresh" checked>
+                        Auto-refresh
+                    </label>
+                    <button class="btn-ghost" onclick="refresh()">Refresh</button>
+                </div>
+            </div>
+            <div class="logs-body" id="logsBody">
+                <div class="log-line">Loading…</div>
+            </div>
+        </div>
+
+    </div>
+
     <script>
-        let autoRefreshEnabled = true;
-        let refreshInterval;
-        
-        // Initialize monitoring dashboard
-        document.addEventListener('DOMContentLoaded', function() {
-            refreshData();
-            startAutoRefresh();
-            
-            document.getElementById('autoRefresh').addEventListener('change', function(e) {
-                autoRefreshEnabled = e.target.checked;
-                if (autoRefreshEnabled) {
-                    startAutoRefresh();
-                } else {
-                    stopAutoRefresh();
-                }
-            });
+        'use strict';
+
+        let timer = null;
+
+        function startTimer() {
+            stopTimer();
+            timer = setInterval(refresh, 5000);
+        }
+
+        function stopTimer() {
+            if (timer) { clearInterval(timer); timer = null; }
+        }
+
+        document.getElementById('autoRefresh').addEventListener('change', e => {
+            e.target.checked ? startTimer() : stopTimer();
         });
-        
-        function startAutoRefresh() {
-            if (refreshInterval) clearInterval(refreshInterval);
-            refreshInterval = setInterval(refreshData, 5000); // Refresh every 5 seconds
+
+        async function refresh() {
+            await Promise.all([loadTasks(), loadLogs()]);
         }
-        
-        function stopAutoRefresh() {
-            if (refreshInterval) clearInterval(refreshInterval);
-        }
-        
-        async function refreshData() {
-            await Promise.all([
-                refreshSystemStatus(),
-                refreshSessions(),
-                refreshLogs()
-            ]);
-        }
-        
-        async function refreshSystemStatus() {
+
+        async function loadTasks() {
             try {
-                const response = await fetch('/api/monitoring/status');
-                const data = await response.json();
-                
-                document.getElementById('activeSessions').textContent = data.active_sessions || 0;
-                document.getElementById('totalSessions').textContent = data.total_sessions || 0;
-                document.getElementById('successRate').textContent = (data.success_rate || 0).toFixed(1) + '%';
-                document.getElementById('avgProcessingTime').textContent = (data.average_processing_time || 0).toFixed(1) + 's';
-                
-                // System resources
-                const cpuPercent = data.system_resources?.cpu_percent || 0;
-                const memoryPercent = data.system_resources?.memory_percent || 0;
-                
-                document.getElementById('cpuUsage').textContent = cpuPercent.toFixed(1) + '%';
-                document.getElementById('memoryUsage').textContent = memoryPercent.toFixed(1) + '%';
-                
-                document.getElementById('cpuProgress').style.width = cpuPercent + '%';
-                document.getElementById('memoryProgress').style.width = memoryPercent + '%';
-                
-                // Performance metrics
-                document.getElementById('speedRatio').textContent = (data.average_speed_ratio || 0).toFixed(2) + 'x';
-                document.getElementById('successfulSessions').textContent = data.successful_sessions || 0;
-                document.getElementById('failedSessions').textContent = data.failed_sessions || 0;
-                
-                document.getElementById('lastUpdate').textContent = new Date().toLocaleTimeString();
-                
-            } catch (error) {
-                console.error('Error fetching system status:', error);
-            }
-        }
-        
-        async function refreshSessions() {
-            try {
-                const response = await fetch('/api/monitoring/sessions?limit=20');
-                const data = await response.json();
-                
-                const sessionsTable = document.getElementById('sessionsTable');
-                
-                if (data.sessions && data.sessions.length > 0) {
-                    sessionsTable.innerHTML = data.sessions.map(session => {
-                        const startTime = new Date(session.start_time).toLocaleString();
-                        const duration = session.total_processing_time_seconds ? 
-                            session.total_processing_time_seconds.toFixed(1) + 's' : '-';
-                        const videoName = session.video_path.split('/').pop();
-                        const speedRatio = session.processing_speed_ratio ? 
-                            session.processing_speed_ratio.toFixed(2) + 'x' : '-';
-                        
-                        return `
-                            <div class="session-row">
-                                <div><strong>${videoName}</strong></div>
-                                <div><span class="status-badge status-${session.status}">${session.status}</span></div>
-                                <div>${startTime}</div>
-                                <div>${duration}</div>
-                                <div>${speedRatio}</div>
-                            </div>
-                        `;
-                    }).join('');
-                } else {
-                    sessionsTable.innerHTML = '<div class="session-row"><div>No sessions found</div></div>';
+                const res  = await fetch('/api/monitoring/tasks');
+                const data = await res.json();
+                const tasks = data.tasks || [];
+
+                // Summary strip
+                const completed = tasks.filter(t => t.status === 'completed');
+                document.getElementById('statTotal').textContent     = tasks.length;
+                document.getElementById('statCompleted').textContent = completed.length;
+                document.getElementById('statBlinks').textContent    = completed.reduce((s, t) => s + (t.blinks   || 0), 0);
+                document.getElementById('statBreaths').textContent   = completed.reduce((s, t) => s + (t.breaths  || 0), 0);
+                document.getElementById('statSpeakers').textContent  = completed.reduce((s, t) => s + (t.speakers || 0), 0);
+
+                // Table
+                const tbody = document.getElementById('sessionsBody');
+                if (!tasks.length) {
+                    tbody.innerHTML = '<tr class="empty-row"><td colspan="9">No sessions yet — upload a video to begin.</td></tr>';
+                    return;
                 }
-                
-            } catch (error) {
-                console.error('Error fetching sessions:', error);
-                document.getElementById('sessionsTable').innerHTML = '<div class="session-row"><div>Error loading sessions</div></div>';
+
+                tbody.innerHTML = tasks.map(t => {
+                    const dur = t.duration_s != null ? fmtDur(t.duration_s) : '—';
+                    const ts  = t.created_at ? new Date(t.created_at).toLocaleString() : '—';
+                    return `
+                        <tr>
+                            <td class="video-name" title="${esc(t.video)}">${esc(t.video) || '—'}</td>
+                            <td><span class="badge badge-${t.status}">${t.status}</span></td>
+                            <td>${dur}</td>
+                            <td><div class="det-cell"><div class="det-dot dot-blink"></div>${t.blinks}</div></td>
+                            <td><div class="det-cell"><div class="det-dot dot-breath"></div>${t.breaths}</div></td>
+                            <td><div class="det-cell"><div class="det-dot dot-speaker"></div>${t.speakers}</div></td>
+                            <td><div class="det-cell"><div class="det-dot dot-scene"></div>${t.scenes}</div></td>
+                            <td>${t.captions}</td>
+                            <td style="color:#475569;font-size:0.8rem">${ts}</td>
+                        </tr>`;
+                }).join('');
+
+            } catch (e) {
+                document.getElementById('sessionsBody').innerHTML =
+                    '<tr class="empty-row"><td colspan="9">Failed to load sessions.</td></tr>';
             }
         }
-        
-        async function refreshLogs() {
+
+        async function loadLogs() {
             try {
-                const response = await fetch('/api/monitoring/logs?lines=50');
-                const data = await response.json();
-                
-                const logsContent = document.getElementById('logsContent');
-                
-                if (data.logs && data.logs.length > 0) {
-                    logsContent.innerHTML = data.logs.map(line => {
-                        let className = 'log-line';
-                        if (line.includes('ERROR')) className += ' error';
-                        else if (line.includes('WARNING')) className += ' warning';
-                        else className += ' info';
-                        
-                        return `<div class="${className}">${escapeHtml(line.trim())}</div>`;
-                    }).join('');
-                    
-                    // Auto-scroll to bottom
-                    logsContent.scrollTop = logsContent.scrollHeight;
-                } else {
-                    logsContent.innerHTML = '<div class="log-line">No logs available</div>';
+                const res  = await fetch('/api/monitoring/logs?lines=100');
+                const data = await res.json();
+                const logs = data.logs || [];
+                const body = document.getElementById('logsBody');
+
+                if (!logs.length) {
+                    body.innerHTML = '<div class="log-line">No logs available.</div>';
+                    return;
                 }
-                
-            } catch (error) {
-                console.error('Error fetching logs:', error);
-                document.getElementById('logsContent').innerHTML = '<div class="log-line error">Error loading logs</div>';
+
+                const atBottom = body.scrollTop + body.clientHeight >= body.scrollHeight - 10;
+                body.innerHTML = logs.map(line => {
+                    let cls = 'log-line info';
+                    if (line.includes('ERROR'))   cls = 'log-line error';
+                    else if (line.includes('WARN')) cls = 'log-line warning';
+                    return `<div class="${cls}">${esc(line.trim())}</div>`;
+                }).join('');
+
+                if (atBottom) body.scrollTop = body.scrollHeight;
+
+            } catch (e) {
+                document.getElementById('logsBody').innerHTML =
+                    '<div class="log-line error">Failed to load logs.</div>';
             }
         }
-        
-        function escapeHtml(unsafe) {
-            return unsafe
-                .replace(/&/g, "&amp;")
-                .replace(/</g, "&lt;")
-                .replace(/>/g, "&gt;")
-                .replace(/"/g, "&quot;")
-                .replace(/'/g, "&#039;");
+
+        function fmtDur(s) {
+            const m = Math.floor(s / 60);
+            const sec = Math.floor(s % 60);
+            return m > 0 ? `${m}m ${sec}s` : `${sec}s`;
         }
-        
-        // Manual refresh function for logs
-        window.refreshLogs = refreshLogs;
+
+        function esc(s) {
+            return String(s ?? '')
+                .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+                .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+        }
+
+        window.refresh = refresh;
+
+        refresh();
+        startTimer();
     </script>
 </body>
 </html>

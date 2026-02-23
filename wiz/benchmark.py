@@ -464,6 +464,94 @@ def run_benchmark(
 
 
 # ──────────────────────────────────────────────────────────────────────────────
+# JSON-returning benchmark (for API / monitoring dashboard)
+# ──────────────────────────────────────────────────────────────────────────────
+
+def run_benchmark_json(
+    hours: float = 0.1,
+    runs: int = 20,
+) -> dict:
+    """
+    Run the graph-vs-SQL benchmark and return structured results as a dict.
+
+    Designed for the monitoring API endpoint — no stdout output.
+    Uses a temporary .wiz file that is deleted after the run.
+    """
+    import tempfile, os
+
+    wiz_path = tempfile.mktemp(suffix=".wiz")
+    try:
+        t0 = time.perf_counter()
+        _, gen_stats = generate_synthetic_wiz(wiz_path, hours=hours)
+        gen_ms = (time.perf_counter() - t0) * 1000
+
+        t0 = time.perf_counter()
+        engine = SearchEngine(wiz_path)
+        build_ms = (time.perf_counter() - t0) * 1000
+
+        naive = NaiveSearch(wiz_path)
+
+        test_speaker = "SPEAKER_01"
+        test_topic   = "machine learning"
+        test_emotion = "confident"
+
+        query_defs = [
+            (
+                "Person + Topic",
+                lambda: engine.find_person_topic(test_speaker, test_topic),
+                lambda: naive.find_person_topic(test_speaker, test_topic),
+            ),
+            (
+                "Emotion",
+                lambda: engine.find_emotion(test_emotion),
+                lambda: naive.find_emotion(test_emotion),
+            ),
+            (
+                "Safe Cuts",
+                lambda: engine.find_safe_cuts(),
+                lambda: naive.find_safe_cuts(),
+            ),
+            (
+                "Person + Topic + No Blink",
+                lambda: engine.find_person_topic_no_blink(test_speaker, test_topic),
+                lambda: naive.find_person_topic_no_blink(test_speaker, test_topic),
+            ),
+        ]
+
+        queries = []
+        for label, graph_fn, naive_fn in query_defs:
+            graph_result = graph_fn()
+            graph_med, _, _ = _timed(graph_fn, runs=runs)
+            naive_med, _, _ = _timed(naive_fn, runs=runs)
+            speedup = naive_med / graph_med if graph_med > 0 else 0.0
+            queries.append({
+                "label":        label,
+                "hits":         len(graph_result),
+                "graph_ms":     round(graph_med, 4),
+                "sql_ms":       round(naive_med, 4),
+                "speedup":      round(speedup, 1),
+            })
+
+        avg_speedup = statistics.mean(q["speedup"] for q in queries)
+
+        return {
+            "hours":        hours,
+            "runs":         runs,
+            "total_atoms":  gen_stats["total_atoms"],
+            "total_tags":   gen_stats["total_tags"],
+            "index_build_ms": round(build_ms, 1),
+            "gen_ms":       round(gen_ms, 1),
+            "avg_speedup":  round(avg_speedup, 1),
+            "queries":      queries,
+        }
+    finally:
+        try:
+            os.unlink(wiz_path)
+        except OSError:
+            pass
+
+
+# ──────────────────────────────────────────────────────────────────────────────
 # O(n) vs O(log n) prefix-search benchmark
 # ──────────────────────────────────────────────────────────────────────────────
 

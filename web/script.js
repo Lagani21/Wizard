@@ -6,11 +6,14 @@ class WizApp {
         this.duration    = 0;
         this.tlScale     = 1;
         this.fileName    = '';
+        this.taskId      = null;
+        this._searchMode = 'topic';
 
         this._bindUpload();
         this._bindPlayer();
         this._bindTabs();
         this._bindTimeline();
+        this._bindSearch();
     }
 
     // ── Upload ────────────────────────────────────────────────────
@@ -33,7 +36,7 @@ class WizApp {
             const f = e.target.files[0];
             if (f) this._startProcessing(f);
         });
-        newBtn.addEventListener('click', () => this._showView('upload'));
+        newBtn.addEventListener('click', () => { this._clearSession(); this._showView('upload'); });
     }
 
     _bindPlayer() {
@@ -76,6 +79,54 @@ class WizApp {
         document.getElementById(name === 'upload' ? 'viewUpload' : 'viewResults').classList.add('active');
     }
 
+    // ── Session persistence ────────────────────────────────────────
+    _saveSession(taskId, fileName) {
+        try {
+            sessionStorage.setItem('wiz_task_id',   taskId);
+            sessionStorage.setItem('wiz_file_name', fileName);
+        } catch (_) {}
+    }
+
+    _clearSession() {
+        try {
+            sessionStorage.removeItem('wiz_task_id');
+            sessionStorage.removeItem('wiz_file_name');
+        } catch (_) {}
+    }
+
+    async _tryRestoreSession() {
+        const taskId   = sessionStorage.getItem('wiz_task_id');
+        const fileName = sessionStorage.getItem('wiz_file_name');
+        if (!taskId) return;
+
+        try {
+            const res = await fetch(`/api/progress/${taskId}`);
+            if (!res.ok) { this._clearSession(); return; }
+            const status = await res.json();
+            if (status.status !== 'completed') { this._clearSession(); return; }
+
+            // Restore metadata
+            this.taskId   = taskId;
+            this.fileName = fileName || 'video';
+            document.getElementById('videoFileName').textContent = this.fileName;
+
+            // Point the player at the server-side copy
+            const player = document.getElementById('videoPlayer');
+            player.src = `/api/uploads/${taskId}/video`;
+
+            this._showView('results');
+            this._showProcessing(true);
+            this._setProgress(90, 'Restoring session…');
+
+            const res2    = await fetch(`/api/results/${taskId}`);
+            if (!res2.ok) { this._clearSession(); this._showView('upload'); return; }
+            const results = await res2.json();
+            this._displayResults(results);
+        } catch (_) {
+            this._clearSession();
+        }
+    }
+
     // ── Processing ─────────────────────────────────────────────────
     async _startProcessing(file) {
         this.fileName = file.name;
@@ -97,6 +148,7 @@ class WizApp {
             if (!res.ok) throw new Error('Upload failed');
 
             const { task_id } = await res.json();
+            this.taskId = task_id;
             this._setProgress(15, 'Pipeline running…');
             await this._pollUntilDone(task_id);
         } catch (err) {
@@ -133,6 +185,7 @@ class WizApp {
 
                     if (data.status === 'completed') {
                         clearInterval(iv);
+                        this._saveSession(taskId, this.fileName);
                         const res2    = await fetch(`/api/results/${taskId}`);
                         const results = await res2.json();
                         this._displayResults(results);
@@ -172,6 +225,16 @@ class WizApp {
         const speakers = new Set();
         (r.aligned_segments || []).forEach(s => speakers.add(s.speaker_id));
         document.getElementById('speakerCount').textContent = speakers.size;
+
+        // Populate speaker dropdown in search tab
+        const sel = document.getElementById('searchSpeaker');
+        sel.innerHTML = '<option value="">Any speaker</option>';
+        speakers.forEach(id => {
+            const opt = document.createElement('option');
+            opt.value = id;
+            opt.textContent = id;
+            sel.appendChild(opt);
+        });
     }
 
     // ── Timeline ───────────────────────────────────────────────────
@@ -424,6 +487,125 @@ class WizApp {
         return el;
     }
 
+    // ── Search ─────────────────────────────────────────────────────
+    _bindSearch() {
+        // Mode pills
+        document.querySelectorAll('.mode-pill').forEach(pill => {
+            pill.addEventListener('click', () => {
+                document.querySelectorAll('.mode-pill').forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+                this._searchMode = pill.dataset.mode;
+
+                const queryInput    = document.getElementById('searchQuery');
+                const speakerRow    = document.getElementById('searchSpeakerRow');
+                const isSpeakerMode = this._searchMode === 'speaker_topic';
+                const isSafeCuts    = this._searchMode === 'safe_cuts';
+
+                speakerRow.style.display = isSpeakerMode ? 'flex' : 'none';
+                queryInput.style.display = isSafeCuts    ? 'none' : '';
+
+                const placeholders = {
+                    topic:         'e.g. machine learning',
+                    emotion:       'e.g. confident, excited, neutral',
+                    speaker_topic: 'e.g. product launch',
+                };
+                queryInput.placeholder = placeholders[this._searchMode] || '';
+            });
+        });
+
+        // Submit on button click or Enter
+        document.getElementById('searchBtn').addEventListener('click', () => this._runSearch());
+        document.getElementById('searchQuery').addEventListener('keydown', e => {
+            if (e.key === 'Enter') this._runSearch();
+        });
+    }
+
+    async _runSearch() {
+        if (!this.taskId) {
+            this._showSearchResults(null, 'No video processed yet.');
+            return;
+        }
+
+        const query    = document.getElementById('searchQuery').value.trim();
+        const speaker  = document.getElementById('searchSpeaker').value;
+        const noBlink  = document.getElementById('searchNoBlink').checked;
+        const mode     = this._searchMode;
+
+        const params = new URLSearchParams();
+        if (mode === 'safe_cuts') {
+            params.set('safe_cuts', '1');
+        } else if (mode === 'emotion') {
+            if (!query) return;
+            params.set('emotion', query);
+        } else if (mode === 'speaker_topic') {
+            if (speaker) params.set('speaker', speaker);
+            if (query)   params.set('topic', query);
+            if (noBlink) params.set('no_blink', '1');
+            if (!speaker && !query) return;
+        } else {
+            if (!query) return;
+            params.set('topic', query);
+        }
+
+        const btn = document.getElementById('searchBtn');
+        btn.disabled = true;
+        btn.textContent = '…';
+        this._showSearchResults(null, 'Searching…');
+
+        try {
+            const res  = await fetch(`/api/results/${this.taskId}/search?${params}`);
+            const data = await res.json();
+            if (!res.ok) {
+                this._showSearchResults([], data.error || 'Search failed.');
+            } else {
+                this._showSearchResults(data.results, null, data.count);
+            }
+        } catch (e) {
+            this._showSearchResults([], 'Request failed.');
+        } finally {
+            btn.disabled = false;
+            btn.textContent = 'Search';
+        }
+    }
+
+    _showSearchResults(results, statusMsg, count) {
+        const pane = document.getElementById('searchResults');
+        pane.innerHTML = '';
+
+        const status = document.createElement('div');
+        status.className = 'search-status';
+
+        if (statusMsg) {
+            status.textContent = statusMsg;
+            pane.appendChild(status);
+            return;
+        }
+
+        if (!results || !results.length) {
+            status.textContent = 'No matches found.';
+            pane.appendChild(status);
+            return;
+        }
+
+        status.textContent = `${count} match${count === 1 ? '' : 'es'}`;
+        pane.appendChild(status);
+
+        results.forEach(r => {
+            const el = document.createElement('div');
+            el.className = 'sr-item';
+            el.innerHTML = `
+                <div class="sr-header">
+                    <span class="sr-timecode">${r.timecode}</span>
+                    ${r.speaker ? `<span class="sr-speaker">${r.speaker}</span>` : ''}
+                    ${r.emotion ? `<span class="sr-emotion">${r.emotion}</span>` : ''}
+                </div>
+                ${r.transcript ? `<div class="sr-text">${this._trunc(r.transcript, 120)}</div>` : ''}
+                <div class="sr-score">${this._fmt(r.time_start)} – ${this._fmt(r.time_end)} · score ${r.score.toFixed(2)}</div>`;
+            el.addEventListener('click', () => this._seek(r.time_start));
+            pane.appendChild(el);
+        });
+    }
+
     // ── Helpers ────────────────────────────────────────────────────
     _fmt(s) {
         const m = Math.floor(s / 60);
@@ -434,7 +616,10 @@ class WizApp {
     _trunc(t, n) { return t && t.length > n ? t.slice(0, n) + '…' : (t || ''); }
 }
 
-document.addEventListener('DOMContentLoaded', () => new WizApp());
+document.addEventListener('DOMContentLoaded', () => {
+    const app = new WizApp();
+    app._tryRestoreSession();
+});
 window.addEventListener('resize', () => {
     const c = document.getElementById('waveformCanvas');
     if (c) {

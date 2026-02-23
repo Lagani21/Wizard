@@ -27,6 +27,22 @@ ROOT_DIR = WEB_DIR.parent
 sys.path.insert(0, str(ROOT_DIR))
 sys.path.insert(0, str(WEB_DIR))
 
+# Try to import search engine
+try:
+    from wiz.search import SearchEngine
+    SEARCH_AVAILABLE = True
+except ImportError:
+    SearchEngine = None
+    SEARCH_AVAILABLE = False
+
+# Try to import benchmark
+try:
+    from wiz.benchmark import run_benchmark_json
+    BENCHMARK_AVAILABLE = True
+except ImportError:
+    run_benchmark_json = None
+    BENCHMARK_AVAILABLE = False
+
 # Try to import pipeline with multiple strategies
 PIPELINE_AVAILABLE = False
 Pipeline = None
@@ -154,7 +170,7 @@ class VideoProcessor:
             'video_path': video_path,
             'created_at': datetime.now().isoformat(),
             'results': None,
-            'db_path': None,
+            'wiz_path': None,
             'error': None
         }
         
@@ -225,9 +241,9 @@ class VideoProcessor:
                 context = pipeline.run(video_path)
                 logger.log_info("Video processing completed successfully")
 
-            # Capture DB path written by the pipeline (may be None)
-            task['db_path'] = (
-                context.processing_metadata.get('db_path')
+            # Capture .wiz path written by the pipeline (may be None)
+            task['wiz_path'] = (
+                context.processing_metadata.get('wiz_path')
                 if hasattr(context, 'processing_metadata') else None
             )
 
@@ -240,9 +256,9 @@ class VideoProcessor:
             # Convert results to JSON-serializable format
             results = self._format_results(context, pipeline)
 
-            # Include DB file reference if it was written
-            if task.get('db_path'):
-                results['db_path'] = task['db_path']
+            # Include .wiz file reference if it was written
+            if task.get('wiz_path'):
+                results['wiz_path'] = task['wiz_path']
 
             # Build waveform from actual extracted audio; fall back to mock
             if hasattr(context, 'audio_waveform') and context.audio_waveform is not None:
@@ -628,23 +644,111 @@ def get_results(task_id):
     return jsonify(results)
 
 
-@app.route('/api/results/<task_id>/db')
-def download_db(task_id):
-    """Download the SQLite database produced for a completed task"""
+@app.route('/api/uploads/<task_id>/video')
+def serve_video(task_id):
+    """Stream back the uploaded video for a given task (used to restore player after refresh)."""
     task = processor.get_task_status(task_id)
     if not task:
         return jsonify({'error': 'Task not found'}), 404
 
-    db_path = task.get('db_path')
-    if not db_path or not Path(db_path).exists():
-        return jsonify({'error': 'Database file not available'}), 404
+    video_path = task.get('video_path')
+    if not video_path or not Path(video_path).exists():
+        return jsonify({'error': 'Video file not found'}), 404
+
+    return send_file(video_path, mimetype='video/mp4', conditional=True)
+
+
+@app.route('/api/results/<task_id>/db')
+def download_db(task_id):
+    """Download the .wiz file produced for a completed task"""
+    task = processor.get_task_status(task_id)
+    if not task:
+        return jsonify({'error': 'Task not found'}), 404
+
+    wiz_path = task.get('wiz_path')
+    if not wiz_path or not Path(wiz_path).exists():
+        return jsonify({'error': '.wiz file not available'}), 404
 
     return send_file(
-        db_path,
+        wiz_path,
         as_attachment=True,
-        download_name=Path(db_path).name,
+        download_name=Path(wiz_path).name,
         mimetype='application/octet-stream'
     )
+
+
+@app.route('/api/results/<task_id>/search')
+def search_wiz(task_id):
+    """
+    Query the .wiz file for a completed task.
+
+    Query params (all optional, at least one required):
+      speaker  — speaker ID, e.g. SPEAKER_01
+      topic    — keyword/phrase, e.g. "machine learning"
+      emotion  — tone label, e.g. confident
+      safe_cuts — any truthy value to return safe cut points
+      no_blink  — combine with speaker+topic to exclude blink windows
+
+    Returns list of matching segments with timecodes.
+    """
+    if not SEARCH_AVAILABLE:
+        return jsonify({'error': 'Search not available'}), 503
+
+    task = processor.get_task_status(task_id)
+    if not task:
+        return jsonify({'error': 'Task not found'}), 404
+
+    wiz_path = task.get('wiz_path')
+    if not wiz_path or not Path(wiz_path).exists():
+        return jsonify({'error': '.wiz file not available — reprocess the video'}), 404
+
+    speaker  = request.args.get('speaker')
+    topic    = request.args.get('topic')
+    emotion  = request.args.get('emotion')
+    safe_cuts = request.args.get('safe_cuts')
+    no_blink  = request.args.get('no_blink')
+
+    engine = SearchEngine(wiz_path)
+
+    if safe_cuts:
+        results = engine.find_safe_cuts()
+    elif emotion:
+        results = engine.find_emotion(emotion)
+    elif speaker and topic and no_blink:
+        results = engine.find_person_topic_no_blink(speaker, topic)
+    elif speaker and topic:
+        results = engine.find_person_topic(speaker, topic)
+    elif speaker or topic:
+        kwargs = {}
+        if speaker:
+            kwargs['speaker'] = speaker
+        if topic:
+            kwargs['topic'] = topic
+        results = engine.query(**kwargs)
+    else:
+        return jsonify({
+            'error': 'Provide at least one of: speaker, topic, emotion, safe_cuts',
+            'stats': engine.stats(),
+        }), 400
+
+    return jsonify({
+        'query': dict(request.args),
+        'count': len(results),
+        'stats': engine.stats(),
+        'results': [
+            {
+                'time_start': r.time_start,
+                'time_end':   r.time_end,
+                'duration':   round(r.duration, 3),
+                'timecode':   r.timecode(engine._fps),
+                'speaker':    r.speaker,
+                'transcript': r.transcript,
+                'emotion':    r.emotion,
+                'score':      round(r.score, 3),
+            }
+            for r in results
+        ],
+    })
 
 
 @app.route('/api/tasks')
@@ -660,8 +764,50 @@ def list_tasks():
         }
         for task in processor.tasks.values()
     ]
-    
+
     return jsonify({'tasks': tasks})
+
+
+@app.route('/api/monitoring/tasks')
+def monitoring_tasks():
+    """Pipeline-specific task summary for the monitoring dashboard."""
+    rows = []
+    for task in processor.tasks.values():
+        results = task.get('results') or {}
+        meta    = results.get('video_metadata') or {}
+        fps     = meta.get('fps') or 0
+
+        # Counts straight from results
+        blinks   = len(results.get('blink_events') or [])
+        breaths  = len(results.get('breath_events') or [])
+        scenes   = len(results.get('scene_summaries') or [])
+        captions = len(results.get('video_captions') or [])
+
+        speakers = set()
+        for seg in (results.get('aligned_segments') or []):
+            if seg.get('speaker_id'):
+                speakers.add(seg['speaker_id'])
+
+        duration = meta.get('duration')
+
+        rows.append({
+            'id':          task['id'],
+            'video':       Path(task.get('video_path', '')).name,
+            'status':      task['status'],
+            'created_at':  task.get('created_at'),
+            'duration_s':  round(duration, 1) if duration else None,
+            'fps':         round(fps, 2) if fps else None,
+            'blinks':      blinks,
+            'breaths':     breaths,
+            'speakers':    len(speakers),
+            'scenes':      scenes,
+            'captions':    captions,
+            'wiz_path':    task.get('wiz_path'),
+        })
+
+    # Most recent first
+    rows.sort(key=lambda r: r['created_at'] or '', reverse=True)
+    return jsonify({'tasks': rows})
 
 
 @app.errorhandler(413)
@@ -793,6 +939,33 @@ def get_logs():
     except Exception as e:
         return jsonify({'error': f'Log retrieval error: {str(e)}'}), 500
 
+@app.route('/api/monitoring/benchmark', methods=['POST'])
+def run_search_benchmark():
+    """
+    Run a graph-vs-SQL search benchmark and return structured results.
+
+    Body (JSON, all optional):
+        hours  — hours of synthetic footage to generate (default 0.1)
+        runs   — query iterations per method (default 20)
+    """
+    if not BENCHMARK_AVAILABLE:
+        return jsonify({'error': 'Benchmark not available'}), 503
+
+    body  = request.get_json(silent=True) or {}
+    hours = float(body.get('hours', 0.1))
+    runs  = int(body.get('runs', 20))
+
+    # Clamp to sensible limits so the request doesn't hang
+    hours = max(0.05, min(hours, 2.0))
+    runs  = max(5,    min(runs,  100))
+
+    try:
+        result = run_benchmark_json(hours=hours, runs=runs)
+        return jsonify(result)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
 @app.route('/api/monitoring/summary')
 def get_monitoring_summary():
     """Get structured monitoring summary report"""
@@ -815,6 +988,11 @@ def get_monitoring_summary():
 def monitoring_dashboard():
     """Serve monitoring dashboard"""
     return send_file(str(WEB_DIR / 'monitoring.html'))
+
+@app.route('/benchmark')
+def benchmark_page():
+    """Serve standalone search benchmark page"""
+    return send_file(str(WEB_DIR / 'benchmark.html'))
 
 @app.errorhandler(Exception)
 def handle_exception(e):
