@@ -32,6 +32,59 @@ import bisect
 from dataclasses import dataclass, field
 from typing import Dict, FrozenSet, List, Optional, Set, Tuple
 
+
+# ──────────────────────────────────────────────────────────────────────────────
+# Minimal suffix-stripping stemmer
+# ──────────────────────────────────────────────────────────────────────────────
+
+def _stem_variants(word: str) -> List[str]:
+    """
+    Return a list of suffix-stripped variants for fuzzy topic matching.
+
+    This is not a full Porter stemmer — it strips only the most common
+    English inflections (plurals, -ing, -ed, -er) so queries like "revenues"
+    match stored topic "revenue" and "launched" matches "launch".
+
+    No extra dependencies: pure Python, O(1) per word.
+    """
+    w = word.lower()
+    seen: dict = {w: None}  # ordered dedup via insertion order
+
+    def _add(v: str) -> None:
+        if len(v) >= 3:
+            seen[v] = None
+
+    # -ies → -y  (currencies → currency)
+    if w.endswith("ies") and len(w) > 4:
+        _add(w[:-3] + "y")
+
+    # -es / -s  (revenues → revenue, projects → project)
+    if w.endswith("es") and len(w) > 4:
+        _add(w[:-2])
+        _add(w[:-1])
+    elif w.endswith("s") and not w.endswith("ss") and len(w) > 3:
+        _add(w[:-1])
+
+    # -ing  (making → make, running → run)
+    if w.endswith("ing") and len(w) > 5:
+        _add(w[:-3])
+        _add(w[:-3] + "e")
+
+    # -ed  (launched → launch, named → name)
+    if w.endswith("ed") and len(w) > 4:
+        _add(w[:-2])
+        _add(w[:-1])
+
+    # -er / -ers  (developer → develop)
+    if w.endswith("ers") and len(w) > 5:
+        _add(w[:-3])
+        _add(w[:-2])
+    elif w.endswith("er") and len(w) > 4:
+        _add(w[:-2])
+        _add(w[:-1])
+
+    return list(seen.keys())
+
 try:
     from .format import WizAtom, WizTag, WizFile
 except ImportError:
@@ -381,7 +434,9 @@ class WizGraph:
            Catches "machine learning" when stored as a bigram tag.
         3. If multi-word: prefix-search each word, intersect results — AND semantics.
            Catches "machine learning" when stored as separate unigram tags.
-        Returns the union of all three strategies.
+        4. Stem variants for each word — handles plurals, -ing/-ed/-er inflections.
+           "revenues" matches "revenue", "launched" matches "launch", etc.
+        Returns the union of all strategies.
         """
         phrase = topic_phrase.lower().strip()
 
@@ -391,9 +446,15 @@ class WizGraph:
         # 2. Prefix search on the whole phrase — O(log N + k)
         prefix_hits = self.prefix_search("topic", phrase)
 
+        # 4. Stem variants of the full phrase (single-word case handled here)
+        stem_hits: Set[str] = set()
+        for variant in _stem_variants(phrase):
+            stem_hits |= self.find_by_tag("topic", variant)
+            stem_hits |= self.prefix_search("topic", variant)
+
         if " " in phrase:
-            # 3. Per-word prefix intersection — each word is O(log N + k)
             words = phrase.split()
+            # 3. Per-word prefix intersection — each word is O(log N + k)
             per_word = [self.prefix_search("topic", w) for w in words]
             per_word = [s for s in per_word if s]
             if per_word:
@@ -401,9 +462,25 @@ class WizGraph:
                 all_words = per_word[0].copy()
                 for s in per_word[1:]:
                     all_words &= s
-                return exact | prefix_hits | all_words
+                stem_hits |= all_words
 
-        return exact | prefix_hits
+            # 4b. Stem each word and intersect — AND across stemmed forms
+            stemmed_word_sets: List[Set[str]] = []
+            for w in words:
+                w_hits: Set[str] = set()
+                for variant in _stem_variants(w):
+                    w_hits |= self.find_by_tag("topic", variant)
+                    w_hits |= self.prefix_search("topic", variant)
+                if w_hits:
+                    stemmed_word_sets.append(w_hits)
+            if stemmed_word_sets:
+                stemmed_word_sets.sort(key=len)
+                intersection = stemmed_word_sets[0].copy()
+                for s in stemmed_word_sets[1:]:
+                    intersection &= s
+                stem_hits |= intersection
+
+        return exact | prefix_hits | stem_hits
 
     # ── stats ─────────────────────────────────────────────────────────────────
 

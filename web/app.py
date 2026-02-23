@@ -702,22 +702,33 @@ def search_wiz(task_id):
     if not wiz_path or not Path(wiz_path).exists():
         return jsonify({'error': '.wiz file not available — reprocess the video'}), 404
 
-    speaker  = request.args.get('speaker')
-    topic    = request.args.get('topic')
-    emotion  = request.args.get('emotion')
+    speaker   = request.args.get('speaker')
+    topic     = request.args.get('topic')
+    emotion   = request.args.get('emotion')
     safe_cuts = request.args.get('safe_cuts')
     no_blink  = request.args.get('no_blink')
+
+    # Optional time-window filter (seconds, float)
+    def _parse_float(key: str):
+        v = request.args.get(key)
+        try:
+            return float(v) if v is not None else None
+        except (TypeError, ValueError):
+            return None
+
+    t_start = _parse_float('time_start')
+    t_end   = _parse_float('time_end')
 
     engine = SearchEngine(wiz_path)
 
     if safe_cuts:
-        results = engine.find_safe_cuts()
+        results = engine.find_safe_cuts(time_start=t_start, time_end=t_end)
     elif emotion:
-        results = engine.find_emotion(emotion)
+        results = engine.find_emotion(emotion, time_start=t_start, time_end=t_end)
     elif speaker and topic and no_blink:
-        results = engine.find_person_topic_no_blink(speaker, topic)
+        results = engine.find_person_topic_no_blink(speaker, topic, time_start=t_start, time_end=t_end)
     elif speaker and topic:
-        results = engine.find_person_topic(speaker, topic)
+        results = engine.find_person_topic(speaker, topic, time_start=t_start, time_end=t_end)
     elif speaker or topic:
         kwargs = {}
         if speaker:

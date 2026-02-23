@@ -136,6 +136,8 @@ class SearchEngine:
         self,
         speaker_id: str,
         topic: str,
+        time_start: Optional[float] = None,
+        time_end: Optional[float] = None,
     ) -> List[SearchResult]:
         """
         Find every moment where [person] talks about [topic].
@@ -143,10 +145,16 @@ class SearchEngine:
         Matches speaker atoms for speaker_id whose topic tags intersect
         with the given topic phrase. Multi-word topics use AND semantics
         across individual keyword matches.
+
+        Optional time_start/time_end (seconds) narrow results to a time window.
         """
         speaker_ids = self.graph.find_by_tag("speaker", speaker_id)
         topic_ids = self.graph.find_topic(topic)
         result_ids = speaker_ids & topic_ids
+        if time_start is not None or time_end is not None:
+            result_ids &= self.graph.find_overlapping(
+                time_start or 0.0, time_end or float("inf")
+            )
 
         return self._to_results(
             result_ids,
@@ -156,14 +164,26 @@ class SearchEngine:
 
     # ── query 2: emotion ──────────────────────────────────────────────────────
 
-    def find_emotion(self, emotion: str) -> List[SearchResult]:
+    def find_emotion(
+        self,
+        emotion: str,
+        time_start: Optional[float] = None,
+        time_end: Optional[float] = None,
+    ) -> List[SearchResult]:
         """
         Find all segments with [emotion].
 
         emotion should match the tone_label values from ToneClassifier,
         e.g. "confident", "sad", "angry", "excited", "neutral", "thoughtful".
+
+        Optional time_start/time_end (seconds) narrow results to a time window.
         """
-        atoms = self.graph.query(TagCondition("emotion", emotion.lower()))
+        result_ids = self.graph.find_by_tag("emotion", emotion.lower())
+        if time_start is not None or time_end is not None:
+            result_ids = result_ids & self.graph.find_overlapping(
+                time_start or 0.0, time_end or float("inf")
+            )
+        atoms = self.graph._ids_to_atoms(result_ids)
         return self._atoms_to_results(
             atoms,
             query_label=f"emotion={emotion!r}",
@@ -175,6 +195,8 @@ class SearchEngine:
     def find_safe_cuts(
         self,
         include_pauses: bool = True,
+        time_start: Optional[float] = None,
+        time_end: Optional[float] = None,
     ) -> List[SearchResult]:
         """
         Find safe cut points in the clip.
@@ -182,6 +204,8 @@ class SearchEngine:
         Returns all 1.5 s windows where no blink and no breath was detected
         (tagged safe_cut:true by the writer), plus natural speech-gap windows
         (tagged safe_cut:pause) if include_pauses=True.
+
+        Optional time_start/time_end (seconds) narrow results to a time window.
         """
         true_cuts = self.graph.find_by_tag("safe_cut", "true")
 
@@ -190,6 +214,11 @@ class SearchEngine:
             all_ids = true_cuts | pause_cuts
         else:
             all_ids = true_cuts
+
+        if time_start is not None or time_end is not None:
+            all_ids = all_ids & self.graph.find_overlapping(
+                time_start or 0.0, time_end or float("inf")
+            )
 
         return self._to_results(
             all_ids,
@@ -203,6 +232,8 @@ class SearchEngine:
         self,
         speaker_id: str,
         topic: str,
+        time_start: Optional[float] = None,
+        time_end: Optional[float] = None,
     ) -> List[SearchResult]:
         """
         Find every moment where [person] talks about [topic] and is not mid-blink.
@@ -210,11 +241,17 @@ class SearchEngine:
         Uses temporal NOT: finds speaker+topic atoms, then removes any whose
         time range overlaps with a blink atom — even though blink atoms and
         speaker atoms have different granularities.
+
+        Optional time_start/time_end (seconds) narrow results to a time window.
         """
         # First reduce to person+topic atoms
         speaker_ids = self.graph.find_by_tag("speaker", speaker_id)
         topic_ids = self.graph.find_topic(topic)
         candidate_ids = speaker_ids & topic_ids
+        if time_start is not None or time_end is not None:
+            candidate_ids &= self.graph.find_overlapping(
+                time_start or 0.0, time_end or float("inf")
+            )
 
         if not candidate_ids:
             return []

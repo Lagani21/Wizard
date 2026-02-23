@@ -587,8 +587,31 @@ class WizApp {
             return;
         }
 
-        status.textContent = `${count} match${count === 1 ? '' : 'es'}`;
-        pane.appendChild(status);
+        const statusRow = document.createElement('div');
+        statusRow.className = 'search-status-row';
+        statusRow.innerHTML = `<span>${count} match${count === 1 ? '' : 'es'}</span>`;
+
+        const copyBtn = document.createElement('button');
+        copyBtn.className = 'btn-copy';
+        copyBtn.textContent = 'Copy';
+        copyBtn.addEventListener('click', () => {
+            const lines = results.map(r => {
+                const parts = [`[${this._fmt(r.time_start)}–${this._fmt(r.time_end)}]`];
+                if (r.speaker)     parts.push(r.speaker);
+                if (r.emotion)     parts.push(`(${r.emotion})`);
+                if (r.transcript)  parts.push(r.transcript);
+                return parts.join('  ');
+            });
+            navigator.clipboard.writeText(lines.join('\n')).then(() => {
+                copyBtn.textContent = 'Copied!';
+                setTimeout(() => { copyBtn.textContent = 'Copy'; }, 1800);
+            }).catch(() => {
+                copyBtn.textContent = 'Failed';
+                setTimeout(() => { copyBtn.textContent = 'Copy'; }, 1800);
+            });
+        });
+        statusRow.appendChild(copyBtn);
+        pane.appendChild(statusRow);
 
         results.forEach(r => {
             const el = document.createElement('div');
