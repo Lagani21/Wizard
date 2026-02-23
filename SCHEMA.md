@@ -29,18 +29,18 @@ A **WizAtom** works the same way. It is a time-ranged segment of video:
 atom_id:     "3f9a..."
 frame_start: 450
 frame_end:   495
-time_start:  15.0 s
-time_end:    16.5 s
 ```
 
-That is the entire fixed structure. Everything the pipeline knows about that window — who was speaking, what they said, whether there was a blink, what the emotional tone was — is attached to the atom as **tags**. A tag is a key-value pair:
+That is the entire fixed structure. Everything the pipeline knows about that window — who was speaking, what they said, whether there was a blink, what the emotional tone was — is attached to the atom as **tags**. The atom is the key; its tags are the values:
 
 ```
-speaker   → "PERSON_001"
-transcript → "we need to talk about Q3 revenue"
-topic      → "Q3 revenue"
-emotion    → "concerned"
-blink      → "true"
+"3f9a..." → {
+    speaker:    "PERSON_001"
+    transcript: "we need to talk about Q3 revenue"
+    topic:      "Q3 revenue"
+    emotion:    "concerned"
+    blink:      "true"
+}
 ```
 
 There are no foreign keys. No joining. The atom *is* the object. Its properties travel with it.
@@ -49,7 +49,7 @@ There are no foreign keys. No joining. The atom *is* the object. Its properties 
 
 ## Glossary
 
-**Atom** — A temporal unit. Represents one contiguous time window in a video, defined by a start frame, end frame, and equivalent wall-clock times. Every piece of intelligence attaches to an atom.
+**Atom** — A temporal unit. Represents one contiguous time window in a video, defined by a start frame and end frame. Every piece of intelligence attaches to an atom.
 
 **Tag** — A key-value pair attached to an atom. Has a `tag_type` (e.g. `speaker`), a `tag_value` (e.g. `PERSON_001`), and an optional `confidence` score between 0 and 1.
 
@@ -93,9 +93,7 @@ CREATE TABLE wiz_meta (
 CREATE TABLE atoms (
     atom_id     TEXT    PRIMARY KEY,
     frame_start INTEGER NOT NULL,
-    frame_end   INTEGER NOT NULL,
-    time_start  REAL    NOT NULL,
-    time_end    REAL    NOT NULL
+    frame_end   INTEGER NOT NULL
 );
 
 -- One row per tag attached to an atom
@@ -111,14 +109,14 @@ CREATE TABLE atom_tags (
 -- The entire search layer lives on this index
 CREATE INDEX idx_tags_type_value ON atom_tags(tag_type, tag_value);
 CREATE INDEX idx_tags_atom_id    ON atom_tags(atom_id);
-CREATE INDEX idx_atoms_time      ON atoms(time_start, time_end);
+CREATE INDEX idx_atoms_frames    ON atoms(frame_start, frame_end);
 ```
 
 That is the complete file format. Three tables, three indexes.
 
 `wiz_meta` stores file-level facts that do not belong to any time window (fps, total frames, video resolution, detected language).
 
-`atoms` stores nothing but time coordinates. A row in this table means "something happened between frame X and frame Y". What happened is entirely in `atom_tags`.
+`atoms` stores nothing but frame coordinates. A row in this table means "something happened between frame X and frame Y". What happened is entirely in `atom_tags`.
 
 `atom_tags` is the OO layer. Each row is one property of one atom. An atom with five tags has five rows here. The `metadata` column is a JSON blob reserved for data that does not fit neatly into a single string value — it is not queried directly, just returned alongside results.
 
@@ -139,7 +137,7 @@ Concretely: adding face identity to a relational schema means writing a new `fac
 **Relational approach** — "find moments where PERSON_001 talks about revenue and is not mid-blink":
 
 ```sql
-SELECT a.time_start, a.time_end
+SELECT a.frame_start, a.frame_end
 FROM   atoms a
 JOIN   speaker s        ON s.atom_id    = a.atom_id
 JOIN   topic t          ON t.atom_id    = a.atom_id
