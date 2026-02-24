@@ -1,32 +1,39 @@
-# WIZ Intelligence Pipeline Dependencies
+# WIZ Intelligence Pipeline — Dependencies
+# Platform: macOS Apple Silicon (M1/M2/M3), Python 3.10+
+# External: brew install ffmpeg
 
-# Core dependencies
+# ── Core ──────────────────────────────────────────────────────────────────────
 numpy>=1.21.0
 scipy>=1.7.0
 opencv-python>=4.5.0
+psutil>=5.9.0
 
-# MediaPipe for blink detection (face landmark detection)
-mediapipe>=0.8.9
+# ── Web UI ────────────────────────────────────────────────────────────────────
+flask>=2.3.0
 
-# Speech processing dependencies (optional, for speech pipeline)
-# Install these for transcription and speaker diarization:
-# openai-whisper>=20231117
-# pyannote.audio>=3.1.0
-# torch>=1.13.0
+# ── Blink detection ───────────────────────────────────────────────────────────
+# MediaPipe Face Mesh — runs natively on Apple Silicon CPU/Metal, no CUDA
+mediapipe>=0.10.0
 
-# Local LLM dependencies (optional, for context summary)
-# Choose one based on your preferred backend:
-# llama-cpp-python>=0.2.0  # For llama.cpp backend
-# mlx>=0.12.0              # For Apple MLX backend  
-# mlx-lm>=0.8.0            # For Apple MLX language models
+# ── Speech processing ─────────────────────────────────────────────────────────
+# Required for transcription + speaker diarization.
+# After installing, accept the pyannote licence and set HF_TOKEN:
+#   https://hf.co/pyannote/speaker-diarization-3.1
+#   export HF_TOKEN=hf_...
+openai-whisper>=20231117
+pyannote.audio>=3.1.0
+torch>=2.1.0
 
-# Optional: CoreML Tools for future model deployment (macOS only)
-# coremltools>=5.0.0
+# ── Local LLM (scene summaries) ───────────────────────────────────────────────
+# Install ONE of the following backends.
+# The pipeline falls back to a deterministic mock if neither is present.
+#
+# Option A — llama.cpp (any GGUF model, CPU/Metal):
+#   pip install llama-cpp-python
+#
+# Option B — Apple MLX (fastest on M-series):
+#   pip install mlx mlx-lm
 
-# Development and testing (optional)
+# ── Development / testing ─────────────────────────────────────────────────────
 pytest>=6.0.0
 pytest-cov>=3.0.0
-
-# Note: This pipeline is designed for Apple Silicon (macOS)
-# Local inference only - no CUDA, cloud APIs, or external dependencies
-# Speech processing requires additional models to be downloaded locally
