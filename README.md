@@ -82,11 +82,22 @@ Generates synthetic footage, builds the WizGraph index, and prints median latenc
 
 Every model was chosen for three constraints: runs on Apple Silicon without CUDA, good accuracy on interview-style footage, and available under a permissive licence.
 
-### Blink detection — MediaPipe Face Mesh + EAR
+### Blink detection — Apple Vision framework + EAR (CoreML / Neural Engine)
 
-MediaPipe Face Mesh returns 468 3D landmarks at 30–60 fps on CPU/Metal with no GPU required. We compute the Eye Aspect Ratio (EAR) from the six landmarks around each eye — a ratio below ~0.2 for two consecutive frames indicates a blink. This is the standard, well-validated method (Soukupová & Čech, 2016) and it gives frame-level precision, which is exactly what editors need: they cannot cut mid-blink and need to know the exact frame range to avoid.
+Blink detection runs through Apple's `Vision.VNDetectFaceLandmarksRequest`, which executes on the Neural Engine or GPU via CoreML — the fastest possible path on M-series hardware, with zero CUDA dependency. Each frame is converted to a `CGImage` and passed to a `VNImageRequestHandler`. The framework returns normalised 2D eye contour points for both eyes.
 
-Alternatives considered: dlib's 68-point shape predictor is accurate but requires Rosetta on M-series and is slower. Apple Vision's face landmark detector would be the fastest option on M-series hardware but requires an Objective-C/Swift bridge that adds complexity for a Python pipeline.
+We compute a bounding-box Eye Aspect Ratio (EAR) from those points:
+
+```
+EAR = height_of_eye_bounding_box / width_of_eye_bounding_box
+```
+
+An open eye has EAR ≈ 0.25–0.40. A blink closes the eye, collapsing the vertical extent: EAR drops below 0.25 for at least two consecutive frames. A `BlinkEvent` is recorded with frame-level `start_frame` / `end_frame` and a confidence score derived from the depth of the EAR dip.
+
+Why Apple Vision over MediaPipe or dlib:
+- **CoreML/Neural Engine acceleration** — runs faster than any CPU-bound Python face model on M-series
+- **No extra model download** — `Vision.framework` ships with macOS
+- **Frame-precise output** — the framework processes frames synchronously, so every event has an exact frame number the editor can trust
 
 ### Breath detection — energy-based audio segmentation
 

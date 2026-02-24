@@ -12,8 +12,10 @@ psutil>=5.9.0
 flask>=2.3.0
 
 # ── Blink detection ───────────────────────────────────────────────────────────
-# MediaPipe Face Mesh — runs natively on Apple Silicon CPU/Metal, no CUDA
-mediapipe>=0.10.0
+# Apple Vision framework via pyobjc — runs on CoreML/Neural Engine, ships with macOS.
+# No model download needed. Fastest face landmark path on M-series hardware.
+pyobjc-framework-Vision>=9.0
+pyobjc-framework-Quartz>=9.0
 
 # ── Speech processing ─────────────────────────────────────────────────────────
 # Required for transcription + speaker diarization.

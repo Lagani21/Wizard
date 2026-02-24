@@ -25,6 +25,55 @@ sys.path.insert(0, str(ROOT))
 VIDEO_EXTENSIONS = {".mp4", ".mov", ".avi", ".mkv", ".wmv", ".flv", ".webm"}
 
 
+def run_single(video_path: str, mode: str = "full") -> None:
+    """
+    Run the full pipeline on a single video file and write a .wiz file.
+
+    Equivalent to uploading through the web UI but from the command line,
+    with per-task timing printed to stdout.
+    """
+    from core.pipeline import Pipeline
+    from wiz.writer import WizWriter
+    from wiz.format import get_wiz_path_for_video
+    import time
+
+    vp = Path(video_path)
+    if not vp.exists():
+        print(f"Error: file not found: {video_path}")
+        sys.exit(1)
+
+    print("=" * 60)
+    print(f"  WIZ Pipeline  —  {vp.name}")
+    print(f"  Mode: {mode}")
+    print("=" * 60)
+
+    t0 = time.perf_counter()
+    pipeline = Pipeline(run_mode=mode)
+    context  = pipeline.run(str(vp))
+    elapsed  = time.perf_counter() - t0
+
+    # Write .wiz alongside the video if not already written by the pipeline
+    wiz_path = context.processing_metadata.get("wiz_path")
+    if not wiz_path:
+        wiz_path = get_wiz_path_for_video(str(vp), output_dir="results")
+        WizWriter().write(context, wiz_path)
+
+    print("\n── Results ────────────────────────────────────────────")
+    if context.video_metadata:
+        print(f"  Duration   : {context.video_metadata.duration_seconds:.1f}s")
+        print(f"  Resolution : {context.video_metadata.width}×{context.video_metadata.height}  "
+              f"@ {context.video_metadata.fps:.2f} fps")
+    speakers = sorted({s.speaker_id for s in context.speaker_segments})
+    print(f"  Speakers   : {', '.join(speakers) or '—'}")
+    print(f"  Blinks     : {len(context.blink_events)}")
+    print(f"  Breaths    : {len(context.breath_events)}")
+    print(f"  Words      : {len(context.transcript_words)}")
+    print(f"  Scenes     : {len(context.scene_summaries)}")
+    print(f"  Pipeline   : {elapsed:.1f}s total")
+    print(f"  Output     : {wiz_path}")
+    print("─" * 60)
+
+
 def run_folder(folder: str, output_dir: str, mode: str) -> None:
     """
     Process every video file in `folder` through the full WIZ pipeline.
@@ -156,6 +205,9 @@ Examples:
     parser.add_argument("--host",   default="0.0.0.0",         help="Bind host (default: 0.0.0.0)")
     parser.add_argument("--debug",  action="store_true",        help="Enable Flask debug mode")
 
+    # Single-file CLI
+    parser.add_argument("video",    nargs="?", metavar="VIDEO", help="Process a single video file (no web UI)")
+
     # Batch folder args
     parser.add_argument("--folder", metavar="DIR",              help="Process all videos in this folder")
     parser.add_argument("--output", metavar="DIR", default="results/batch",
@@ -167,6 +219,10 @@ Examples:
 
     if args.folder:
         run_folder(args.folder, args.output, args.mode)
+        return
+
+    if args.video:
+        run_single(args.video, args.mode)
         return
 
     # ── Web UI ─────────────────────────────────────────────────────────────────

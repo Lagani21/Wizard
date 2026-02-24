@@ -21,7 +21,7 @@ Wizard/
 │   └── metrics.py      # Metric collection helpers
 │
 ├── models/             # ML model wrappers
-│   ├── blink_detector.py      # MediaPipe Face Mesh + EAR threshold
+│   ├── blink_detector.py      # Apple Vision VNDetectFaceLandmarksRequest + EAR (CoreML)
 │   ├── breath_detector.py     # Energy-based breath sound detector
 │   ├── whisper_model.py       # OpenAI Whisper (local) transcription
 │   ├── diarization_model.py   # Pyannote speaker diarization + embedding extraction
